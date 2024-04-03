@@ -1,0 +1,18 @@
+{
+  "name": "music-festival-hub",
+  "version": "1.0.0",
+  "description": "A MERN stack app for a musical festival hub",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"cd ./server && npm start\" \"cd ./client npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cd ./server && npm i && cd ../client && npm i"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
