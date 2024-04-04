@@ -11,3 +11,5 @@ const paintJSAISchema = new Schema({
 });
 
 const PaintJSAI = mongoose.model('PaintJSAI', paintJSAISchema);
+
+export default PaintJSAI;
