@@ -3,7 +3,7 @@ import Placeholder from '../components/PlaceHolder'
 
 function CarouselImage() {
   return (
-    <Carousel>
+    <Carousel fluid>
       <Carousel.Item interval={1000}>
         <Placeholder text="First slide" />
         <Carousel.Caption>
