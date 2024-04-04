@@ -10,7 +10,7 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <Nav.Link href="home" className='navLink'>Home</Nav.Link>
-            <Nav.Link href="portfolio" className='navLink'>Portfolio</Nav.Link>
+            <Nav.Link href="portfolio" className='navLink'>Profile</Nav.Link>
             <Nav.Link href="design" className='navLink'>Design</Nav.Link>
           </Nav>
         </Navbar.Collapse>
