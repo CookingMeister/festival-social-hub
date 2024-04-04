@@ -1,21 +1,18 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 function Header() {
   return (
-    <Navbar expand="lg">
-      <Container className='navBar'>
-        <Navbar.Brand href="home">Custom Festival Wear</Navbar.Brand>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>
-            <Nav.Link href="home" className='navLink'>Home</Nav.Link>
-            <Nav.Link href="portfolio" className='navLink'>Profile</Nav.Link>
-            <Nav.Link href="design" className='navLink'>Design</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div>
+      <Navbar expand="lg" className='navBar'>
+          <Navbar.Brand href="/home" style={{ color: '#FFFB0A', padding: '10px'  }}>Custom Festival Wear</Navbar.Brand>
+            <Nav style={{ display: 'flex', flexDirection: 'row' }}>
+              <Nav.Link href="/home" className='navLink' style={{ color: '#FFFB0A', padding: '5px' }}>Home</Nav.Link>
+              <Nav.Link href="/profile" style={{ color: '#FFFB0A', padding: '5px'  }}>Profile</Nav.Link>
+              <Nav.Link href="/design" style={{ color: '#FFFB0A', padding: '5px'  }}>Design</Nav.Link>
+            </Nav>
+      </Navbar>
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ import Design from './pages/Design';
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import './styles/App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
