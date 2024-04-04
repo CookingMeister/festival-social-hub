@@ -1,5 +1,5 @@
 // friendshipController.js
-import Friendship from '../models/friendship';
+import Friendship from '../../models/profileModels/friendshipModel/friendship';
 
 export const createFriendship = async (req, res) => {
   try {

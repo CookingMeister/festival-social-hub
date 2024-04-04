@@ -1,5 +1,6 @@
 // commentController.js
-import Comment from '../models/comment';
+import Comment from '../../models/profileModels/commentModel/comment';
+
 
 export const createComment = async (req, res) => {
   try {

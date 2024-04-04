@@ -1,5 +1,5 @@
 // playlistController.js
-import Playlist from '../models/playlist';
+import Playlist from '../../models/profileModels/playlistModel/playlist';
 
 export const createPlaylist = async (req, res) => {
   try {

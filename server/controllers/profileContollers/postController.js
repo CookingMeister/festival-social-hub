@@ -1,5 +1,5 @@
 // postController.js
-import Post from '../models/post';
+import Post from '../../models/profileModels/postModel/post';
 
 export const createPost = async (req, res) => {
   try {
