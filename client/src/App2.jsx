@@ -5,7 +5,7 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Profile from './pages/Profile';
+import ProtectedProfile from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import Footer from './components/Footer';
 import Error from './pages/Error';
@@ -53,7 +53,7 @@ const App = () => {
           path="/profile"
           element={
             <ProtectedRoute>
-              <Profile />
+              <ProtectedProfile />
             </ProtectedRoute>
           }
         />
