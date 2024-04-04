@@ -2,6 +2,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import ProtectedRoute from './pages/ProtectedRoute';
 // import Signup from './pages/Signup';
+import Register from './pages/Register';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -11,6 +12,7 @@ import Footer from './components/Footer';
 import Error from './pages/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import './styles/App.css';
 
 const App = () => {
   return (
@@ -18,14 +20,14 @@ const App = () => {
     <Header />
       <nav>
         <ul>
-          {/* <li>
-            <Link to="/signup">Signup</Link>
-          </li> */}
           <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/design">Design</Link>
@@ -37,9 +39,9 @@ const App = () => {
       </nav>
 
       <Routes>
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/signup" element={<Signup />} /> */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         
         <Route
           path="/design"
