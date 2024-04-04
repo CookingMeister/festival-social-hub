@@ -1,0 +1,30 @@
+body {
+    background-color: #FFB899;
+    min-height: 100vh;
+    margin: 0;
+}
+
+a {
+    color: #FFFB0A;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #ED217C;
+}
+
+.navLink {
+    padding: 5px;
+}
+
+a:hover {
+    color: #FFB899;
+}
