@@ -1,13 +1,17 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-// import User from './models/profileModels/userModel/user';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { JWT_SECRET } = process.env;
 
 export const generateToken = (userId) => {
-  return jwt.sign({ userId }, 'secret_key');
+  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '2d' });
 };
 
 export const verifyToken = (token) => {
-  return jwt.verify(token, 'secret_key');
+  return jwt.verify(token, JWT_SECRET);
 };
 
 export const hashPassword = async (password) => {
@@ -21,13 +25,20 @@ export const comparePassword = async (password, hashedPassword) => {
 export const authMiddleware = (req, res, next) => {
   const token = req.header('Authorization');
   if (!token) {
-    return res.status(401).json({ error: 'No token provided' });
+    return res
+      .status(401)
+      .json({ error: 'No token provided. Authentication required.' });
   }
   try {
     const decoded = verifyToken(token);
     req.userId = decoded.userId;
     next();
   } catch (error) {
-    res.status(401).json({ error: 'Invalid token' });
+    res
+      .status(401)
+      .json({
+        error:
+          'Invalid token. Please provide a valid token for authentication.',
+      });
   }
 };

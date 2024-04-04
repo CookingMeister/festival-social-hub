@@ -1,10 +1,10 @@
 import express from 'express';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
-import connectDB from './config/connection';
-import authRoutes from './routes/authRoutes';
+import connectDB from './config/connection.js';
+// import authRoutes from './routes/authRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -16,7 +16,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use('/api', authRoutes);
+// app.use('/api', authRoutes);
 
 // Serve static files from the dist folder
 const __dirname = path.resolve();
