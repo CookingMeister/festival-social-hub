@@ -12,3 +12,5 @@ const newsSchema = new Schema({
 });
 
 const News = mongoose.model('News', newsSchema);
+
+export default News;
