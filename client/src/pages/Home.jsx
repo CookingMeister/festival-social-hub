@@ -15,8 +15,7 @@ function Home() {
         </Col>
       </Row>
       <Row>
-        <Col xs={8}>1 of 3</Col>
-        <Col xs={4}>2 of 3</Col>
+    
       </Row>
     </>  
   );

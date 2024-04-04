@@ -1,4 +1,5 @@
 function Placeholder() {
+
   return (
     <div className="my-3" style={{ width: '80%', marginLeft: '10%' }}>
       <img
