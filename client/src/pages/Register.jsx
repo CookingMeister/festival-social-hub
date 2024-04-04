@@ -2,14 +2,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { username, password });
+      const response = await axios.post('/api/register', { username, email, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
       // Redirect to protected page or update state
@@ -21,14 +22,23 @@ const Login = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <Form onSubmit={handleLogin} className="w-25">
-        <h1>Login</h1>
-        <Form.Group controlId="formUsername" className="mt-3">
+        <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formEmail" className="mt-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
 
@@ -50,4 +60,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
