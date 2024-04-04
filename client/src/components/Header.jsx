@@ -10,6 +10,7 @@ function Header() {
               <Nav.Link href="/" className='navLink' style={{ color: '#FFFB0A', padding: '5px' }}>Home</Nav.Link>
               <Nav.Link href="/profile" style={{ color: '#FFFB0A', padding: '5px'  }}>Profile</Nav.Link>
               <Nav.Link href="/design" style={{ color: '#FFFB0A', padding: '5px'  }}>Design</Nav.Link>
+              <Nav.Link href="/artmarket" style={{ color: '#FFFB0A', padding: '5px'  }}>Art Market</Nav.Link>
             </Nav>
       </Navbar>
     </div>
