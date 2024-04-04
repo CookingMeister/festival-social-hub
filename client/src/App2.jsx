@@ -1,52 +1,66 @@
 
-import { Router, Routes, Route, Link } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
-import SignupPage from './pages/Signup';
-import LoginPage from './pages/Login';
-import ProtectedPage1 from './ProtectedPage1'; // example
-import ProtectedPage2 from './ProtectedPage2'; // example
+import { Routes, Route, Link } from 'react-router-dom';
+import ProtectedRoute from './pages/ProtectedRoute';
+// import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Design from './pages/Design';
+import Footer from './components/Footer';
+import Error from './pages/Error';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
   return (
-    <Router>
+    <>
+    <Header />
       <nav>
         <ul>
-          <li>
+          {/* <li>
             <Link to="/signup">Signup</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/protected1">Protected Page 1</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/protected2">Protected Page 2</Link>
+            <Link to="/design">Design</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
       </nav>
 
       <Routes>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
+        <Route path="/home" element={<Home />} />
+        
         <Route
-          path="/protected1"
+          path="/design"
           element={
             <ProtectedRoute>
-              <ProtectedPage1 />
+              <Design />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/protected2"
+          path="/profile"
           element={
             <ProtectedRoute>
-              <ProtectedPage2 />
+              <Profile />
             </ProtectedRoute>
           }
         />
+        <Route path='*' element={<Error />} />
       </Routes>
-    </Router>
+    <Footer />
+    </>
   );
 };
 
