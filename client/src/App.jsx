@@ -5,8 +5,8 @@ import Profile from './pages/Profile';
 import Design from './pages/Design';
 import Footer from './components/Footer';
 import Error from './pages/Error';
-import './styles/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/App.css';
 
 function App() {
   return (
