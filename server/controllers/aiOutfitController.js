@@ -1,5 +1,5 @@
 // aiOutfitController.js
-import AIOutfit from '../models/aiOutfit';
+import AIOutfit from '../models/aiOutfitModel/aiOutfit';
 
 export const createAIOutfit = async (req, res) => {
   try {
