@@ -1,7 +1,7 @@
 function Design() {
     return (
         <div>
-            <h1>Design</h1>
+            <h1>Design Hello </h1>
         </div>
     );
 }
