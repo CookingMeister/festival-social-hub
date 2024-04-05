@@ -1,5 +1,9 @@
+// userController.js
+
+// Import necessary modules
 import User from '../models/profileModels/userModel/user';
 
+// Function to create a new user
 export const createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
@@ -9,6 +13,7 @@ export const createUser = async (req, res) => {
   }
 };
 
+// Function to get all users
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -18,6 +23,7 @@ export const getUsers = async (req, res) => {
   }
 };
 
+// Function to get user by ID
 export const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -31,6 +37,7 @@ export const getUserById = async (req, res) => {
   }
 };
 
+// Function to update user information
 export const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -44,6 +51,7 @@ export const updateUser = async (req, res) => {
   }
 };
 
+// Function to delete a user
 export const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

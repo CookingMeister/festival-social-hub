@@ -1,19 +1,14 @@
-// paintController.js
-import PaintJSAI from '../models/paint';
+import PaintJSAI from "../models/designModels/paintModel/paint.js";
+import generateAIOutfit from "../utils/aiGeneration.js"; // Assuming you have a utility function to generate AI outfits
 
-export const createPaintJSAI = async (req, res) => {
+// POST new painting and generate AI outfit
+export const createPainting = async (req, res) => {
   try {
-    const paintJSAI = await PaintJSAI.create(req.body);
-    res.status(201).json(paintJSAI);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-export const getPaintJSAIs = async (req, res) => {
-  try {
-    const paintJSAIs = await PaintJSAI.find();
-    res.status(200).json(paintJSAIs);
+    const { originalImage } = req.body;
+    // generateAIOutfit is a function that generates AI outfit based on original image
+    const generatedImage = await generateAIOutfit(originalImage);
+    const painting = await PaintJSAI.create({ originalImage, generatedImage });
+    res.status(201).json(painting);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

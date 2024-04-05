@@ -2,7 +2,7 @@
 
 A MERN stack app for a musical festival hub
 
-# www.customfestivawear.ca
+# www.customfestivalwear.ca
 Custom Festivalwear is the ultimate destination for connecting with fellow festival enthusiasts and unleashing your personal creativity! 
 
 **Final Project**
@@ -45,19 +45,29 @@ SO THAT I can stay updated with festivals and friends across the globe
 
 GIVEN  this is a festival driven social application
 
-WHEN I go to the main page 
+WHEN I see the customfestivalwear logo of the main page
 
-THEN the f
+THEN A photo carousel will start to rotate through available products
 
-WHEN I 
+WHEN I click on the image  
 
-THEN the 
+THEN it will display the item title, size and description
 
-WHEN I 
+WHEN I click on a shortcut button 
 
-THEN I 
+THEN I am directed to either festival event news, festival tricks, tips and hacks or an amazon store specialized in festival gear.
 
-WHEN I 
+WHEN I go to the marketplace
+
+THEN I can click on each drop down menu searching by style, size or bestsellers
+
+WHEN I find the item I want to purchase 
+
+THEN I click the Add to Cart Button to purhcase 
+
+WHEN I click on the nav bar link Profile 
+
+
 
 # Built-With
 
@@ -67,6 +77,8 @@ WHEN I
 
 Color Pallette from Coolors
 ![alt text](assets/coolors.png)
+
+Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear) 
 
 # Collaboration
 
