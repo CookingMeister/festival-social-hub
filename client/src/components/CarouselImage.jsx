@@ -3,23 +3,23 @@ import Placeholder from '../components/PlaceHolder'
 
 function CarouselImage() {
   return (
-    <Carousel fluid>
+    <Carousel fluid='true'>
       <Carousel.Item interval={1000}>
-        <Placeholder text="First slide" />
+        <Placeholder text='First slide' />
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500}>
-        <Placeholder text="Second slide" />
+        <Placeholder text='Second slide' />
         <Carousel.Caption>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <Placeholder text="Third slide" />
+        <Placeholder text='Third slide' />
         <Carousel.Caption>
           <h3>Third slide label</h3>
           <p>

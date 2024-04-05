@@ -4,7 +4,7 @@ function ArtMarket() {
     return (
         <div className='mx-3'>
             <h4 style={{ color: '#ED217C', marginLeft: '10%' }}>The Art Market</h4>
-            <div className='d-flex justify-between'>
+            <div className='d-flex justify-content-between'>
                 <Dropdown className='mx-2'>
                     <Dropdown.Toggle id="dropdown-basic">
                         Size
