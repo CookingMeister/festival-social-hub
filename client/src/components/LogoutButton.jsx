@@ -31,7 +31,8 @@ const LogoutButton = ({ setIsLoggedIn }) => {
     <Button
       variant="link"
       onClick={handleLogout}
-      style={{ color: '#FFFB0A', padding: '5px' }}
+      className='mx-2'
+      style={{ color: '#FFFB0A', padding: '1px', textDecoration: 'none' }}
     >
       Logout
     </Button>
