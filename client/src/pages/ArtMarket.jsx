@@ -5,7 +5,7 @@ function ArtMarket() {
 
     return (
         <div className='mx-3'>
-            <h2 className='mt-3' style={{ color: '#ED217C', textAlign: 'center' }}>The Art Market</h2>
+            <h2 className='mt-2' style={{ color: '#ED217C', textAlign: 'center' }}>The Art Market</h2>
             <div className='d-flex justify-content-center'>
                 <Dropdown className='mx-2'>
                     <Dropdown.Toggle id="dropdown-basic" style={{ backgroundColor: "#5F6695", outline: '#5F6695', color: '#FFFB0A' }}>
