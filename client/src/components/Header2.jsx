@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import LogoutButton from './LogoutButton';
+import PropTypes from 'prop-types';
 
-function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function Header({ isLoggedIn, setIsLoggedIn }) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkLoginStatus = () => {
       const token = localStorage.getItem('token');
-      token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+      setIsLoggedIn(!!token);
     };
 
     checkLoginStatus();
-  }, []);
+  }, [setIsLoggedIn]);
 
   return (
     <div>
@@ -84,5 +85,10 @@ function Header() {
     </div>
   );
 }
+
+Header.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  setIsLoggedIn: PropTypes.func.isRequired,
+};
 
 export default Header;

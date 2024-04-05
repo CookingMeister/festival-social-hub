@@ -2,8 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -31,14 +32,15 @@ const Login = () => {
 
     try {
       // Send the username and password to the server
-      console.log("Login:", username, password);
+      console.log('Login:', username, password);
       const response = await axios.post('http://localhost:3000/api/login', {
         username,
         password,
       });
       const { token } = response.data;
       localStorage.setItem('token', token);
-      console.log("New Token:", token);
+      console.log('New Token:', token);
+      setIsLoggedIn(true); // Update the login state in the parent component
       // Redirect to profile page
       navigate('/profile');
     } catch (error) {
@@ -84,6 +86,10 @@ const Login = () => {
       </Form>
     </div>
   );
+};
+
+Login.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default Login;

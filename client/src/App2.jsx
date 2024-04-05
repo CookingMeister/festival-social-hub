@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -14,12 +15,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/" element={<Home />} />
         <Route
           path="/design"
