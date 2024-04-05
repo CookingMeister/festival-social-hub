@@ -15,9 +15,8 @@ const ProtectedPage = () => {
             Authorization: token,
           },
         });
-        console.log('Response:', response);
-        setUser(response.data.user);
-        console.log('User:', user);
+        console.log('Data:', response.data);
+        setUser(response.data);
       } catch (error) {
         console.error('Failed to fetch user profile', error);
       } finally {
@@ -26,7 +25,11 @@ const ProtectedPage = () => {
     };
 
     fetchUserProfile();
-  }, [user]);
+  },[]);
+
+  // useEffect(() => {
+  //   console.log('User:', user);
+  // }, [user]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,7 +37,7 @@ const ProtectedPage = () => {
 
   return (
     <div>
-      <Profile welcome={user?.name} />
+      <Profile welcome={user?.username} />
     </div>
   );
 };

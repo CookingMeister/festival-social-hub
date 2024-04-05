@@ -78,7 +78,7 @@ router.post('/logout', (req, res) => {
 // Protected route
 router.get('/users', authMiddleware, async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
     console.log('userId:', userId);
     const user = await User.findById(userId).select('-password');
     if (!user) {
