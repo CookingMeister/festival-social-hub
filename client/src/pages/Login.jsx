@@ -30,12 +30,15 @@ const Login = () => {
     }
 
     try {
+      // Send the username and password to the server
+      console.log("Login:", username, password);
       const response = await axios.post('http://localhost:3000/api/login', {
         username,
         password,
       });
       const { token } = response.data;
       localStorage.setItem('token', token);
+      console.log("New Token:", token);
       // Redirect to profile page
       navigate('/profile');
     } catch (error) {

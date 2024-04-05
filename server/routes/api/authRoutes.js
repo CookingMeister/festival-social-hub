@@ -1,21 +1,15 @@
 import express from 'express';
-import { generateToken, hashPassword, comparePassword, authMiddleware } from '../../utils/auth.js';
+import {
+  generateToken,
+  hashPassword,
+  comparePassword,
+  authMiddleware,
+} from '../../utils/auth.js';
 import User from '../../models/profileModels/userModel/user.js';
 
 const router = express.Router();
 
 // User registration route
-// router.post('/register', async (req, res) => {
-//   try {
-//     const { username, email, password } = req.body;
-//     const hashedPassword = await hashPassword(password);
-//     const user = new User({ username, email, password: hashedPassword });
-//     await user.save();
-//     res.status(201).json({ message: 'User registered successfully' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Registration failed' });
-//   }
-// });
 router.post('/register', async (req, res) => {
   console.log(req.body);
   try {
@@ -70,9 +64,31 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// User logout route
+router.post('/logout', (req, res) => {
+  try {
+    // Clear the token from the client-side (e.g., remove from local storage or cookies)
+    // No server-side logout logic is required if using JWT
+    res.status(200).json({ message: 'Logout successful' });
+  } catch (error) {
+    res.status(500).json({ error: 'Logout failed' });
+  }
+});
+
 // Protected route
-router.get('/profile', authMiddleware, (req, res) => {
-  res.json({ message: 'Access granted to protected route' });
+router.get('/users', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    console.log('userId:', userId);
+    const user = await User.findById(userId).select('-password');
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    console.log('User:', user);
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch user data' });
+  }
 });
 
 export default router;

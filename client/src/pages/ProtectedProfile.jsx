@@ -10,12 +10,14 @@ const ProtectedPage = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/api/profile', {
+        const response = await axios.get('http://localhost:3000/api/users', {
           headers: {
             Authorization: token,
           },
         });
+        console.log('Response:', response);
         setUser(response.data.user);
+        console.log('User:', user);
       } catch (error) {
         console.error('Failed to fetch user profile', error);
       } finally {
@@ -24,7 +26,7 @@ const ProtectedPage = () => {
     };
 
     fetchUserProfile();
-  }, []);
+  }, [user]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,7 +34,7 @@ const ProtectedPage = () => {
 
   return (
     <div>
-      <Profile welcome={user.name} />
+      <Profile welcome={user?.name} />
     </div>
   );
 };
