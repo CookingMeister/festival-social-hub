@@ -1,10 +1,8 @@
-
 import { Routes, Route, Link } from 'react-router-dom';
 import ProtectedRoute from './pages/ProtectedRoute';
-// import Signup from './pages/Signup';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Header from './components/Header';
+import Header2 from './components/Header2';
 import Home from './pages/Home';
 import ProtectedProfile from './pages/ProtectedProfile';
 import Design from './pages/Design';
@@ -17,8 +15,8 @@ import './styles/App.css';
 const App = () => {
   return (
     <>
-    <Header />
-      <nav>
+    <Header2 />
+      {/* <nav>
         <ul>
           <li>
             <Link to="/login">Login</Link>
@@ -36,13 +34,12 @@ const App = () => {
             <Link to="/profile">Profile</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        
+        <Route path="/" element={<Home />} />        
         <Route
           path="/design"
           element={

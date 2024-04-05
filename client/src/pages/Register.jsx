@@ -51,7 +51,9 @@ const Register = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
+      {/* <h1>Register</h1> */}
       <Form onSubmit={handleRegister} className="w-25">
+        <h1>Register</h1>
         <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
