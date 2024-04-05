@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import ArtMarket from './pages/ArtMarket';
 import Header2 from './components/Header2';
 import Home from './pages/Home';
-import ProtectedProfile from './pages/ProtectedProfile';
+import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import Footer from './components/Footer';
 import Error from './pages/Error';
@@ -35,7 +35,7 @@ const App = () => {
           path="/profile"
           element={
             <ProtectedRoute>
-              <ProtectedProfile />
+              <ProtectedPage />
             </ProtectedRoute>
           }
         />

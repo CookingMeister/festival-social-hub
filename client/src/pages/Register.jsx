@@ -29,23 +29,60 @@ const Register = () => {
     }
   };
 
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+  //   if (emailError || passwordError) {
+  //     return;
+  //   }
+  //   console.log(username, email, password);
+  //   try {
+  //     const response = await axios.post('http://localhost:3000/api/register', {
+  //       username,
+  //       email,
+  //       password,
+  //     });
+  //     console.log(response);
+  //     const { token } = response.data;
+  //     localStorage.setItem('token', token);
+  //     console.log(token);
+  //     // Redirect to profile page
+  //     // navigate('/profile');
+  //   } catch (error) {
+  //     console.error('Register failed', error);
+  //   }
+  // };
   const handleRegister = async (e) => {
     e.preventDefault();
     if (emailError || passwordError) {
       return;
     }
+    console.log('Registration data:', username, email, password);
     try {
-      const response = await axios.post('/api/register', {
-        username,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        'http://localhost:3000/api/register',
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log('Registration response:', response);
       const { token } = response.data;
       localStorage.setItem('token', token);
+      console.log('Token:', token);
       // Redirect to profile page
       navigate('/profile');
     } catch (error) {
-      console.error('Register failed', error);
+      console.error('Registration failed:', error);
+      if (error.response) {
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+      }
     }
   };
 

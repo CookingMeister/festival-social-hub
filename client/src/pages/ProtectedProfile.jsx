@@ -10,7 +10,7 @@ const ProtectedPage = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/api/profile', {
+        const response = await axios.get('http://localhost:3000/api/profile', {
           headers: {
             Authorization: token,
           },
