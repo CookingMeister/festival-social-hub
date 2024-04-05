@@ -1,6 +1,6 @@
 import express from 'express';
-import { generateToken, hashPassword, comparePassword, authMiddleware } from './auth.js';
-import User from './models/profileModels/userModel/user';
+import { generateToken, hashPassword, comparePassword, authMiddleware } from '../../utils/auth.js';
+import User from '../../models/profileModels/userModel/user.js';
 
 const router = express.Router();
 

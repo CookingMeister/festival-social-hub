@@ -1,7 +1,8 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import ArtMarket from './pages/ArtMarket';
 import Header2 from './components/Header2';
 import Home from './pages/Home';
 import ProtectedProfile from './pages/ProtectedProfile';
@@ -15,31 +16,13 @@ import './styles/App.css';
 const App = () => {
   return (
     <>
-    <Header2 />
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/design">Design</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-        </ul>
-      </nav> */}
+      <Header2 />
 
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />        
+        <Route path="/artmarket" element={<ArtMarket />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/design"
           element={
@@ -56,9 +39,9 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path='*' element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
-    <Footer />
+      <Footer />
     </>
   );
 };
