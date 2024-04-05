@@ -1,0 +1,23 @@
+{
+    "sizes": [
+        "Xtra Small", 
+        "Small", 
+        "Medium", 
+        "Curvy", 
+        "Xtra Curvy", 
+        "2Xxtra Curvy", 
+        "3Xtra Curvy"
+    ],
+    "styles": [
+        "Rave Wear",
+        "Hippy Wear",
+        "Country Wear",
+        "Head Pieces",
+        "Accessories"
+    ],
+    "BestSellers": [
+        "Jean Jackets",
+        "Mermaid Crowns",
+        "Flower Crowns"
+    ]
+}
