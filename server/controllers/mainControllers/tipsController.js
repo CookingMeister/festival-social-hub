@@ -1,5 +1,5 @@
 // tipsController.js
-import Tip from '../models/tips';
+import Tip from '../models/mainModels/tipsModel/tips';
 
 export const createTip = async (req, res) => {
   try {

@@ -1,6 +1,7 @@
 import express from 'express';
 import authMiddleware from '../utils/auth.js';
-import { getAiOutfits, createAiOutfit, getPaintings, createPainting } from '../controllers/designControllers/designController.js';
+import { getAiOutfits, createAiOutfit } from '../controllers/designControllers/designController.js';
+import { getPaintings, createPainting } from '../controllers/designControllers/paintController.js';
 
 const router = express.Router();
 
