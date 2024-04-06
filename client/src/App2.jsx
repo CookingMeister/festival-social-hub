@@ -20,7 +20,7 @@ const App = () => {
     <>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/" element={<Home />} />
         <Route

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,28 +30,6 @@ const Register = () => {
     }
   };
 
-  // const handleRegister = async (e) => {
-  //   e.preventDefault();
-  //   if (emailError || passwordError) {
-  //     return;
-  //   }
-  //   console.log(username, email, password);
-  //   try {
-  //     const response = await axios.post('http://localhost:3000/api/register', {
-  //       username,
-  //       email,
-  //       password,
-  //     });
-  //     console.log(response);
-  //     const { token } = response.data;
-  //     localStorage.setItem('token', token);
-  //     console.log(token);
-  //     // Redirect to profile page
-  //     // navigate('/profile');
-  //   } catch (error) {
-  //     console.error('Register failed', error);
-  //   }
-  // };
   const handleRegister = async (e) => {
     e.preventDefault();
     if (emailError || passwordError) {
@@ -75,6 +54,8 @@ const Register = () => {
       const { token } = response.data;
       localStorage.setItem('token', token);
       console.log('Token:', token);
+      // Set isLoggedIn to true in the parent component
+      setIsLoggedIn(true);
       // Redirect to profile page
       navigate('/profile');
     } catch (error) {
@@ -138,5 +119,10 @@ const Register = () => {
     </div>
   );
 };
+
+Register.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
+};
+
 
 export default Register;

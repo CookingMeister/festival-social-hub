@@ -1,15 +1,25 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import CarouselImage from '../components/CarouselImage'
+import CarouselImage from '../components/CarouselImage';
 import GoogleSearch from '../components/GoogleSearch';
 
 function Home() {
   return (
-    <>
+    <div style={{ height: '100vh' }}>
       <Row>
-        <Col xs={4} sm={4} md={4} lg={4} className='d-flex justify-content-center align-items-center'>
-          <Image src="/logo.png" style={{ backgroundImage: 'contain', width: '80%' }} roundedCircle />
+        <Col
+          xs={4}
+          sm={4}
+          md={4}
+          lg={4}
+          className="d-flex justify-content-center align-items-center"
+        >
+          <Image
+            src="/logo.png"
+            style={{ backgroundImage: 'contain', width: '80%' }}
+            roundedCircle
+          />
         </Col>
         <Col xs={8} sm={8} md={8} lg={8}>
           <CarouselImage />
@@ -18,7 +28,7 @@ function Home() {
       <Row>
         <GoogleSearch />
       </Row>
-    </>
+    </div>
   );
 }
 
