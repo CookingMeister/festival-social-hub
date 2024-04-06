@@ -67,8 +67,8 @@ router.post('/login', async (req, res) => {
 // User logout route
 router.post('/logout', (req, res) => {
   try {
-    // Clear the token from the client-side local storage
-    // No server-side logout logic is required since using JWT
+    // Clear the token from the client-side (e.g., remove from local storage or cookies)
+    // No server-side logout logic is required if using JWT
     res.status(200).json({ message: 'Logout successful' });
   } catch (error) {
     res.status(500).json({ error: 'Logout failed' });
@@ -94,8 +94,7 @@ router.get('/users', authMiddleware, async (req, res) => {
 export const updateUserProfile = async (req, res) => {
   try {
     const { name, socials, aboutMe, topFestivals } = req.body;
-    const userId = req.userId;
-    console.log('userId:', userId);
+    const userId = req.user.id;
 
     // Find the user by ID and update the profile fields
     const user = await User.findByIdAndUpdate(
@@ -107,7 +106,7 @@ export const updateUserProfile = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    console.log('User:', user);
+
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ error: error.message });

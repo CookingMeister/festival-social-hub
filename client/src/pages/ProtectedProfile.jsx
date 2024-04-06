@@ -27,17 +27,14 @@ const ProtectedPage = () => {
     fetchUserProfile();
   },[]);
 
-  // useEffect(() => {
-  //   console.log('User:', user);
-  // }, [user]);
-
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <Profile welcome={user?.username} />
+      <Profile welcome={user?.username}
+     />
     </div>
   );
 };
