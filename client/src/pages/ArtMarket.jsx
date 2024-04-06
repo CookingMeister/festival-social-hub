@@ -22,7 +22,7 @@ function ArtMarket() {
 
 
     return (
-        <div className='mx-3'>
+        <div className='mx-3' style={{ height: '100vh' }}>
             <h2 className='mt-2' style={{ color: '#ED217C', textAlign: 'center' }}>The Art Market</h2>
             <div className='d-flex justify-content-center'>
                 <Dropdown className='mx-2'>
