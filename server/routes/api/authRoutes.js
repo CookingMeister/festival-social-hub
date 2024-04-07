@@ -50,13 +50,16 @@ router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
+
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     const isPasswordValid = await comparePassword(password, user.password);
+    
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
+    // Generate a token for the user
     const token = generateToken(user._id);
     res.json({ token });
   } catch (error) {
@@ -75,7 +78,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// Protected route
+// Protected routes
 router.get('/users', authMiddleware, async (req, res) => {
   try {
     const userId = req.userId;
