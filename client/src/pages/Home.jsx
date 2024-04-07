@@ -6,7 +6,7 @@ import GoogleSearch from '../components/GoogleSearch';
 
 function Home() {
   return (
-    <div style={{ height: '100vh' }}>
+    <div style={{ minHeight: '100vh' }}>
       <Row>
         <Col
           xs={4}
