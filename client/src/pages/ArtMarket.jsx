@@ -1,5 +1,5 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import products from '../utils/products.json'
+import productDetails from '../utils/productDetails.json'
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
@@ -31,7 +31,7 @@ function ArtMarket() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu style={{ backgroundColor: "#5F6695" }}>
-                        {products.sizes.map((size, index) => (
+                        {productDetails.sizes.map((size, index) => (
                             <Dropdown.Item style={{ color: '#FFFB0A' }} key={index} onClick={() => handleSizeSelect(size)}>{size}</Dropdown.Item>
                         ))}
                     </Dropdown.Menu>
@@ -42,7 +42,7 @@ function ArtMarket() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu style={{ backgroundColor: "#5F6695" }}>
-                        {products.styles.map((style, index) => (
+                        {productDetails.styles.map((style, index) => (
                             <Dropdown.Item style={{ color: '#FFFB0A' }} key={index} onClick={() => handleStyleSelect(style)}>{style}</Dropdown.Item>
                         ))}
                     </Dropdown.Menu>
@@ -53,7 +53,7 @@ function ArtMarket() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu style={{ backgroundColor: "#5F6695" }}>
-                        {products.BestSellers.map((bestSeller, index) => (
+                        {productDetails.BestSellers.map((bestSeller, index) => (
                             <Dropdown.Item style={{ color: '#FFFB0A' }} key={index} onClick={() => handleBestSellerSelect(bestSeller)}>{bestSeller}</Dropdown.Item>
                         ))}
                     </Dropdown.Menu>
