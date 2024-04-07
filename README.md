@@ -131,6 +131,15 @@ THEN I will be brought back tot he main page with the public albums, available p
 
 # Built-With
 
+-MongoDB
+
+-Mongoose
+
+-dotenv
+
+-express.js
+
+-[Stripe](https://docs.stripe.com/payments?payments=popular)
 
 **Assets**
 
@@ -138,6 +147,8 @@ Color Pallette from Coolors
 ![alt text](client/public/coolors.png)
 
 Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear) 
+
+Artwork: 
 
 # Collaboration
 
