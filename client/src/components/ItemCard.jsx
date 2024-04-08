@@ -15,8 +15,8 @@ function ItemCard(item) {
     <Card style={{ backgroundColor: 'black' }} className="m-2">
       <Card.Img
         variant="top"
-        src="logo.png"
-        style={{ width: '75%', margin: '0 auto' }}
+        src={item.img}
+        style={{ width: '75%', margin: '0 auto', height: '200px' }}
       />
       <Card.Body>
         <Card.Title style={{ color: '#5F6695', textAlign: 'center' }}>
