@@ -12,7 +12,7 @@ function ItemCard(item) {
   };
 
   return (
-    <Card style={{ backgroundColor: 'black' }} className="m-2">
+    <Card style={{ backgroundColor: '#1B998B' }} className="m-2">
       <Card.Img
         variant="top"
         src={item.img}

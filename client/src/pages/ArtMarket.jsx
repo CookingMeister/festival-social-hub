@@ -20,6 +20,22 @@ function ArtMarket() {
     setSelectedBestSeller(bestSeller);
   };
 
+  const handleReset = () => {
+    setSelectedStyle(null);
+    setSelectedBestSeller(null);
+  };
+
+  const filteredItems = items.filter((item) => {
+    if (selectedStyle && selectedBestSeller) {
+      return item.style === selectedStyle && item.name === selectedBestSeller;
+    } else if (selectedStyle) {
+      return item.style === selectedStyle;
+    } else if (selectedBestSeller) {
+      return item.name === selectedBestSeller;
+    }
+    return true;
+  });
+
   return (
     <div className="m-2 py-3" style={{ minHeight: '100vh' }}>
       <Row>
@@ -35,7 +51,7 @@ function ArtMarket() {
         </Row>
         <Row>
           <div className="d-flex justify-content-end mt-3">
-            <Dropdown className="mx-2">
+            <Dropdown className="mx-1">
               <Dropdown.Toggle
                 id="dropdown-basic"
                 style={{
@@ -59,7 +75,7 @@ function ArtMarket() {
                 ))}
               </Dropdown.Menu>
             </Dropdown>
-            <Dropdown className="mx-2">
+            <Dropdown className="mx-1">
               <Dropdown.Toggle
                 id="dropdown-basic"
                 style={{
@@ -89,13 +105,25 @@ function ArtMarket() {
                 outline: '#5F6695',
                 color: '#FFFB0A',
               }}
+              className='mx-1'
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+            <Button
+              style={{
+                backgroundColor: '#5F6695',
+                outline: '#5F6695',
+                color: '#FFFB0A',
+              }}
+              className='mx-1'
             >
               Go to Cart
             </Button>
           </div>
         </Row>
         <Row className="d-flex justify-content-around p-4">
-          {items.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <Col xl={3} lg={4} sm={6} xs={12} key={index} className='mt-4'>
               <ItemCard {...item} />
             </Col>

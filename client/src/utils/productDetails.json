@@ -1,18 +1,8 @@
 {
-    "sizes": [
-        "Xtra Small", 
-        "Small", 
-        "Medium", 
-        "Curvy", 
-        "Xtra Curvy", 
-        "2Xxtra Curvy", 
-        "3Xtra Curvy"
-    ],
     "styles": [
-        "Rave Wear",
-        "Hippy Wear",
-        "Country Wear",
-        "Head Pieces",
+        "Costumes",
+        "Clothes",
+        "Crowns",
         "Accessories"
     ],
     "BestSellers": [
