@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -9,36 +10,21 @@ import Header from './components/Header2';
 import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
+import ProductDisplay from './pages/ProductDisplay';
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
-
-const ProductDisplay = () => (
-  <section>
-    <div className="product">
-      <img
-        src="https://i.imgur.com/EHyR2nP.png"
-        alt="The cover of Stubborn Attachments"
-      />
-      <div className="description">
-        <h3>Stubborn Attachments</h3>
-        <h5>$20.00</h5>
-      </div>
-    </div>
-    <form action="/create-checkout-session" method="POST">
-      <button type="submit">
-        Checkout
-      </button>
-    </form>
-  </section>
-);
 
 const Message = ({ message }) => (
   <section>
     <p>{message}</p>
   </section>
 );
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
 const App2 = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -54,7 +40,7 @@ const App2 = () => {
 
     if (query.get('canceled')) {
       setMessage(
-        'Order canceled -- continue to shop around and checkout when you\'re ready.'
+        "Order canceled -- continue to shop around and checkout when you're ready."
       );
     }
   }, [location.search]);
@@ -63,8 +49,14 @@ const App2 = () => {
     <>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-        <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/register"
+          element={<Register setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/login"
+          element={<Login setIsLoggedIn={setIsLoggedIn} />}
+        />
         <Route path="/" element={<Home />} />
         <Route
           path="/design"
