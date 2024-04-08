@@ -1,12 +1,12 @@
 function MermaidCrown() {
 
   return (
-    <div className="my-3" style={{ height: '380px', }}>
+    <div className="my-3" style={{ height: '300px', }}>
       <img
         className="d-block"
         style={{
           borderRadius: '8px',
-          objectFit: 'contain',
+          // objectFit: 'contain',
           width: '82%',
           margin: '0 auto'
         }}

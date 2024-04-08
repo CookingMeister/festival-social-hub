@@ -1,12 +1,12 @@
 function JeanJacket() {
   
   return (
-    <div className="my-3" style={{ maxHeight: '380px', minHeight: '240px' }}>
+    <div className="my-3" style={{ height: '300px', }}>
       <img
         className="d-block"
         style={{
           borderRadius: '8px',
-          objectFit: 'contain',
+          // objectFit: 'contain',
           width: '82%',
           margin: '0 auto'          
         }}
