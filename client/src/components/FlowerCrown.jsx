@@ -1,10 +1,15 @@
 function FlowerCrown() {
 
     return (
-      <div className="my-3" style={{ width: '80%', marginLeft: '10%' }}>
+      <div className="my-3" style={{ maxHeight: '380px', minHeight: '240px' }}>
         <img
-          className="d-block w-100"
-          style={{ borderRadius: '8px', objectFit: 'cover' }}
+          className="d-block"
+          style={{
+            borderRadius: '8px',
+            objectFit: 'contain',
+            width: '82%',
+            margin: '0 auto'
+          }}
           src="flowercrown.jpg"
           alt="Flower Crown"
         />
