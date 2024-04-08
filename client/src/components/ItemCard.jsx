@@ -16,7 +16,14 @@ function ItemCard(item) {
       <Card.Img
         variant="top"
         src={item.img}
-        style={{ width: '75%', margin: '0 auto', height: '200px' }}
+        style={{
+          width: '95%',
+          margin: '0 auto',
+          objectFit: 'cover',
+          overflow: 'hidden',
+          height: '300px',
+          marginTop: '2%',
+        }}
       />
       <Card.Body>
         <Card.Title style={{ color: '#5F6695', textAlign: 'center' }}>
