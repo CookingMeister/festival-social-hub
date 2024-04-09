@@ -28,21 +28,21 @@ function GoogleSearch() {
           <Link
             to="https://www.cosmopolitan.com/uk/worklife/campus/a36647/festival-survival-tips-hacks/"
             className="mx-2"
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', color: '#fffb0a' }}
           >
             Tips & Tricks
           </Link>
           <Link
             to="https://luminaid.com/blogs/news/10-tips-to-make-the-most-of-music-festivals"
             className="mx-2"
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', color: '#fffb0a' }}
           >
             Event News
           </Link>
           <Link
             to="https://www.loopearplugs.com/blogs/blog/how-to-survive-your-first-festival-our-music-festival-guide-for-beginners"
             className="mx-2"
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', color: '#fffb0a' }}
           >
             Must Haves
           </Link>
