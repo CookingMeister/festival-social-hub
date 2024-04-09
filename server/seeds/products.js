@@ -30,7 +30,7 @@ async function seedProducts() {
           category: { style: 'accessories' }
         },
         {
-          name: 'Jackets',
+          name: 'Jean Jackets',
           description: 'Upcycled denim beauties ready to wear anywhere',
           price: 100,
           category: { style: 'clothes' }
