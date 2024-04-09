@@ -6,7 +6,6 @@ import LogoutButton from './LogoutButton';
 import PropTypes from 'prop-types';
 
 function Header({ isLoggedIn, setIsLoggedIn }) {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkLoginStatus = () => {

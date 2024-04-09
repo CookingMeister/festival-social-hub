@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import axios from 'axios';
 
 function Profile({ welcome }) {
@@ -23,14 +24,14 @@ function Profile({ welcome }) {
           },
         });
         setUser(response.data);
-        setLoading(false);      
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch user profile', error);
       }
     };
     fetchUserProfile();
   }, []);
-  
+
   useEffect(() => {
     console.log('User:', user);
   }, [user]);
@@ -61,20 +62,28 @@ function Profile({ welcome }) {
     }
   };
 
-if (loading) {
-  return <div>Loading...</div>;
-}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
- return (
-    <div style={{height: '100vh'}}>
-      <h1 className="text-center m-4">Profile</h1>
-      <h3 className="text-center p-2">
-        {welcome ? `Welcome ${welcome}` : 'Welcome Thirsty Traveller'}
-      </h3>
-      <Container >
-        <Form onSubmit={handleSubmit} style={{ width: '60%', margin: '0 auto' }}>
+  return (
+    <div style={{ height: '100vh' }}>
+      <Container style={{ color: 'antiquewhite'}}>
+        <Image
+          src="/logo.png"
+          style={{ width: '20%', margin: '2rem' }}
+          roundedCircle
+        />
+        <h1 className="text-center p-2">
+          {welcome ? `Welcome ${welcome}` : 'Welcome Thirsty Traveller'}
+        </h1>
+
+        <Form
+          onSubmit={handleSubmit}
+          style={{ width: '60%', margin: '0 auto' }}
+        >
           <Form.Group controlId="name">
-            <Form.Label>Name:</Form.Label>
+            <Form.Label className='mt-2'>Name:</Form.Label>
             <Form.Control
               type="text"
               value={name}
@@ -83,7 +92,7 @@ if (loading) {
             />
           </Form.Group>
           <Form.Group controlId="socials">
-            <Form.Label>Socials:</Form.Label>
+            <Form.Label className='mt-2'>Socials:</Form.Label>
             <Form.Control
               type="text"
               value={socials}
@@ -97,7 +106,7 @@ if (loading) {
           </Form.Group>
 
           <Form.Group controlId="aboutMe">
-            <Form.Label>About Me:</Form.Label>
+            <Form.Label className='mt-2'>About Me:</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -107,12 +116,14 @@ if (loading) {
             />
           </Form.Group>
           <Form.Group controlId="topFestivals">
-            <Form.Label>Top Festivals:</Form.Label>
+            <Form.Label className='mt-2'>Top Festivals:</Form.Label>
             <Form.Control
               type="text"
               value={topFestivals.join(', ')}
               placeholder={
-                user.topFestivals.length > 0 ? user.topFestivals.join(', ') : 'Add top festivals'
+                user.topFestivals.length > 0
+                  ? user.topFestivals.join(', ')
+                  : 'Add top festivals'
               }
               onChange={(e) =>
                 setTopFestivals(
