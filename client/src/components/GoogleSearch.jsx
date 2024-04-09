@@ -18,7 +18,7 @@ function GoogleSearch() {
 
   return (
     <>
-      <Row>
+      <Row className="mt-5">
         <h4 style={{ textAlign: 'center', color: '#ED217C' }}>
           Festival Search
         </h4>
@@ -48,7 +48,7 @@ function GoogleSearch() {
           </Link>
         </div>
       </Row>
-      <Row style={{ width: '75%', marginLeft: '10%' }}>
+      <Row style={{ width: '75%', marginTop: '2%' }}>
         <div className="gcse-search"></div>
       </Row>
     </>

@@ -1,7 +1,7 @@
 function FlowerCrown() {
 
     return (
-      <div className="my-3" >
+      <div className="my-3" style={{ height: '38vh', }}>
         <img
           className="d-block"
           style={{

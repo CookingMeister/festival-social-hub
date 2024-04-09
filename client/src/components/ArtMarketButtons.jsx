@@ -20,6 +20,7 @@ function ArtMarketButtons({
                         backgroundColor: '#5F6695',
                         outline: '#5F6695',
                         color: '#FFFB0A',
+                        textShadow: '1px 1px 3px #000000',
                     }}
                 >
                     {selectedStyle ? selectedStyle : 'Style'}
@@ -28,7 +29,7 @@ function ArtMarketButtons({
                 <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                     {productDetails.styles.map((style, index) => (
                         <Dropdown.Item
-                            style={{ color: '#FFFB0A' }}
+                            style={{ color: '#FFFB0A', textShadow: '1px 1px 3px #000000' }}
                             key={index}
                             onClick={() => handleStyleSelect(style)}
                         >
@@ -44,6 +45,7 @@ function ArtMarketButtons({
                         backgroundColor: '#5F6695',
                         outline: '#5F6695',
                         color: '#FFFB0A',
+                        textShadow: '1px 1px 3px #000000',
                     }}
                 >
                     {selectedBestSeller ? selectedBestSeller : 'Best Seller'}
@@ -52,7 +54,7 @@ function ArtMarketButtons({
                 <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                     {productDetails.BestSellers.map((bestSeller, index) => (
                         <Dropdown.Item
-                            style={{ color: '#FFFB0A' }}
+                            style={{ color: '#FFFB0A', textShadow: '1px 1px 3px #000000' }}
                             key={index}
                             onClick={() => handleBestSellerSelect(bestSeller)}
                         >
@@ -66,6 +68,7 @@ function ArtMarketButtons({
                     backgroundColor: '#5F6695',
                     outline: '#5F6695',
                     color: '#FFFB0A',
+                    textShadow: '1px 1px 3px #000000',
                 }}
                 className='mx-1'
                 onClick={handleReset}
@@ -77,6 +80,7 @@ function ArtMarketButtons({
                     backgroundColor: '#5F6695',
                     outline: '#5F6695',
                     color: '#FFFB0A',
+                    textShadow: '1px 1px 3px #000000',
                 }}
                 className='mx-1'
             >

@@ -32,7 +32,7 @@ const LogoutButton = ({ setIsLoggedIn }) => {
       variant="link"
       onClick={handleLogout}
       className='mx-2'
-      style={{ color: '#FFFB0A', padding: '1px', textDecoration: 'none' }}
+      style={{ color: '#FFFB0A', padding: '1px', textDecoration: 'none', textShadow: '1px 1px 3px #000000' }}
     >
       Logout
     </Button>

@@ -6,23 +6,23 @@ import FlowerCrown from '../components/FlowerCrown';
 function CarouselImage() {
   return (
     <Carousel
-      // fluid="true"
       style={{
-        width: '100%',
+        width: '',
         display: 'flex',
         justifyContent: 'center',
         objectFit: 'cover',
         overflow: 'hidden',
-        height: '300px',
+        height: '38vh',
         padding: '2% 2% 0',
         marginBottom: '5%',
+        marginTop: '3%',
       }}
     >
       <Carousel.Item interval={4000}>
         <MermaidCrown
           text="Mermaid Crown"
         />
-        <Carousel.Caption>
+        <Carousel.Caption style={{textShadow: '1px 1px 3px #000000'}}>
           <h3 style={{ color: '#fffb0a' }}>Mermaid Crown</h3>
           <p style={{ color: '#fffb0a' }}>
             Handcrafted crown adorned with shells and pearls.
@@ -33,7 +33,7 @@ function CarouselImage() {
         <JeanJacket
           text="Jean Jacket"
         />
-        <Carousel.Caption>
+        <Carousel.Caption style={{textShadow: '1px 1px 3px #000000'}}>
           <h3 style={{ color: '#fffb0a' }}>Jean Jacket</h3>
           <p style={{ color: '#fffb0a' }}>
             Upcycled denim beauties ready to wear anywhere.
@@ -44,7 +44,7 @@ function CarouselImage() {
         <FlowerCrown
           text="Flower Crown"
         />
-        <Carousel.Caption>
+        <Carousel.Caption style={{textShadow: '1px 1px 3px #000000'}}>
           <h3 style={{ color: '#fffb0a' }}>Flower Crown</h3>
           <p style={{ color: '#fffb0a' }}>
             Forever flower crown made with assorted blooms.

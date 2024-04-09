@@ -7,12 +7,13 @@ import GoogleSearch from '../components/GoogleSearch';
 function Home() {
   return (
     <div style={{ minHeight: '100vh' }}>
-      <Row>
+      <Row className='d-flex justify-content-around align-items-center'>
         <Col
-          xs={4}
+          xs={6}
           sm={4}
           md={4}
           lg={4}
+          xl={3}
           className="d-flex justify-content-center align-items-center"
         >
           <Image
@@ -21,11 +22,11 @@ function Home() {
             roundedCircle
           />
         </Col>
-        <Col xs={8} sm={8} md={8} lg={8}>
+        <Col xs={8} sm={8} md={7} lg={5} xl={4}>
           <CarouselImage />
         </Col>
       </Row>
-      <Row>
+      <Row className="d-flex justify-content-center mt-4">
         <GoogleSearch />
       </Row>
     </div>

@@ -1,12 +1,13 @@
 function JeanJacket() {
   
   return (
-    <div className="my-3" style={{ height: '300px', }}>
+    <div className="my-3" style={{ height: '38vh', }}>
       <img
         className="d-block"
         style={{
           borderRadius: '8px',
           width: '82%',
+          height: 'auto',
           margin: '0 auto'          
         }}
         src="jacket.jpg"

@@ -19,7 +19,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
 
   return (
     <div>
-      <Navbar expand="lg" className="navBar">
+      <Navbar expand="lg" className="navBar" style={{textShadow: '1px 1px 3px #000000'}}>
         <Navbar.Brand
           as={Link}
           to="/"
