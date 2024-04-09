@@ -7,15 +7,6 @@ function CarouselImage() {
   return (
     <Carousel
       // fluid="true"
-      // style={{
-      //   minHeight: '300px',
-      //   width: '100%',
-      //   overflow: 'hidden',
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   padding: '2% 2% 0',
-      //   marginBottom: '5%',
-      // }}
       style={{
         width: '100%',
         display: 'flex',

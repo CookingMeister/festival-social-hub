@@ -6,7 +6,6 @@ function JeanJacket() {
         className="d-block"
         style={{
           borderRadius: '8px',
-          // objectFit: 'contain',
           width: '82%',
           margin: '0 auto'          
         }}
