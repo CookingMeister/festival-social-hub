@@ -87,8 +87,8 @@ function ArtMarketButtons({
 }
 
 ArtMarketButtons.propTypes = {
-    selectedStyle: PropTypes.string.isRequired,
-    selectedBestSeller: PropTypes.string.isRequired, 
+    selectedStyle: PropTypes.string,
+    selectedBestSeller: PropTypes.string, 
     handleStyleSelect: PropTypes.func.isRequired,
     handleBestSellerSelect: PropTypes.func.isRequired,
     handleReset: PropTypes.func.isRequired
