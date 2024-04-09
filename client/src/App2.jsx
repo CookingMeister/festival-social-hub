@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; // Import useLocation
 import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
@@ -11,6 +10,7 @@ import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import ProductDisplay from './pages/ProductDisplay';
+import CartModal from './CartModal'; // Import CartModal
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,7 +29,7 @@ Message.propTypes = {
 const App2 = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
-  const location = useLocation();
+  const location = useLocation(); // Use useLocation hook here
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
@@ -46,52 +46,53 @@ const App2 = () => {
   }, [location.search]);
 
   return (
-    <>
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <Routes>
-        <Route
-          path="/register"
-          element={<Register setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route
-          path="/login"
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/design"
-          element={
-            <ProtectedRoute>
-              <Design />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <ProtectedPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/artmarket"
-          element={
-            <ProtectedRoute>
-              <ArtMarket />
-            </ProtectedRoute>
-          }
-        />
-        {/* Display message if available, otherwise display product display */}
-        {message ? (
-          <Message message={message} />
-        ) : (
-          <Route path="/checkout" element={<ProductDisplay />} />
-        )}
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
-    </>
+    <Router>
+      <>
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Routes>
+          <Route
+            path="/register"
+            element={<Register setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path="/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/design"
+            element={
+              <ProtectedRoute>
+                <Design />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProtectedPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/artmarket"
+            element={
+              <ProtectedRoute>
+                <ArtMarket />
+              </ProtectedRoute>
+            }
+          />
+          {message ? (
+            <Message message={message} />
+          ) : (
+            <Route path="/checkout" element={<CartModal />} />
+          )}
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </>
+    </Router>
   );
 };
 
