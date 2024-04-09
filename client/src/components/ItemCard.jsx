@@ -3,8 +3,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
-function ItemCard(item) {
+function ItemCard({ item, isInStock }) {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleSizeSelect = (size) => {
@@ -50,7 +51,7 @@ function ItemCard(item) {
             textAlign: 'center',
           }}
         >
-          In Stock / Out of Stock
+          {isInStock ? <p>In Stock</p> : <p>Out of Stock</p>}
         </ListGroup.Item>
       </ListGroup>
       <Card.Body>
@@ -92,5 +93,16 @@ function ItemCard(item) {
     </Card>
   );
 }
+
+ItemCard.propTypes = {
+  item: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  isInStock: PropTypes.bool.isRequired,
+};
 
 export default ItemCard;

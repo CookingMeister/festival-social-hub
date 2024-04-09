@@ -17,7 +17,7 @@ function Profile({ welcome }) {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/api/users', {
+        const response = await axios.get('/api/users', {
           headers: {
             Authorization: token,
           },
@@ -39,7 +39,7 @@ function Profile({ welcome }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        'http://localhost:3000/api/users/profile',
+        '/api/users/profile',
         {
           name,
           socials,

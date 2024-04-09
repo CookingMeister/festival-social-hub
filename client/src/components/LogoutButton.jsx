@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const logout = async (navigate, setIsLoggedIn) => {
   try {
     // Make a POST request to the server's logout endpoint
-    await axios.post('http://localhost:3000/api/logout');
+    await axios.post('/api/logout');
 
     // Remove the JWT token from local storage or cookies
     localStorage.removeItem('token');
