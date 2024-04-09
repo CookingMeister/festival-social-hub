@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function ItemCard({ item, handleShowItemAdded, handleSizeRequired }) {
+function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleAddToCart = () => {
@@ -69,7 +69,7 @@ function ItemCard({ item, handleShowItemAdded, handleSizeRequired }) {
               textAlign: 'center',
             }}
           >
-            In Stock / Out of Stock
+            {isInStock ? <p>In Stock</p> : <p>Out of Stock</p>}
           </ListGroup.Item>
         </ListGroup>
         <Card.Body>
@@ -115,7 +115,14 @@ function ItemCard({ item, handleShowItemAdded, handleSizeRequired }) {
 }
 
 ItemCard.propTypes = {
-  item: PropTypes.object,
+  item: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  isInStock: PropTypes.bool.isRequired,
   handleShowItemAdded: PropTypes.func.isRequired,
   handleSizeRequired: PropTypes.func.isRequired,
 };

@@ -6,6 +6,7 @@ import {
   authMiddleware,
 } from '../../utils/auth.js';
 import User from '../../models/profileModels/userModel/user.js';
+import Product from '../../models/mainModels/productModel/product.js';
 
 const router = express.Router();
 
@@ -118,5 +119,18 @@ export const updateUserProfile = async (req, res) => {
 };
 // Update user profile
 router.put('/users/profile', authMiddleware, updateUserProfile);
+
+router.get('/products', authMiddleware, async (req, res) => {
+  try {
+    const products = await Product.find();
+    if (products.length === 0) {
+      return res.status(404).json({ error: 'No products found' });
+    }
+    // console.log('Products:', products);
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch products' });
+  }
+});
 
 export default router;

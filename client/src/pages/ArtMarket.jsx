@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import productDetails from '../utils/productDetails.json';
+import Button from 'react-bootstrap/Button';
+import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import items from '../utils/items.json';
 import ItemCard from '../components/ItemCard';
+import axios from 'axios'; 
 import ArtMarketButtons from '../components/ArtMarketButtons';
 import Toast from 'react-bootstrap/Toast';
 
@@ -12,13 +16,45 @@ function ArtMarket() {
   const [selectedBestSeller, setSelectedBestSeller] = useState(null);
   const [showItemAdded, setShowItemAdded] = useState(false);
   const [showSizeRequired, setShowSizeRequired] = useState(false);
-
+  const [products, setProducts] = useState([]);
+  
   const handleShowItemAdded = () => {
     setShowItemAdded(true);
   };
 
   const handleSizeRequired = () => {
     setShowSizeRequired(true);
+  };
+  
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('/api/products', {
+          headers: {
+            Authorization: token,
+          },
+        });
+        setProducts(response.data);
+        // console.log('Products:', response.data);
+      } catch (error) {
+        console.error('Error fetching items:', error);
+        if (error.message) {
+          console.error('Error message:', error.message);
+        }
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  
+  const isItemInStock = (item) => {
+    const foundProduct = products.find(
+      (product) => product.name === item.name && product.availability === true
+    );
+    // console.log('Found product:', foundProduct);
+    return foundProduct ? true : false;
   };
 
   const handleStyleSelect = (style) => {
@@ -71,7 +107,7 @@ function ArtMarket() {
         <Row className="d-flex justify-content-around p-4">
           {filteredItems.map((item, index) => (
             <Col xl={3} lg={4} sm={6} xs={12} key={index} className='mt-4'>
-              <ItemCard item={item} handleShowItemAdded={handleShowItemAdded} handleSizeRequired={handleSizeRequired} />
+              <ItemCard item={item} isInStock={isItemInStock(item)} handleShowItemAdded={handleShowItemAdded} handleSizeRequired={handleSizeRequired} />
             </Col>
           ))}
         </Row>
