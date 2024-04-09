@@ -48,7 +48,7 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
           <Card.Title style={{ color: '#5F6695', textAlign: 'center' }}>
             {item.name}
           </Card.Title>
-          <Card.Text style={{ color: '#fffB0a', textAlign: 'center' }}>
+          <Card.Text style={{ color: '#fffB0a', textAlign: 'center', textShadow: '1px 1px 3px #000000' }}>
             {item.description}
           </Card.Text>
         </Card.Body>
@@ -82,6 +82,7 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
                   backgroundColor: '#5F6695',
                   outline: '#5F6695',
                   color: '#FFFB0A',
+                  textShadow: '1px 1px 3px #000000',
                 }}
               >
                 {selectedSize ? selectedSize : 'Size'}
@@ -90,7 +91,7 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
               <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                 {item.sizes.map((size, index) => (
                   <Dropdown.Item
-                    style={{ color: '#FFFB0A' }}
+                    style={{ color: '#FFFB0A', textShadow: '1px 1px 3px #000000', }}
                     key={index}
                     onClick={() => handleSizeSelect(size)}
                   >
@@ -102,7 +103,7 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
             <Button
               size="sm"
               className="m-1"
-              style={{ backgroundColor: '#5F6695', color: '#fffB0A' }}
+              style={{ backgroundColor: '#5F6695', color: '#fffB0A', textShadow: '1px 1px 3px #000000', }}
               onClick={handleAddToCart}
             >
               Add to Cart
