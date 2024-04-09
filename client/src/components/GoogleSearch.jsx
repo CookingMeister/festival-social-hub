@@ -25,7 +25,7 @@ function GoogleSearch() {
       </Row>
       <Row>
         <div className="d-flex justify-content-center mt-3">
-          <Link to="#" className='mx-2' style={{textDecoration: 'none'}}>Tips & Tricks</Link>
+          <Link to="https://www.cosmopolitan.com/uk/worklife/campus/a36647/festival-survival-tips-hacks/" className='mx-2' style={{textDecoration: 'none'}}>Tips & Tricks</Link>
           <Link to="#" className='mx-2' style={{textDecoration: 'none'}}>Event News</Link>
           <Link to="#" className='mx-2' style={{textDecoration: 'none'}}>Must Haves</Link>
         </div>
