@@ -28,7 +28,7 @@ const CartProvider = ({ children }) => {
 };
 
 CartProvider.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export { CartContext, CartProvider };
