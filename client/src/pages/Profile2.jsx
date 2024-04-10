@@ -57,16 +57,6 @@ function Profile({ welcome, user }) {
 
   return (
     <div style={{ minHeight: '100vh' }}>
-      <div
-        style={{
-          backgroundImage: 'url("/topbanner.png")',
-          backgroundRepeat: 'repeat-x',
-          backgroundSize: 'contain',
-          height: '20vh',
-          marginTop: '-1%',
-          marginBottom: '-1%',
-        }}
-      />
       <Container>
         <h1 className="text-center p-2 mb-5 text-white">
           {welcome ? `Welcome ${welcome}` : 'Welcome Thirsty Traveller'}

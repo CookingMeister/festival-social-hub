@@ -7,18 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <div style={{ minHeight: '100vh' }}>
-     
-      <div
-        style={{
-          backgroundImage: 'url("/topbanner.png")',
-          backgroundRepeat: 'repeat-x',
-          backgroundSize: 'contain',
-          height: '20vh',
-          marginTop: '-1%'
-        }}
-      />
-  
+    <div style={{ minHeight: '100vh' }}>  
       <Row className="d-flex justify-content-around align-items-center">
         <Col
           xs={6}

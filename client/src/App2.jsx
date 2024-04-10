@@ -13,6 +13,8 @@ import Design from './pages/Design';
 import CartModal from './components/CartModal'; // Import CartModal
 import Footer from './components/Footer';
 import Error from './pages/Error';
+import FlowerTop from './components/FlowerTop';
+import FlowerBottom from './components/FlowerBottom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
@@ -48,6 +50,7 @@ const App2 = () => {
   return (
       <>
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <FlowerTop />
         <Routes>
           <Route
             path="/register"
@@ -89,6 +92,7 @@ const App2 = () => {
           )}
           <Route path="*" element={<Error />} />
         </Routes>
+        <FlowerBottom />
         <Footer />
       </>
   );
