@@ -78,16 +78,7 @@ function ArtMarket() {
   });
 
   return (
-    <div className="m-2 py-3" style={{ minHeight: '100vh' }}>
-      <div
-        style={{
-          backgroundImage: 'url("/topbanner.png")',
-          backgroundRepeat: 'repeat-x',
-          backgroundSize: 'contain',
-          height: '20vh',
-          marginTop: '-2.5%',
-        }}
-      />
+    <div className="py-3" style={{ minHeight: '100vh' }}>
       <Row>
         <Row className="d-flex justify-content-center">
           <Image
@@ -97,6 +88,7 @@ function ArtMarket() {
               width: '300px',
               height: '260px',
               marginBottom: '2rem',
+              marginTop: '-3rem',
             }}
           />
         </Row>
