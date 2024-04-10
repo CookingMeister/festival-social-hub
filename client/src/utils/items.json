@@ -3,7 +3,7 @@
         "name": "Mermaid Crowns",
         "description": "Handcrafted crown adorned with shells and pearls.",
         "img": "/mermaidcrown.jpg",
-        "price": "$100.00",
+        "price": "100.00",
         "sizes": [
             "One Size"
         ],
@@ -13,7 +13,7 @@
         "name": "Flower Crowns",
         "description": "Forever flower crown made with assorted blooms.",
         "img": "/flowercrown.jpg",
-        "price": "$50.00",
+        "price": "50.00",
         "sizes": [
             "One Size"
         ],
@@ -23,7 +23,7 @@
         "name": "Kids Crowns",
         "description": "Assortment of playful crowns for children.",
         "img": "kidscrown.jpg",
-        "price": "$40.00",
+        "price": "40.00",
         "sizes": [
             "One Size"
         ],
@@ -33,7 +33,7 @@
         "name": "Pet Crowns",
         "description": "Adorable flower crowns for pets.",
         "img": "petcrown.jpg",
-        "price": "$25.00",
+        "price": "25.00",
         "sizes": [
             "One Size"
         ],
@@ -43,7 +43,7 @@
         "name": "Jean Jackets",
         "description": "Upcycled denim beauties ready to wear anywhere.",
         "img": "jacket.jpg",
-        "price": "$100.00",
+        "price": "100.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -59,7 +59,7 @@
         "name": "Shorts",
         "description": "Upcycled Festival shorts where comfort meets fun.",
         "img": "logo.png",
-        "price": "$50.00",
+        "price": "50.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -75,7 +75,7 @@
         "name": "Jeans",
         "description": "Upcycled works of wearable art for events.",
         "img": "logo.png",
-        "price": "$75.00",
+        "price": "75.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -91,7 +91,7 @@
         "name": "Tops",
         "description": "Festival tops to build on any look.",
         "img": "logo.png",
-        "price": "$50.00",
+        "price": "50.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -107,7 +107,7 @@
         "name": "Cosplay",
         "description": "Intricate costumes for cosplay enthusiasts.",
         "img": "costume.png",
-        "price": "$225.00",
+        "price": "225.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -123,7 +123,7 @@
         "name": "Halloween",
         "description": "Detailed costumes for Halloween.",
         "img": "logo.png",
-        "price": "$125.00",
+        "price": "125.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -139,7 +139,7 @@
         "name": "Ravewear",
         "description": "Edgy and bold outfits for festivals.",
         "img": "ravewear.png",
-        "price": "$100.00",
+        "price": "100.00",
         "sizes": [
             "Xtra Small", 
             "Small", 
@@ -155,7 +155,7 @@
         "name": "Hats",
         "description": "Weird and wonderful hats for festivals.",
         "img": "logo.png",
-        "price": "$40.00",
+        "price": "40.00",
         "sizes": [
             "One Size"
         ],
@@ -165,7 +165,7 @@
         "name": "Gloves",
         "description": "Statement gloves meant to add the wow factor.",
         "img": "logo.png",
-        "price": "$50.00",
+        "price": "50.00",
         "sizes": [
             "One Size"
         ],
@@ -175,7 +175,7 @@
         "name": "Masks",
         "description": "Various masks for any vibe.",
         "img": "logo.png",
-        "price": "$50.00",
+        "price": "50.00",
         "sizes": [
             "One Size"
         ],
@@ -185,7 +185,7 @@
         "name": "Belts",
         "description": "Festival belts that add fashion & function",
         "img": "belt.png",
-        "price": "$65.00",
+        "price": "65.00",
         "sizes": [
             "Xtra Small", 
             "Small", 

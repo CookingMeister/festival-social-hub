@@ -60,7 +60,7 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
               textAlign: 'center',
             }}
           >
-            {item.price}
+            ${item.price}
           </ListGroup.Item>
           <ListGroup.Item
             style={{

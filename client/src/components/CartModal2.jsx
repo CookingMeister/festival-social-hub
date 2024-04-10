@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 function CartModal2() {
     const [show, setShow] = useState(false);
@@ -8,7 +9,7 @@ function CartModal2() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const existingCartItems = JSON.parse(localStorage.getItem('cartItems')); 
+    const existingCartItems = JSON.parse(localStorage.getItem('cartItems'));
 
     return (
         <>
@@ -31,11 +32,12 @@ function CartModal2() {
                 backdrop="static"
                 keyboard={false}
                 centered
+
             >
-                <Modal.Header closeButton>
+                <Modal.Header style={{ backgroundColor: '#333333', color: "#ed217c" }} closeButton>
                     <Modal.Title>Cart</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ backgroundColor: '#333333', color: "#ed217c" }} >
                     {existingCartItems && existingCartItems.length > 0 ? (
                         existingCartItems.map((existingCartItem, index) => (
                             <div key={index}>
@@ -48,9 +50,16 @@ function CartModal2() {
                         <p>Your cart is empty.</p>
                     )}
                 </Modal.Body>
-                <Modal.Footer className='d-flex justify-content-between'>
+                <Modal.Footer style={{ backgroundColor: '#333333', color: "#ed217c" }} className='d-flex justify-content-between'>
                     <h5>Total: </h5>
-                    <Button variant="primary">Checkout</Button>
+                    <Link to='/checkout'>
+                        <Button style={{
+                            backgroundColor: '#5F6695',
+                            outline: '#5F6695',
+                            color: '#FFFB0A',
+                            textShadow: '1px 1px 3px #000000'
+                        }}>Checkout</Button>
+                    </Link>
                 </Modal.Footer>
             </Modal>
         </>
