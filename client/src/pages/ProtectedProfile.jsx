@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Profile from './Profile';
+import Profile from './Profile2';
 
 const ProtectedPage = () => {
   const [user, setUser] = useState(null);
@@ -34,6 +34,7 @@ const ProtectedPage = () => {
   return (
     <div>
       <Profile welcome={user?.username}
+        user={user}
      />
     </div>
   );
