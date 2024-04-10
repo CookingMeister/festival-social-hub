@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; // Import useLocation
+import { BrowserRouter as Routes, Route, useLocation } from 'react-router-dom'; // Import useLocation
 import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import ProductDisplay from './pages/ProductDisplay';
-import CartModal from './CartModal'; // Import CartModal
+import CartModal from './components/CartModal'; // Import CartModal
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,7 +46,6 @@ const App2 = () => {
   }, [location.search]);
 
   return (
-    <Router>
       <>
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
@@ -92,7 +91,6 @@ const App2 = () => {
         </Routes>
         <Footer />
       </>
-    </Router>
   );
 };
 

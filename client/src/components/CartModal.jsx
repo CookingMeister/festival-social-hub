@@ -1,9 +1,10 @@
 // CartModal.jsx
 
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { CartContext } from './CartContext';
+import { CartContext } from '../../context/CartContext';
+import PropTypes from 'prop-types';
 
 function CartModal({ product }) {
   const cart = useContext(CartContext);
@@ -40,5 +41,9 @@ function CartModal({ product }) {
     </>
   );
 }
+
+CartModal.propTypes = {
+  product: PropTypes.object,
+};
 
 export default CartModal;
