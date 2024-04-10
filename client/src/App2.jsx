@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Routes, Route, useLocation } from 'react-router-dom'; // Import useLocation
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
@@ -9,7 +10,6 @@ import Header from './components/Header2';
 import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
-import ProductDisplay from './pages/ProductDisplay';
 import CartModal from './components/CartModal'; // Import CartModal
 import Footer from './components/Footer';
 import Error from './pages/Error';

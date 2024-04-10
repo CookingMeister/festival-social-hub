@@ -2,6 +2,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import productDetails from '../utils/productDetails.json';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import CartModal2 from '../components/CartModal2';
 
 function ArtMarketButtons({
     selectedStyle,
@@ -75,17 +76,9 @@ function ArtMarketButtons({
             >
                 Reset
             </Button>
-            <Button
-                style={{
-                    backgroundColor: '#5F6695',
-                    outline: '#5F6695',
-                    color: '#FFFB0A',
-                    textShadow: '1px 1px 3px #000000',
-                }}
-                className='mx-1'
-            >
-                Go to Cart
-            </Button>
+            <div>
+                <CartModal2 />
+            </div>
         </div>
     )
 }
