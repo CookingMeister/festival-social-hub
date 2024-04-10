@@ -20,10 +20,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   }, // Password of the user
-  socials: {
-    type: Map,
-    of: String,
-  }, // Social media links (e.g., Facebook, Twitter, etc.)
+  socials: [
+    {
+      type: String,
+    },
+  ], // Social media links (e.g., Facebook, Twitter, etc.)
   aboutMe: {
     type: String,
   }, // About me section
