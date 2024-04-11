@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 import ArtMarket from './pages/ArtMarket';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -82,6 +83,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <ArtMarket />
+              </ProtectedRoute>
+            }
+          />
+             <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
               </ProtectedRoute>
             }
           />
