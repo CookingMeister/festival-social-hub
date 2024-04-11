@@ -1,6 +1,4 @@
-// CartContext.js
-
-import { Children, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const CartContext = createContext();

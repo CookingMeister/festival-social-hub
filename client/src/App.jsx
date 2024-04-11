@@ -6,11 +6,11 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ArtMarket from './pages/ArtMarket';
-import Header from './components/Header2';
+import Header from './components/Header';
 import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
-import CartModal from './components/CartModal'; // Import CartModal
+import CartModal from './components/CartModal';
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import FlowerTop from './components/FlowerTop';
@@ -28,7 +28,7 @@ Message.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-const App2 = () => {
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState('');
   const location = useLocation(); // Use useLocation hook here
@@ -98,4 +98,4 @@ const App2 = () => {
   );
 };
 
-export default App2;
+export default App;
