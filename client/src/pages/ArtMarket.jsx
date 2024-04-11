@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import items from '../utils/items.json';
 import ItemCard from '../components/ItemCard';
 import axios from 'axios';
 import ArtMarketButtons from '../components/ArtMarketButtons';
@@ -64,16 +63,18 @@ function ArtMarket() {
     setSelectedBestSeller(null);
   };
 
-  const filteredItems = items.filter((item) => {
+  const filteredItems = products.filter((product) => {
     if (selectedStyle && selectedBestSeller) {
-      return item.style === selectedStyle && item.name === selectedBestSeller;
+      return product.category.style === selectedStyle && product.name === selectedBestSeller;
     } else if (selectedStyle) {
-      return item.style === selectedStyle;
+      return product.category.style=== selectedStyle;
     } else if (selectedBestSeller) {
-      return item.name === selectedBestSeller;
+      return product.name === selectedBestSeller;
     }
     return true;
   });
+
+  console.log(products);
 
   return (
     <div className="py-3" style={{ minHeight: '100vh', margin: '0 auto' }}>
