@@ -68,10 +68,10 @@ const Register = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center vh-100">
       {/* <h1>Register</h1> */}
-      <Form onSubmit={handleRegister} className="w-25">
-        <h1>Register</h1>
+      <Form onSubmit={handleRegister} className="w-25 mt-5" style={{color: 'antiquewhite'}}>
+        <h1 className='mb-5'>Register</h1>
         <Form.Group controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -112,7 +112,7 @@ const Register = ({ setIsLoggedIn }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="mt-3">
+        <Button variant="warning" type="submit" className="mt-3">
           Register
         </Button>
       </Form>

@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
-import CartModal from './components/CartModal';
+import CheckoutForm from './components/CheckoutForm';
 import Footer from './components/Footer2';
 import Error from './pages/Error';
 import FlowerTop from './components/FlowerTop';
@@ -88,7 +88,7 @@ const App = () => {
           {message ? (
             <Message message={message} />
           ) : (
-            <Route path="/checkout" element={<CartModal />} />
+            <Route path="/checkout" element={<CheckoutForm />} />
           )}
           <Route path="*" element={<Error />} />
         </Routes>

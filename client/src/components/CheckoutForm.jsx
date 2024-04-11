@@ -1,4 +1,9 @@
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import {
+  useStripe,
+  useElements,
+  CardElement,
+  Elements,
+} from '@stripe/react-stripe-js';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -6,7 +11,7 @@ const CheckoutForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (!stripe || !elements) {
       // Disable form submission until Stripe.js has loaded.
       return;
@@ -22,7 +27,7 @@ const CheckoutForm = () => {
         payment_method: {
           card: cardElement,
           // Add other payment method details as needed
-        }
+        },
       }
     );
 
@@ -36,12 +41,14 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
-        Pay
-      </button>
-    </form>
+    <Elements stripe={stripe}>
+      <form onSubmit={handleSubmit}>
+        <CardElement />
+        <button type="submit" disabled={!stripe}>
+          Pay
+        </button>
+      </form>
+    </Elements>
   );
 };
 

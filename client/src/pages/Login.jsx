@@ -49,9 +49,9 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
-      <Form onSubmit={handleLogin} className="w-25">
-        <h1>Login</h1>
+    <div className="d-flex justify-content-center vh-100">
+      <Form onSubmit={handleLogin} className="w-25" style={{color: 'antiquewhite'}}>
+        <h1 className='my-5'>Login</h1>
         <Form.Group controlId="formUsername" className="mt-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -80,7 +80,7 @@ const Login = ({ setIsLoggedIn }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="mt-3">
+        <Button variant="warning" type="submit" className="mt-3">
           Login
         </Button>
       </Form>
