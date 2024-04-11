@@ -1,4 +1,3 @@
-import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 const CheckoutForm = () => {
@@ -9,8 +8,7 @@ const CheckoutForm = () => {
     event.preventDefault();
     
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
+      // Disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -29,7 +27,7 @@ const CheckoutForm = () => {
     );
 
     if (error) {
-      // Display error to user (e.g., invalid card details)
+      // Display error to user
       console.error('Payment failed:', error.message);
     } else if (paymentIntent) {
       // Payment succeeded, provide feedback to user (e.g., redirect to success page)
