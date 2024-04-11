@@ -11,7 +11,7 @@ import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import CartModal from './components/CartModal';
-import Footer from './components/Footer';
+import Footer from './components/Footer2';
 import Error from './pages/Error';
 import FlowerTop from './components/FlowerTop';
 import FlowerBottom from './components/FlowerBottom';

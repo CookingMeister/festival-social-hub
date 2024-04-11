@@ -35,9 +35,22 @@ function ItemCard({
     setSelectedSize(size);
   };
 
+  const handleStyle = (event) => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.style.boxShadow = '';
+    });
+    event.target.closest('.card').style.boxShadow =
+      '0 0 10px 5px rgba(255, 255, 255, 0.5)';
+  };
+
   return (
     <div>
-      <Card style={{ backgroundColor: '#1B998B' }} className="m-2">
+      <Card
+        style={{ backgroundColor: '#1B998B' }}
+        className="m-2 card"
+        onFocus={handleStyle}
+      >
         <Card.Img
           variant="top"
           src={item.img}
@@ -92,7 +105,7 @@ function ItemCard({
               textAlign: 'center',
               fontWeight: 'bold',
               fontStyle: 'italic',
-              paddingTop: '4%',            
+              paddingTop: '4%',
             }}
           >
             {isInStock ? <p>In Stock</p> : <p>Out of Stock</p>}
