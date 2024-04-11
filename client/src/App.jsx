@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 import ArtMarket from './pages/ArtMarket';
 import Header from './components/Header';
 import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
-import CartModal from './components/CartModal';
+import CheckoutForm from './components/CheckoutForm';
 import Footer from './components/Footer2';
 import Error from './pages/Error';
 import FlowerTop from './components/FlowerTop';
@@ -85,10 +86,18 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+             <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
           {message ? (
             <Message message={message} />
           ) : (
-            <Route path="/checkout" element={<CartModal />} />
+            <Route path="/checkout" element={<CheckoutForm />} />
           )}
           <Route path="*" element={<Error />} />
         </Routes>

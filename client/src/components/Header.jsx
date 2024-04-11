@@ -30,10 +30,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
           Custom Festival Wear
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-          className="justify-content-end"
-        >
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="text-end">
             <Nav.Link
               as={Link}
@@ -63,6 +60,13 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
             )}
             {isLoggedIn && (
               <>
+                <Nav.Link
+                  as={Link}
+                  to="/admin"
+                  style={{ color: '#FFFB0A', padding: '5px' }}
+                >
+                  Admin
+                </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/profile"

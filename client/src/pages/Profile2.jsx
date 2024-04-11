@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,6 +17,7 @@ function Profile({ welcome, user }) {
     topFestivals: user?.topFestivals,
   });
   const [loading, setLoading] = useState(true);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
     console.log('form:', form);
@@ -29,9 +31,6 @@ function Profile({ welcome, user }) {
       ...form,
       [name]: value,
     }));
-    // console.log('name:', name);
-    // console.log('value:', value);
-    // console.log('form:', form);
   };
 
   const handleSubmit = async (e) => {
@@ -50,6 +49,29 @@ function Profile({ welcome, user }) {
       // Handle error
     }
   };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setShowDeleteConfirm(true); // Show the confirmation modal
+  };
+
+  const handleDeleteConfirm = async () => {
+    try {
+      await axios.delete('/api/users/profile', {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`,
+        },
+      });
+      console.log('Profile deleted!');
+      localStorage.removeItem('token');
+      setShowDeleteConfirm(false); // Close the modal
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error deleting profile:', error);
+      setShowDeleteConfirm(false); // Close the modal
+    }
+  };
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -74,7 +96,7 @@ function Profile({ welcome, user }) {
           <Col xs={12} md={8} lg={8} style={{ color: 'antiquewhite' }}>
             <Form
               onSubmit={handleSubmit}
-              style={{ width: '80%', margin: '0 auto' }}
+              style={{ width: '80%', margin: '0 auto', position:'relative' }}
             >
               <Form.Group controlId="name">
                 <Form.Label className="mt-2">Name:</Form.Label>
@@ -138,9 +160,34 @@ function Profile({ welcome, user }) {
               >
                 Update Profile
               </Button>
+              <Button
+                variant="danger"
+                onClick={handleDelete}
+                className="mt-3"
+                style={{
+                  position: 'absolute',
+                  right: '0',
+                }}
+              >
+                Delete Profile
+              </Button>
             </Form>
           </Col>
         </Row>
+        <Modal style={{marginTop: '10%'}}show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title style={{color: '#ED217C'}}>Delete Profile</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete your profile? This action cannot be undone.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
+              Cancel
+            </Button>
+            <Button variant="danger" onClick={handleDeleteConfirm}>
+              Delete Profile
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );

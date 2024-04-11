@@ -32,7 +32,6 @@ function ArtMarket() {
           },
         });
         setProducts(response.data);
-        // console.log('Products:', response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
         if (error.message) {
@@ -48,7 +47,6 @@ function ArtMarket() {
     const foundProduct = products.find(
       (product) => product.name === item.name && product.availability === true
     );
-    // console.log('Found product:', foundProduct);
     return foundProduct ? true : false;
   };
 
