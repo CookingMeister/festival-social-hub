@@ -53,7 +53,7 @@ function ItemCard({
       >
         <Card.Img
           variant="top"
-          src={item.img}
+          src={item.imageUrl}
           style={{
             width: '95%',
             margin: '0 auto',
@@ -128,7 +128,7 @@ function ItemCard({
               </Dropdown.Toggle>
 
               <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
-                {item.sizes.map((size, index) => (
+                {item.category.size.map((size, index) => (
                   <Dropdown.Item
                     style={{
                       color: '#FFFB0A',
@@ -167,7 +167,9 @@ ItemCard.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    category: PropTypes.arrayOf(PropTypes.string).isRequired,
+    size: PropTypes.arrayOf(PropTypes.string).isRequired,
+    imageUrl: PropTypes.string.isRequired,
   }).isRequired,
   isInStock: PropTypes.bool.isRequired,
   handleShowItemAdded: PropTypes.func.isRequired,
