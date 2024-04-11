@@ -120,6 +120,7 @@ export const updateUserProfile = async (req, res) => {
 // Update user profile
 router.put('/users/profile', authMiddleware, updateUserProfile);
 
+// GET products
 router.get('/products', authMiddleware, async (req, res) => {
   try {
     const products = await Product.find();
@@ -130,6 +131,44 @@ router.get('/products', authMiddleware, async (req, res) => {
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch products' });
+  }
+});
+
+// PUT products
+router.put('/products/:id', authMiddleware, async (req, res) => {
+  try {
+    const { name, description, price, category } = req.body;
+    const productId = req.body.productId;
+    console.log('productId:', productId);
+    const product = await Product.findByIdAndUpdate(
+      productId,
+      { name, description, price, category },
+      { new: true }
+    );
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    console.log('Updated Product:', product);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+
+});
+
+// DELETE products
+router.delete('/products/:id', authMiddleware, async (req, res) => {
+  try {
+    const productId = req.body.productId;
+    console.log('productId:', productId);
+    const product = await Product.findByIdAndDelete(productId);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    console.log('Deleted Product:', product);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
