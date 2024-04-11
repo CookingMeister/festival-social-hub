@@ -78,7 +78,7 @@ function ArtMarket() {
   });
 
   return (
-    <div className="py-3" style={{ minHeight: '100vh' }}>
+    <div className="py-3" style={{ minHeight: '100vh', margin: '0 auto' }}>
       <Row>
         <Row className="d-flex justify-content-center">
           <Image
@@ -89,6 +89,7 @@ function ArtMarket() {
               height: '260px',
               marginBottom: '2rem',
               marginTop: '-3rem',
+              marginLeft: '1.5rem',
             }}
           />
         </Row>
@@ -101,7 +102,7 @@ function ArtMarket() {
             handleReset={handleReset}
           />
         </Row>
-        <Row className="d-flex justify-content-around p-4">
+        <Row className="d-flex justify-content-center p-4" style={{ marginLeft: '1px' }}>
           {filteredItems.map((item, index) => (
             <Col xl={3} lg={4} sm={6} xs={12} key={index} className="mt-4">
               <ItemCard

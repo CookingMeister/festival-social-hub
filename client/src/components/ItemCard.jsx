@@ -5,7 +5,12 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) {
+function ItemCard({
+  item,
+  isInStock,
+  handleShowItemAdded,
+  handleSizeRequired,
+}) {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleAddToCart = () => {
@@ -16,22 +21,36 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
         price: item.price,
       };
 
-      const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const existingCartItems =
+        JSON.parse(localStorage.getItem('cartItems')) || [];
       const updatedCartItems = [...existingCartItems, cartItem];
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       handleShowItemAdded();
     } else {
       handleSizeRequired();
     }
-  }
+  };
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
   };
 
+  const handleStyle = (event) => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.style.boxShadow = '';
+    });
+    event.target.closest('.card').style.boxShadow =
+      '0 0 10px 5px rgba(255, 255, 255, 0.5)';
+  };
+
   return (
     <div>
-      <Card style={{ backgroundColor: '#1B998B' }} className="m-2">
+      <Card
+        style={{ backgroundColor: '#1B998B' }}
+        className="m-2 card"
+        onFocus={handleStyle}
+      >
         <Card.Img
           variant="top"
           src={item.img}
@@ -45,10 +64,25 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
           }}
         />
         <Card.Body>
-          <Card.Title style={{ color: '#5F6695', textAlign: 'center' }}>
+          <Card.Title
+            style={{
+              color: 'black',
+              textAlign: 'center',
+              margin: '4%',
+              fontWeight: '800',
+            }}
+          >
             {item.name}
           </Card.Title>
-          <Card.Text style={{ color: '#fffB0a', textAlign: 'center', textShadow: '1px 1px 3px #000000' }}>
+          <Card.Text
+            style={{
+              color: '#fffB0a',
+              textAlign: 'center',
+              textShadow: '1px 1px 3px #000000',
+              fontStyle: 'italic',
+              padding: '3%',
+            }}
+          >
             {item.description}
           </Card.Text>
         </Card.Body>
@@ -58,6 +92,8 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
               backgroundColor: 'antiquewhite',
               color: '#5F6695',
               textAlign: 'center',
+              fontWeight: 'bold',
+              padding: '4%',
             }}
           >
             ${item.price}
@@ -67,6 +103,9 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
               backgroundColor: 'antiquewhite',
               color: '#5F6695',
               textAlign: 'center',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              paddingTop: '4%',
             }}
           >
             {isInStock ? <p>In Stock</p> : <p>Out of Stock</p>}
@@ -91,7 +130,10 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
               <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                 {item.sizes.map((size, index) => (
                   <Dropdown.Item
-                    style={{ color: '#FFFB0A', textShadow: '1px 1px 3px #000000', }}
+                    style={{
+                      color: '#FFFB0A',
+                      textShadow: '1px 1px 3px #000000',
+                    }}
                     key={index}
                     onClick={() => handleSizeSelect(size)}
                   >
@@ -103,7 +145,11 @@ function ItemCard({ item, isInStock, handleShowItemAdded, handleSizeRequired }) 
             <Button
               size="sm"
               className="m-1"
-              style={{ backgroundColor: '#5F6695', color: '#fffB0A', textShadow: '1px 1px 3px #000000', }}
+              style={{
+                backgroundColor: '#5F6695',
+                color: '#fffB0A',
+                textShadow: '1px 1px 3px #000000',
+              }}
               onClick={handleAddToCart}
             >
               Add to Cart

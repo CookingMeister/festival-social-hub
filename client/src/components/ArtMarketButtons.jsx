@@ -13,7 +13,7 @@ function ArtMarketButtons({
   }) {
 
     return (
-        <div className="d-flex justify-content-end mt-3">
+    <div className="d-flex justify-content-center justify-content-md-end mt-3">
             <Dropdown className="mx-1">
                 <Dropdown.Toggle
                     id="dropdown-basic"
