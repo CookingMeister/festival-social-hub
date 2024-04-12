@@ -33,6 +33,9 @@ const userSchema = new Schema({
       type: String,
     },
   ], // Top 3 festivals attended by the user
+  profilePic: {
+    type: String,
+  }
 });
 
 const User = mongoose.model('User', userSchema);
