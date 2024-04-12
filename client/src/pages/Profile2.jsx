@@ -19,14 +19,15 @@ function Profile({ welcome, user }) {
   const [loading, setLoading] = useState(true);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [file, setFile] = useState();
+  const [showSaveButton, setShowSaveButton] = useState(false);
 
   function handleProfilePicChange(e) {
-    console.log(e.target.files);
+    // console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setShowSaveButton(true);
   }
 
   useEffect(() => {
-    console.log('form:', form);
     setLoading(false);
   }, [form]);
 
@@ -39,6 +40,8 @@ function Profile({ welcome, user }) {
     }));
   };
 
+const saveImage = () => setShowSaveButton(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,6 +53,7 @@ function Profile({ welcome, user }) {
       // Handle success
       console.log('Data:', response.data);
       console.log('Profile updated!');
+      
     } catch (error) {
       console.error('Error updating profile:', error);
       // Handle error
@@ -68,7 +72,6 @@ function Profile({ welcome, user }) {
           Authorization: `${localStorage.getItem('token')}`,
         },
       });
-      console.log('Profile deleted!');
       localStorage.removeItem('token');
       setShowDeleteConfirm(false); // Close the modal
       window.location.href = '/';
@@ -77,7 +80,6 @@ function Profile({ welcome, user }) {
       setShowDeleteConfirm(false); // Close the modal
     }
   };
-
 
   if (loading) {
     return <div>Loading...</div>;
@@ -93,12 +95,13 @@ function Profile({ welcome, user }) {
           <Col xs={12} md={4} lg={4} style={{ color: 'antiquewhite' }}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Image
-                src={file}
-                style={{ width: '55%', margin: '2rem' }}
+                src={file || './logo.png'}
+                style={{ width: '70%', margin: '2rem', marginTop: '5%' }}
                 roundedCircle
+                border="5px solid #ED217C"
               />
             </div>
-            <div className='d-flex justify-content-evenly'>
+            <div className='d-flex justify-content-evenly mt-3 mb-5 mb-md-1'>
               <label className="btn btn-warning" htmlFor="profilePicInput">
                 Choose Image
                 <input
@@ -109,15 +112,19 @@ function Profile({ welcome, user }) {
                   style={{ display: 'none' }}
                 />
               </label>
-              <Button
-               style={{
-                backgroundColor: '#ED217C',
-                outline: '#ED217C',
-                color: '#FFFB0A',
-                textShadow: '1px 1px 3px #000000',
-              }}>
-                Save
-              </Button>
+              {showSaveButton && (
+                <Button
+                  onClick={saveImage}
+                  style={{
+                    backgroundColor: '#ED217C',
+                    outline: '#ED217C',
+                    color: '#FFFB0A',
+                    textShadow: '1px 1px 3px #000000',
+                  }}>
+                  Save
+                </Button>
+              )}
+            
             </div>
           </Col>
           <Col xs={12} md={8} lg={8} style={{ color: 'antiquewhite' }}>
