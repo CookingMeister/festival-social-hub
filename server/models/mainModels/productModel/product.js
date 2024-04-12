@@ -7,7 +7,7 @@ const productSchema = new Schema({
   description: { type: String },
   category: {
     size: [{ type: String, enum: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy'] }],
-    style: { type: String, enum: ['crowns', 'clothes', 'costumes', 'accessories'] }
+    style: { type: String, enum: ['Crowns', 'Clothes', 'Costumes', 'Accessories'] }
   },
   bestSeller: { 
     type: String, 

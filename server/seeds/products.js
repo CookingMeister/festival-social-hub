@@ -11,7 +11,7 @@ async function seedProducts() {
           price: 100,
           imageUrl: 'mermaidcrown.jpg',
           category: { 
-            style: 'accessories',
+            style: 'Crowns',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -21,7 +21,7 @@ async function seedProducts() {
           price: 50,
           imageUrl: 'flowercrown.jpg',
           category: { 
-            style: 'accessories',
+            style: 'Crowns',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -31,7 +31,7 @@ async function seedProducts() {
           price: 40,
           imageUrl: 'kidscrown.jpg',
           category: { 
-            style: 'accessories',
+            style: 'Crowns',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -41,7 +41,7 @@ async function seedProducts() {
           price: 25,
           imageUrl: 'petcrown.jpg',
           category: { 
-            style: 'accessories',
+            style: 'Crowns',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -51,7 +51,7 @@ async function seedProducts() {
           price: 100,
           imageUrl: 'jacket.jpg',
           category: { 
-            style: 'clothes',
+            style: 'Clothes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -61,7 +61,7 @@ async function seedProducts() {
           price: 50,
           imageUrl: 'logo.png',
           category: { 
-            style: 'clothes',
+            style: 'Clothes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -71,7 +71,7 @@ async function seedProducts() {
           price: 75,
           imageUrl: 'logo.png',
           category: { 
-            style: 'clothes',
+            style: 'Clothes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -81,7 +81,7 @@ async function seedProducts() {
           price: 50,
           imageUrl: 'logo.png',
           category: { 
-            style: 'clothes',
+            style: 'Clothes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -91,7 +91,7 @@ async function seedProducts() {
           price: 225,
           imageUrl: 'costume.png',
           category: { 
-            style: 'costumes',
+            style: 'Costumes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -101,7 +101,7 @@ async function seedProducts() {
           price: 125,
           imageUrl: 'logo.png',
           category: { 
-            style: 'costumes',
+            style: 'Costumes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -111,7 +111,7 @@ async function seedProducts() {
           price: 100,
           imageUrl: 'ravewear.png',
           category: { 
-            style: 'costumes',
+            style: 'Costumes',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -121,7 +121,7 @@ async function seedProducts() {
           price: 40,
           imageUrl: 'logo.png',
           category: { 
-            style: 'accessories',
+            style: 'Accessories',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -131,7 +131,7 @@ async function seedProducts() {
           price: 50,
           imageUrl: 'logo.png',
           category: { 
-            style: 'accessories',
+            style: 'Accessories',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -141,7 +141,7 @@ async function seedProducts() {
           price: 50,
           imageUrl: 'logo.png',
           category: { 
-            style: 'accessories',
+            style: 'Accessories',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
@@ -151,7 +151,7 @@ async function seedProducts() {
           price: 65,
           imageUrl: 'belt.png',
           category: { 
-            style: 'accessories',
+            style: 'Accessories',
             size: ['xtra small', 'small', 'medium', 'curvy', 'xtra curvy', '2xtracurvy', '3xtracurvy']
           }
         },
