@@ -78,8 +78,12 @@ function CartModal2() {
                   <h5 className="m-3">
                     <strong>{existingCartItem.name}</strong>
                   </h5>
+                  <label className="btn btn-danger" htmlFor="buttonDel">
+                Remove
                   <input
                     type="checkbox"
+                    id="buttonDel"
+                    style={{ display: 'none' }}
                     onChange={(e) => {
                       if (e.target.checked) {
                         const updatedCartItems = existingCartItems.filter(
@@ -93,7 +97,7 @@ function CartModal2() {
                       }
                     }}
                   />
-                  <span>remove</span>
+                  </label>
                 </div>
                 <div className="d-flex justify-content-between pt-1 px-4">
                   <p>
