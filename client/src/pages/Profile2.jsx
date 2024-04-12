@@ -18,6 +18,12 @@ function Profile({ welcome, user }) {
   });
   const [loading, setLoading] = useState(true);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [file, setFile] = useState();
+
+  function handleProfilePicChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
 
   useEffect(() => {
     console.log('form:', form);
@@ -71,7 +77,7 @@ function Profile({ welcome, user }) {
       setShowDeleteConfirm(false); // Close the modal
     }
   };
-  
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -87,16 +93,37 @@ function Profile({ welcome, user }) {
           <Col xs={12} md={4} lg={4} style={{ color: 'antiquewhite' }}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Image
-                src="/logo.png"
-                style={{ width: '50%', margin: '2rem' }}
+                src={file}
+                style={{ width: '55%', margin: '2rem' }}
                 roundedCircle
               />
+            </div>
+            <div className='d-flex justify-content-evenly'>
+              <label className="btn btn-warning" htmlFor="profilePicInput">
+                Choose Image
+                <input
+                  type="file"
+                  id="profilePicInput"
+                  accept="image/*"
+                  onChange={handleProfilePicChange}
+                  style={{ display: 'none' }}
+                />
+              </label>
+              <Button
+               style={{
+                backgroundColor: '#ED217C',
+                outline: '#ED217C',
+                color: '#FFFB0A',
+                textShadow: '1px 1px 3px #000000',
+              }}>
+                Save
+              </Button>
             </div>
           </Col>
           <Col xs={12} md={8} lg={8} style={{ color: 'antiquewhite' }}>
             <Form
               onSubmit={handleSubmit}
-              style={{ width: '80%', margin: '0 auto', position:'relative' }}
+              style={{ width: '80%', margin: '0 auto', position: 'relative' }}
             >
               <Form.Group controlId="name">
                 <Form.Label className="mt-2">Name:</Form.Label>
@@ -154,7 +181,7 @@ function Profile({ welcome, user }) {
                 className="mt-3"
                 style={{
                   backgroundColor: '#ED217C',
-                  color:  '#FFFB0A',
+                  color: '#FFFB0A',
                   textShadow: '1px 1px 3px #000000',
                 }}
               >
@@ -174,9 +201,9 @@ function Profile({ welcome, user }) {
             </Form>
           </Col>
         </Row>
-        <Modal style={{marginTop: '10%'}}show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
+        <Modal style={{ marginTop: '10%' }} show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
           <Modal.Header closeButton>
-            <Modal.Title style={{color: '#ED217C'}}>Delete Profile</Modal.Title>
+            <Modal.Title style={{ color: '#ED217C' }}>Delete Profile</Modal.Title>
           </Modal.Header>
           <Modal.Body>Are you sure you want to delete your profile? This action cannot be undone.</Modal.Body>
           <Modal.Footer>
