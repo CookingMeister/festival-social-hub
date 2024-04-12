@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
+import Toast from 'react-bootstrap/Toast';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
@@ -22,6 +23,7 @@ function Profile({ welcome, user }) {
     sessionStorage.getItem('profilePic') || './logo.png'
   );
   const [showSaveButton, setShowSaveButton] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   function handleProfilePicChange(e) {
     const file = e.target.files[0];
@@ -72,6 +74,8 @@ function Profile({ welcome, user }) {
       // Handle success
       console.log('Data:', response.data);
       console.log('Profile updated!');
+      setShowToast(true); // Show the toast
+      setTimeout(() => setShowToast(false), 3000); // Hide the toast after 3 seconds
     } catch (error) {
       console.error('Error updating profile:', error);
       // Handle error
@@ -212,7 +216,21 @@ function Profile({ welcome, user }) {
                   textShadow: '1px 1px 3px #000000',
                 }}
               >
-                Update Profile
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-pencil-square"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+                  />
+                </svg>
+                {' '}Update
               </Button>
               <Button
                 variant="danger"
@@ -223,7 +241,18 @@ function Profile({ welcome, user }) {
                   right: '0',
                 }}
               >
-                Delete Profile
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  className="bi bi-trash"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                </svg>{' '}
+                Profile
               </Button>
             </Form>
           </Col>
@@ -250,10 +279,42 @@ function Profile({ welcome, user }) {
               Cancel
             </Button>
             <Button variant="danger" onClick={handleDeleteConfirm}>
-              Delete Profile
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                className="bi bi-trash"
+                viewBox="0 0 20 20"
+              >
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+              </svg>{' '}
+              Profile
             </Button>
           </Modal.Footer>
         </Modal>
+        <div style={{ position: 'fixed', bottom: 50, right: 30, zIndex: 1050 }}>
+          <Toast
+            onClose={() => setShowToast(false)}
+            show={showToast}
+            delay={3000}
+            autohide
+            style={{ borderRadius: '12px' }}
+          >
+            <Toast.Header
+              style={{ backgroundColor: '#ED217C', color: '#FFFB0A' }}
+            >
+              <strong className="m-auto">Profile Updated</strong>
+            </Toast.Header>
+            <Toast.Body
+              className="text-center"
+              style={{ backgroundColor: '#FFFB0A', color: '#000' }}
+            >
+              Your profile has been successfully updated!
+            </Toast.Body>
+          </Toast>
+        </div>
       </Container>
     </div>
   );
