@@ -134,14 +134,14 @@ router.get('/products', authMiddleware, async (req, res) => {
   }
 });
 
-// PUT products
+//  PUT products
 router.put('/products/:id', authMiddleware, async (req, res) => {
   try {
-    const { name, description, price, category } = req.body;
-    const productId = req.body.productId;
-    console.log('productId:', productId);
+    const id = req.params.id;
+    console.log('id:', id);
+    const { name, description, price, category} = req.body;
     const product = await Product.findByIdAndUpdate(
-      productId,
+      id,
       { name, description, price, category },
       { new: true }
     );
@@ -159,9 +159,8 @@ router.put('/products/:id', authMiddleware, async (req, res) => {
 // DELETE products
 router.delete('/products/:id', authMiddleware, async (req, res) => {
   try {
-    const productId = req.body.productId;
-    console.log('productId:', productId);
-    const product = await Product.findByIdAndDelete(productId);
+    const id = req.params.id;
+    const product = await Product.findByIdAndDelete(id);
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }
