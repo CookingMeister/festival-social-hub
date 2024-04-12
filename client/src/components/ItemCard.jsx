@@ -25,6 +25,8 @@ function ItemCard({
         JSON.parse(localStorage.getItem('cartItems')) || [];
       const updatedCartItems = [...existingCartItems, cartItem];
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+      // console.log('Item:', cartItem);
+      // console.log(JSON.parse(localStorage.getItem('cartItems')));
       handleShowItemAdded();
     } else {
       handleSizeRequired();
