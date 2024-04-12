@@ -18,14 +18,33 @@ function Profile({ welcome, user }) {
   });
   const [loading, setLoading] = useState(true);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(
+    sessionStorage.getItem('profilePic') || './logo.png'
+  );
   const [showSaveButton, setShowSaveButton] = useState(false);
 
   function handleProfilePicChange(e) {
-    // console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setFile(imageUrl);
+      sessionStorage.setItem('profilePic', imageUrl); // Save to sessionStorage
+    }
     setShowSaveButton(true);
   }
+
+  const handleError = () => {
+    setFile('./logo.png'); // Fallback to default image if error occurs
+  };
+
+  useEffect(() => {
+    const savedImageUrl = sessionStorage.getItem('profilePic');
+    if (savedImageUrl) {
+      setFile(savedImageUrl); // Retrieve from sessionStorage
+    } else {
+      setFile('./logo.png'); // Set default image
+    }
+  }, []);
 
   useEffect(() => {
     setLoading(false);
@@ -40,7 +59,7 @@ function Profile({ welcome, user }) {
     }));
   };
 
-const saveImage = () => setShowSaveButton(false);
+  const saveImage = () => setShowSaveButton(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +72,6 @@ const saveImage = () => setShowSaveButton(false);
       // Handle success
       console.log('Data:', response.data);
       console.log('Profile updated!');
-      
     } catch (error) {
       console.error('Error updating profile:', error);
       // Handle error
@@ -73,6 +91,7 @@ const saveImage = () => setShowSaveButton(false);
         },
       });
       localStorage.removeItem('token');
+      sessionStorage.removeItem('profilePic');
       setShowDeleteConfirm(false); // Close the modal
       window.location.href = '/';
     } catch (error) {
@@ -95,13 +114,14 @@ const saveImage = () => setShowSaveButton(false);
           <Col xs={12} md={4} lg={4} style={{ color: 'antiquewhite' }}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Image
-                src={file || './logo.png'}
+                src={file}
+                onError={handleError}
                 style={{ width: '70%', margin: '2rem', marginTop: '5%' }}
                 roundedCircle
                 border="5px solid #ED217C"
               />
             </div>
-            <div className='d-flex justify-content-evenly mt-3 mb-5 mb-md-1'>
+            <div className="d-flex justify-content-evenly mt-3 mb-5 mb-md-1">
               <label className="btn btn-warning" htmlFor="profilePicInput">
                 Choose Image
                 <input
@@ -120,11 +140,11 @@ const saveImage = () => setShowSaveButton(false);
                     outline: '#ED217C',
                     color: '#FFFB0A',
                     textShadow: '1px 1px 3px #000000',
-                  }}>
+                  }}
+                >
                   Save
                 </Button>
               )}
-            
             </div>
           </Col>
           <Col xs={12} md={8} lg={8} style={{ color: 'antiquewhite' }}>
@@ -208,13 +228,25 @@ const saveImage = () => setShowSaveButton(false);
             </Form>
           </Col>
         </Row>
-        <Modal style={{ marginTop: '10%' }} show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
+        <Modal
+          style={{ marginTop: '10%' }}
+          show={showDeleteConfirm}
+          onHide={() => setShowDeleteConfirm(false)}
+        >
           <Modal.Header closeButton>
-            <Modal.Title style={{ color: '#ED217C' }}>Delete Profile</Modal.Title>
+            <Modal.Title style={{ color: '#ED217C' }}>
+              Delete Profile
+            </Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure you want to delete your profile? This action cannot be undone.</Modal.Body>
+          <Modal.Body>
+            Are you sure you want to delete your profile? This action cannot be
+            undone.
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
+            <Button
+              variant="secondary"
+              onClick={() => setShowDeleteConfirm(false)}
+            >
               Cancel
             </Button>
             <Button variant="danger" onClick={handleDeleteConfirm}>
