@@ -1,4 +1,4 @@
-// CartModal.jsx
+/* CartModal.jsx for Stripe Integration Later
 
 import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -46,4 +46,4 @@ CartModal.propTypes = {
   product: PropTypes.object,
 };
 
-export default CartModal;
+export default CartModal;*/

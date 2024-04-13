@@ -1,24 +1,31 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
-
+import CheckoutForm from './CheckoutForm'; //Imported CheckoutForm
 function CartModal2() {
   const [show, setShow] = useState(false);
   const [total, setTotal] = useState(0);
+  const [checkoutOpen, setCheckoutOpen] = useState(false); // State variable to manage CheckoutForm visibility
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setCheckoutOpen(false); // Close CheckoutForm when modal is closed
+  };
   const handleShow = () => setShow(true);
   const existingCartItems = JSON.parse(localStorage.getItem('cartItems'));
 
   useEffect(() => {
-    const totalPrice = existingCartItems.reduce(
+    const totalPrice = existingCartItems?.reduce(
       (acc, item) => acc + parseFloat(item.price),
       0
     );
     setTotal(totalPrice);
-    console.log('total:', total);
-  }, [existingCartItems, total]);
+  }, [existingCartItems]);
+
+  const handleCheckout = () => {
+    setCheckoutOpen(true); // Open CheckoutForm when "Checkout" button is clicked
+  };
 
   return (
     <>
@@ -82,22 +89,27 @@ function CartModal2() {
           style={{ backgroundColor: '#333333', color: '#ed217c', textShadow: '1px 1px 3px black' }}
           className="d-flex justify-content-between px-5"
         >
-          <Link to="/checkout">
-            <Button
-              style={{
-                backgroundColor: '#5F6695',
-                outline: '#5F6695',
-                color: '#FFFB0A',
-                textShadow: '1px 1px 3px black'
-              }}
-            >
-              Checkout
-            </Button>
-          </Link>
-          <h5 style={{ color: 'antiquewhite' }}>
-            Total: {' $ '}
-            {total}
-          </h5>
+          {checkoutOpen ? (
+            <CheckoutForm onClose={handleClose} />
+          ) : (
+            <>
+              <Button
+                onClick={handleCheckout}
+                style={{
+                  backgroundColor: '#5F6695',
+                  outline: '#5F6695',
+                  color: '#FFFB0A',
+                  textShadow: '1px 1px 3px black'
+                }}
+              >
+                Checkout
+              </Button>
+              <h5 style={{ color: 'antiquewhite' }}>
+                Total: {' $ '}
+                {total}
+              </h5>
+            </>
+          )}
         </Modal.Footer>
       </Modal>
     </>
