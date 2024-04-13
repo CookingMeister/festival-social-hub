@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     const isPasswordValid = await comparePassword(password, user.password);
-    
+
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
@@ -79,7 +79,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// Protected routes
+// Get user by ID
 router.get('/users', authMiddleware, async (req, res) => {
   try {
     const userId = req.userId;
@@ -92,6 +92,19 @@ router.get('/users', authMiddleware, async (req, res) => {
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch user data' });
+  }
+});
+
+// Get all users
+router.get('/users/all', authMiddleware, async (req, res) => {
+  try {
+    const users = await User.find().select('-password');
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'No users found' });
+    }
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch users' });
   }
 });
 
@@ -120,6 +133,22 @@ export const updateUserProfile = async (req, res) => {
 // Update user profile
 router.put('/users/profile', authMiddleware, updateUserProfile);
 
+const createUserProfile = async (req, res) => {
+  try {
+    const { password, ...userData } = req.body;
+    // Hash the password
+    const hashedPassword = await hashPassword(password);
+    const newUser = new User({ ...userData, password: hashedPassword });
+    const savedUser = await newUser.save();
+    console.log('New User:', savedUser);
+    res.status(201).json(savedUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+router.post('/users/profile', authMiddleware, createUserProfile);
+
 // GET products
 router.get('/products', authMiddleware, async (req, res) => {
   try {
@@ -134,15 +163,15 @@ router.get('/products', authMiddleware, async (req, res) => {
   }
 });
 
-//  PUT products
+//  Update products
 router.put('/products/:id', authMiddleware, async (req, res) => {
   try {
     const id = req.params.id;
-    // console.log('id:', id);
-    const { name, description, price, category, availability} = req.body;
+    const { name, description, price, category, availability, imageUrl } =
+      req.body;
     const product = await Product.findByIdAndUpdate(
       id,
-      { name, description, price, category, availability },
+      { name, description, price, category, availability, imageUrl },
       { new: true }
     );
     if (!product) {
@@ -153,7 +182,27 @@ router.put('/products/:id', authMiddleware, async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
 
+// POST products
+router.post('/products', authMiddleware, async (req, res) => {
+  try {
+    const { name, description, price, category, availability, imageUrl } =
+      req.body;
+    const product = new Product({
+      name,
+      description,
+      price,
+      category,
+      availability,
+      imageUrl,
+    });
+    const savedProduct = await product.save();
+    console.log('New Product:', savedProduct);
+    res.status(201).json(savedProduct);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // DELETE products
