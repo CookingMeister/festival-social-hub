@@ -175,12 +175,13 @@ function ItemCard({
 
 ItemCard.propTypes = {
   item: PropTypes.shape({
-    img: PropTypes.string.isRequired,
+    img: PropTypes.string,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    category: PropTypes.arrayOf(PropTypes.string).isRequired,
-    size: PropTypes.arrayOf(PropTypes.string).isRequired,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.shape({
+      size: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
     imageUrl: PropTypes.string.isRequired,
   }).isRequired,
   isInStock: PropTypes.bool.isRequired,
