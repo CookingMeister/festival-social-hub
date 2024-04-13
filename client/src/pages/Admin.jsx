@@ -15,7 +15,7 @@ const Admin = () => {
     description: '',
     price: '',
     category: '',
-    availability: '',
+    availability: true,
   });
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Admin = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [products]);
 
   const handleShowModal = (product) => {
     setEditProduct(product);
@@ -49,6 +49,7 @@ const Admin = () => {
 
   const updateProduct = async (productId, product) => {
     try {
+      console.log("Updating product with:", product);
       const token = localStorage.getItem('token');
       await axios.put(`/api/products/${productId}`, product, {
         headers: {
@@ -83,9 +84,7 @@ const Admin = () => {
       <Container className="text-white">
         <div className="d-flex justify-content-between align-items-center">
           <h1>Product Inventory</h1>
-          <Button variant="warning">
-            New
-          </Button>
+          <Button variant="warning">New</Button>
         </div>
         <Table striped bordered hover variant="dark">
           <thead>
@@ -190,8 +189,8 @@ const Admin = () => {
                   <option value="costumes">Costumes</option>
                   <option value="accessories">Accessories</option>
                 </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="productAvailability">
+              </Form.Group>
+              {/* <Form.Group className="mb-3" controlId="productAvailability">
                 <Form.Label>Availabilty</Form.Label>
                 <Form.Control
                   type="string"
@@ -200,7 +199,24 @@ const Admin = () => {
                   onChange={(e) =>
                     setEditProduct({ ...editProduct, availability: e.target.value })
                   }
-                />
+                /> */}
+              <Form.Group className="mb-3" controlId="productAvailability">
+                <Form.Label>Availability</Form.Label>
+                <Form.Select
+                  value={editProduct.availability ? 'true' : 'false'}
+                  onChange={(e) => {
+                    console.log('Before update:', editProduct.availability);
+                    const updatedAvailability = e.target.value === 'true';
+                    setEditProduct({
+                      ...editProduct,
+                      availability: updatedAvailability,
+                    });
+                    console.log('After update:', updatedAvailability);
+                  }}
+                >
+                  <option value="true">In Stock</option>
+                  <option value="false">Out of Stock</option>
+                </Form.Select>
               </Form.Group>
             </Form>
           </Modal.Body>

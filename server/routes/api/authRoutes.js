@@ -138,11 +138,11 @@ router.get('/products', authMiddleware, async (req, res) => {
 router.put('/products/:id', authMiddleware, async (req, res) => {
   try {
     const id = req.params.id;
-    console.log('id:', id);
-    const { name, description, price, category} = req.body;
+    // console.log('id:', id);
+    const { name, description, price, category, availability} = req.body;
     const product = await Product.findByIdAndUpdate(
       id,
-      { name, description, price, category },
+      { name, description, price, category, availability },
       { new: true }
     );
     if (!product) {
