@@ -10,6 +10,7 @@ const Admin = () => {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showUpdateUserModal, setShowUpdateUserModal] = useState(false);
   const [showNewUserModal, setShowNewUserModal] = useState(false);
 
   const [editProduct, setEditProduct] = useState({
@@ -39,7 +40,15 @@ const Admin = () => {
     socials: '',
     topFestivals: '',
   });
-  
+  const [updateUser, setUpdateUser] = useState({
+    username: '',
+    name: '',
+    email: '',
+    password: '',
+    aboutMe: '',
+    socials: '',
+    topFestivals: '',
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -75,7 +84,7 @@ const Admin = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [updateUser]);
 
   const handleShowModal = (product) => {
     setEditProduct(product);
@@ -84,6 +93,11 @@ const Admin = () => {
 
   const update = (product) => {
     handleShowModal(product);
+  };
+
+  const handleShowUpdateUserModal = (user) => {
+    setUpdateUser(user);
+    setShowUpdateUserModal(true);
   };
 
   const updateProduct = async (productId, product) => {
@@ -169,6 +183,38 @@ const Admin = () => {
       });
     } catch (error) {
       console.error('Error creating user:', error);
+    }
+  };
+  // Update User Profile
+  const updateUserProfile = async (userId, updateUser) => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.put(`/api/users/profile`, updateUser, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      // Update the users state
+      setUsers(
+        users.map((user) =>
+          user.username === updateUser.username
+            ? { ...user, ...updateUser }
+            : user
+        )
+      );
+      // Reset the newUser state
+      setUpdateUser({
+        username: '',
+        name: '',
+        email: '',
+        password: '',
+        aboutMe: '',
+        socials: '',
+        topFestivals: '',
+      });
+      setShowUpdateUserModal(false);
+    } catch (error) {
+      console.error('Error updating user profile:', error);
     }
   };
 
@@ -474,7 +520,11 @@ const Admin = () => {
                 <td>{user.socials}</td>
                 <td>{user.topFestivals}</td>
                 <td className="d-flex justify-content-around">
-                  <Button variant="warning" size="sm">
+                  <Button
+                    variant="warning"
+                    size="sm"
+                    onClick={() => handleShowUpdateUserModal(user)}
+                  >
                     Update
                   </Button>
                   <Button variant="danger" size="sm">
@@ -595,6 +645,103 @@ const Admin = () => {
             </Button>
             <Button variant="primary" onClick={createUser}>
               Add User
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        {/* Update User Modal */}
+        <Modal
+          show={showUpdateUserModal}
+          onHide={() => setShowUpdateUserModal(false)}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Update User</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3" controlId="updateUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter username"
+                  value={updateUser.username}
+                  onChange={(e) =>
+                    setUpdateUser({ ...updateUser, username: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="updateEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={updateUser.email}
+                  onChange={(e) =>
+                    setUpdateUser({ ...updateUser, email: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="updatePassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter password"
+                  value={updateUser.password}
+                  onChange={(e) =>
+                    setUpdateUser({ ...updateUser, password: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="updateAboutMe">
+                <Form.Label>About</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Enter about me"
+                  value={updateUser.aboutMe}
+                  onChange={(e) =>
+                    setUpdateUser({ ...updateUser, aboutMe: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="updateSocials">
+                <Form.Label>Socials</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter socials"
+                  value={updateUser.socials}
+                  onChange={(e) =>
+                    setUpdateUser({ ...updateUser, socials: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="updateTopFestivals">
+                <Form.Label>Festivals</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter top festivals"
+                  value={updateUser.topFestivals}
+                  onChange={(e) =>
+                    setUpdateUser({
+                      ...updateUser,
+                      topFestivals: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowUpdateUserModal(false)}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => updateUserProfile(updateUser._id, updateUser)}
+            >
+              Update User
             </Button>
           </Modal.Footer>
         </Modal>
