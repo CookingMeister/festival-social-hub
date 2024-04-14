@@ -16,6 +16,7 @@ function CheckoutForm({ onClose }) {
     cardNumber: '',
     expirationDate: '',
     cvv: '',
+    specialInstructions: '', // New field for special instructions
   });
 
   const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
@@ -97,6 +98,7 @@ function CheckoutForm({ onClose }) {
       cardNumber: '',
       expirationDate: '',
       cvv: '',
+      specialInstructions: '' // Clear special instructions on form clear
     });
   };
 
@@ -243,6 +245,20 @@ function CheckoutForm({ onClose }) {
           Clear Form
         </Button>
       </Form>
+    
+      {/* Special Instructions */}
+      <Form.Group controlId="formSpecialInstructions">
+          <Form.Label>Special Instructions (max 200 characters)</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Add special instructions..."
+            name="specialInstructions"
+            value={formData.specialInstructions}
+            onChange={handleChange}
+            maxLength={200}
+          />
+        </Form.Group>
 
       <OrderConfirmation
         show={showOrderConfirmation}
