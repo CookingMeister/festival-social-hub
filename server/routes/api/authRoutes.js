@@ -243,11 +243,10 @@ router.delete('/products/:id', authMiddleware, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
+// DELETE user profile
 router.delete('/users/profile', authMiddleware, async (req, res) => {
   try {
     const userId = req.userId;
-    console.log('userId:', userId);
     const user = await User.findByIdAndDelete(userId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
