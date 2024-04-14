@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -19,6 +19,19 @@ function CheckoutForm({ onClose }) {
   });
 
   const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
+  const [orderConfirmationNumber, setOrderConfirmationNumber] = useState('');
+  const [cartItems, setCartItems] = useState([]);
+  const [subtotalAmount, setSubtotalAmount] = useState(0);
+  const [taxesAmount, setTaxesAmount] = useState(0);
+  const [shippingCost, setShippingCost] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +41,8 @@ function CheckoutForm({ onClose }) {
     if (name === 'cardNumber') {
       const cardNumberRegex = /^(\d{4}\s){3}\d{4}$/;
       if (!cardNumberRegex.test(value)) {
-        // Invalid format, don't update the state
         return;
       }
-      // Format the value with spaces every 4 digits
       formattedValue = value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
     }
 
@@ -39,7 +50,6 @@ function CheckoutForm({ onClose }) {
     if (name === 'expirationDate') {
       const expirationDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
       if (!expirationDateRegex.test(value)) {
-        // Invalid format, don't update the state
         return;
       }
     }
@@ -48,24 +58,31 @@ function CheckoutForm({ onClose }) {
     if (name === 'cvv') {
       const cvvRegex = /^\d{3}$/;
       if (!cvvRegex.test(value)) {
-        // Invalid format, don't update the state
         return;
       }
     }
 
-    // Update the form data with the formatted value
     setFormData({
       ...formData,
       [name]: formattedValue,
     });
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send data to server
     console.log(formData);
-    // Reset form fields after submission if needed
+
+    const subtotal = calculateSubtotal(cartItems);
+    const taxes = calculateTaxes(subtotal);
+    const shipping = 21; // Sample shipping cost
+    const total = calculateTotal(subtotal, taxes, shipping);
+
+    setOrderConfirmationNumber(generateOrderConfirmationNumber());
+    setSubtotalAmount(subtotal);
+    setTaxesAmount(taxes);
+    setShippingCost(shipping);
+    setTotalAmount(total);
+
     setFormData({
       name: '',
       email: '',
@@ -77,8 +94,8 @@ function CheckoutForm({ onClose }) {
       expirationDate: '',
       cvv: '',
     });
-    onClose(); // Close the modal after form submission
-    setShowOrderConfirmation(true); // Show the confirmation modal
+
+    setShowOrderConfirmation(true);
   };
 
   const handleClearForm = () => {
@@ -95,9 +112,25 @@ function CheckoutForm({ onClose }) {
     });
   };
 
+  const calculateSubtotal = (items) => {
+    return items.reduce((acc, item) => acc + item.price, 0);
+  };
+
+  const calculateTaxes = (subtotal) => {
+    return subtotal * 0.15;
+  };
+
+  const calculateTotal = (subtotal, taxes, shipping) => {
+    return subtotal + taxes + shipping;
+  };
+
+  const generateOrderConfirmationNumber = () => {
+    return Math.floor(100000 + Math.random() * 900000);
+  };
+
   return (
     <Container style={{ width: '50%', color: 'antiquewhite' }}>
-      <h1 className="mb-5"> Checkout</h1>
+      <h1 className="mb-5">Checkout</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName">
           <Form.Label>Name</Form.Label>
@@ -174,46 +207,47 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCardNumber">
-          <Form.Label className="mt-2">Card Number</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter card number"
-            name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+  <Form.Label className='mt-2'>Card Number</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Enter card number"
+    name="cardNumber"
+    value="4242 4242 4242 4242" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
-        <Form.Group controlId="formExpirationDate">
-          <Form.Label className="mt-2">Expiration Date</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="MM/YY"
-            name="expirationDate"
-            value={formData.expirationDate}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+<Form.Group controlId="formExpirationDate">
+  <Form.Label className='mt-2'>Expiration Date</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="MM/YY"
+    name="expirationDate"
+    value="12/25" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
-        <Form.Group controlId="formCVV">
-          <Form.Label className="mt-2">CVV</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="CVV"
-            name="cvv"
-            value={formData.cvv}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+<Form.Group controlId="formCVV">
+  <Form.Label className='mt-2'>CVV</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="CVV"
+    name="cvv"
+    value="000" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
-        <Button
-          variant="dark"
-          type="submit"
-          className="mt-3"
-          style={{ backgroundColor: '#ED217C' }}
+        <Button 
+            variant="dark"
+            type="submit"
+            className="mt-3"
+            style={{ backgroundColor: '#ED217C' }}
+            onClick={handleSubmit}
         >
           Submit
         </Button>
@@ -221,6 +255,18 @@ function CheckoutForm({ onClose }) {
           Clear Form
         </Button>
       </Form>
+
+      <OrderConfirmation
+        show={showOrderConfirmation}
+        onHide={() => setShowOrderConfirmation(false)}
+        orderConfirmationNumber={orderConfirmationNumber}
+        cartItems={cartItems}
+        subtotal={subtotalAmount}
+        taxes={taxesAmount}
+        shipping={shippingCost}
+        total={totalAmount}
+        formData={formData}
+      />
     </Container>
   );
 }
