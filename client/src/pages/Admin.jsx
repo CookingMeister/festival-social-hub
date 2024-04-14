@@ -396,7 +396,8 @@ const Admin = () => {
               Close
             </Button>
             <Button
-              variant="primary"
+              style={{ backgroundColor: '#ED217C' }}
+              variant="dark"
               onClick={() => {
                 updateProduct(editProduct._id, editProduct);
                 setShowModal(false);
@@ -505,13 +506,17 @@ const Admin = () => {
             >
               Close
             </Button>
-            <Button variant="primary" onClick={createProduct}>
+            <Button
+              style={{ backgroundColor: '#ED217C' }}
+              variant="dark"
+              onClick={createProduct}
+            >
               Add Product
             </Button>
           </Modal.Footer>
         </Modal>
-        
-      {/* Users Table */}
+
+        {/* Users Table */}
         {users.length === 0 ? (
           <div className="text-center">
             <h1>No Users</h1>
@@ -678,7 +683,11 @@ const Admin = () => {
             >
               Close
             </Button>
-            <Button variant="primary" onClick={createUser}>
+            <Button
+              style={{ backgroundColor: '#ED217C' }}
+              variant="dark"
+              onClick={createUser}
+            >
               Add User
             </Button>
           </Modal.Footer>
@@ -773,7 +782,8 @@ const Admin = () => {
               Close
             </Button>
             <Button
-              variant="primary"
+              style={{ backgroundColor: '#ED217C' }}
+              variant="dark"
               onClick={() => updateUserProfile(updateUser._id, updateUser)}
             >
               Update User
