@@ -83,18 +83,6 @@ function CheckoutForm({ onClose }) {
     setShippingCost(shipping);
     setTotalAmount(total);
 
-    setFormData({
-      name: '',
-      email: '',
-      streetAddress: '',
-      city: '',
-      province: '',
-      postalCode: '',
-      cardNumber: '',
-      expirationDate: '',
-      cvv: '',
-    });
-
     setShowOrderConfirmation(true);
   };
 
