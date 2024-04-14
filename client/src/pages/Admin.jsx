@@ -219,21 +219,23 @@ const Admin = () => {
     }
   };
 
-  // Delete User Profile
   const deleteUser = async (userId) => {
+    console.log('Deleting user with id:', userId);
     try {
-      await axios.delete(`/api/users/profile/${userId}`, {
+      await axios.delete(`/api/admin/users/profile/${userId}`, 
+      {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
-      });
+      }
+    );
       // Remove the deleted user from the users state
       setUsers(users.filter((user) => user._id !== userId));
-      localStorage.removeItem('token');
     } catch (error) {
       console.error('Error deleting user:', error);
     }
   };
+  
 
   const handleDeleteUser = (userId) => {
     deleteUser(userId);
