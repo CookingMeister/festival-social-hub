@@ -43,7 +43,10 @@ function CheckoutForm({ onClose }) {
       if (!cardNumberRegex.test(value)) {
         return;
       }
-      formattedValue = value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+      formattedValue = value
+        .replace(/\D/g, '')
+        .replace(/(.{4})/g, '$1 ')
+        .trim();
     }
 
     // Validate expiration date format (00/00)
@@ -157,7 +160,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formAddress">
-          <Form.Label>Street Address</Form.Label>
+          <Form.Label className="mt-2">Street Address</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your street address"
@@ -169,7 +172,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCity">
-          <Form.Label>City/Town</Form.Label>
+          <Form.Label className="mt-2">City/Town</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your city/town"
@@ -181,7 +184,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formProvince">
-          <Form.Label>Province</Form.Label>
+          <Form.Label className="mt-2">Province</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your province"
@@ -193,7 +196,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formPostalCode">
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label className="mt-2">Postal Code</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your postal code (e.g., X0X 0X0)"
@@ -207,53 +210,58 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCardNumber">
-  <Form.Label className='mt-2'>Card Number</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="Enter card number"
-    name="cardNumber"
-    value="4242 4242 4242 4242" // Sample data for testing
-    onChange={handleChange}
-    required
-  />
-</Form.Group>
+          <Form.Label className="mt-2">Card Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter card number"
+            name="cardNumber"
+            value="4242 4242 4242 4242" // Sample data for testing
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-<Form.Group controlId="formExpirationDate">
-  <Form.Label className='mt-2'>Expiration Date</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="MM/YY"
-    name="expirationDate"
-    value="12/25" // Sample data for testing
-    onChange={handleChange}
-    required
-  />
-</Form.Group>
+        <Form.Group controlId="formExpirationDate">
+          <Form.Label className="mt-2">Expiration Date</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="MM/YY"
+            name="expirationDate"
+            value="12/25" // Sample data for testing
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-<Form.Group controlId="formCVV">
-  <Form.Label className='mt-2'>CVV</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="CVV"
-    name="cvv"
-    value="000" // Sample data for testing
-    onChange={handleChange}
-    required
-  />
-</Form.Group>
-
-        <Button 
-            variant="dark"
-            type="submit"
-            className="mt-3"
-            style={{ backgroundColor: '#ED217C' }}
-            onClick={handleSubmit}
+        <Form.Group controlId="formCVV">
+          <Form.Label className="mt-2">CVV</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="CVV"
+            name="cvv"
+            value="000" // Sample data for testing
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <div className="d-flex justify-content-between">
+        <Button
+          variant="dark"
+          type="submit"
+          className="mt-3"
+          style={{ backgroundColor: '#ED217C' }}
+          onClick={handleSubmit}
         >
           Submit
         </Button>
-        <Button variant="secondary" className="mt-3 ml-3" onClick={handleClearForm}>
+        <Button
+          variant="secondary"
+          className="mt-3 ml-3"
+          onClick={handleClearForm}
+        >
           Clear Form
         </Button>
+        </div>
       </Form>
 
       <OrderConfirmation
