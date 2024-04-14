@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 const OrderConfirmationModal = ({ show, onHide, orderConfirmationNumber, cartItems, subtotal, taxes, shipping, total, formData }) => {
