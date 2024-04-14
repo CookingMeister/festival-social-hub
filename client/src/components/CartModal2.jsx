@@ -99,7 +99,7 @@ function CartModal2() {
                   <button
                     className="btn btn-link"
                     style={{ color: '#1B998B', borderColor: '#1B998B' }}
-                    onClick={(e) => {
+                    onClick={() => {
                       const updatedCartItems = existingCartItems.filter(
                         (item, i) => i !== index
                       );
