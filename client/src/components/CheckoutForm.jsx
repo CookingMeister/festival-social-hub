@@ -234,6 +234,20 @@ function CheckoutForm({ onClose }) {
             required
           />
         </Form.Group>
+         
+      {/* Special Instructions */}
+      <Form.Group controlId="formSpecialInstructions">
+          <Form.Label className="mt-2">Special Instructions (max 200 characters)</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Add special instructions..."
+            name="specialInstructions"
+            value={formData.specialInstructions}
+            onChange={handleChange}
+            maxLength={200}
+          />
+        </Form.Group>
         <div className="d-flex justify-content-between">
         <Button
           variant="dark"
@@ -253,20 +267,6 @@ function CheckoutForm({ onClose }) {
         </Button>
         </div>
       </Form>
-    
-      {/* Special Instructions */}
-      <Form.Group controlId="formSpecialInstructions">
-          <Form.Label>Special Instructions (max 200 characters)</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Add special instructions..."
-            name="specialInstructions"
-            value={formData.specialInstructions}
-            onChange={handleChange}
-            maxLength={200}
-          />
-        </Form.Group>
 
       <OrderConfirmation
         show={showOrderConfirmation}
@@ -284,7 +284,7 @@ function CheckoutForm({ onClose }) {
 }
 
 CheckoutForm.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 export default CheckoutForm;
