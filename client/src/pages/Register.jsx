@@ -17,6 +17,7 @@ const Register = ({ setIsLoggedIn }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmailError('Please enter a valid email address');
+      return;
     } else {
       setEmailError('');
     }
@@ -25,6 +26,7 @@ const Register = ({ setIsLoggedIn }) => {
   const validatePassword = () => {
     if (password.length < 6) {
       setPasswordError('Password must be at least 6 characters long');
+      return;
     } else {
       setPasswordError('');
     }

@@ -18,6 +18,11 @@ const Login = ({ setIsLoggedIn }) => {
     if (username.trim() === '') {
       setUsernameError('Username is required');
       return;
+    } else if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+      setUsernameError(
+        'Username can only contain letters, numbers, and underscores'
+      );
+      return;
     } else {
       setUsernameError('');
     }
@@ -25,6 +30,9 @@ const Login = ({ setIsLoggedIn }) => {
     // Validate password
     if (password.trim() === '') {
       setPasswordError('Password is required');
+      return;
+    } else if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters long');
       return;
     } else {
       setPasswordError('');
@@ -43,7 +51,13 @@ const Login = ({ setIsLoggedIn }) => {
       setIsLoggedIn(true); // Update the login state in the parent component
       // Redirect to profile page
       navigate('/profile');
-    } catch (error) {
+    } catch (error) {      
+      if (error.response && error.response.data.error === 'Invalid username') {
+        setUsernameError('Invalid username');
+      }
+      if (error.response && error.response.data.error === 'Invalid password') {
+        setPasswordError('Invalid password');
+      }
       console.error('Login failed', error);
     }
   };
