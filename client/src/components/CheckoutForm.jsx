@@ -173,40 +173,40 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCardNumber">
-          <Form.Label className='mt-2'>Card Number</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter card number"
-            name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+  <Form.Label className='mt-2'>Card Number</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Enter card number"
+    name="cardNumber"
+    value="4242 4242 4242 4242" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
-        <Form.Group controlId="formExpirationDate">
-          <Form.Label className='mt-2'>Expiration Date</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="MM/YY"
-            name="expirationDate"
-            value={formData.expirationDate}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+<Form.Group controlId="formExpirationDate">
+  <Form.Label className='mt-2'>Expiration Date</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="MM/YY"
+    name="expirationDate"
+    value="12/25" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
-        <Form.Group controlId="formCVV">
-          <Form.Label className='mt-2'>CVV</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="CVV"
-            name="cvv"
-            value={formData.cvv}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+<Form.Group controlId="formCVV">
+  <Form.Label className='mt-2'>CVV</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="CVV"
+    name="cvv"
+    value="000" // Sample data for testing
+    onChange={handleChange}
+    required
+  />
+</Form.Group>
 
         <Button variant="dark" type="submit" className='mt-3' style={{ backgroundColor: '#ED217C' }}>
           Submit
