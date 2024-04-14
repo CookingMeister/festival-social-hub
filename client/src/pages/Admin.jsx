@@ -37,8 +37,8 @@ const Admin = () => {
     email: '',
     password: '',
     aboutMe: '',
-    socials: '',
-    topFestivals: '',
+    socials: [],
+    topFestivals: [],
   });
   const [updateUser, setUpdateUser] = useState({
     username: '',
@@ -46,8 +46,8 @@ const Admin = () => {
     email: '',
     password: '',
     aboutMe: '',
-    socials: '',
-    topFestivals: '',
+    socials: [],
+    topFestivals: [],
   });
 
   useEffect(() => {
@@ -77,6 +77,7 @@ const Admin = () => {
             Authorization: token,
           },
         });
+
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -216,6 +217,26 @@ const Admin = () => {
     } catch (error) {
       console.error('Error updating user profile:', error);
     }
+  };
+
+  // Delete User Profile
+  const deleteUser = async (userId) => {
+    try {
+      await axios.delete(`/api/users/profile/${userId}`, {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
+      // Remove the deleted user from the users state
+      setUsers(users.filter((user) => user._id !== userId));
+      localStorage.removeItem('token');
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
+  const handleDeleteUser = (userId) => {
+    deleteUser(userId);
   };
 
   return (
@@ -489,62 +510,76 @@ const Admin = () => {
             </Button>
           </Modal.Footer>
         </Modal>
-
-        {/* Users Table */}
-
-        <div className="d-flex justify-content-between align-items-center">
-          <h1>Users </h1>
-          <Button variant="warning" onClick={() => setShowNewUserModal(true)}>
-            New
-          </Button>
-        </div>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>About</th>
-              <th>Socials</th>
-              <th>Festivals</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.username}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.aboutMe}</td>
-                <td>{user.socials}</td>
-                <td>{user.topFestivals}</td>
-                <td className="d-flex justify-content-around">
-                  <Button
-                    variant="warning"
-                    size="sm"
-                    onClick={() => handleShowUpdateUserModal(user)}
-                  >
-                    Update
-                  </Button>
-                  <Button variant="danger" size="sm">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      fill="currentColor"
-                      className="bi bi-trash"
-                      viewBox="0 0 16 17"
-                    >
-                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                      <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                    </svg>
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        
+      {/* Users Table */}
+        {users.length === 0 ? (
+          <div className="text-center">
+            <h1>No Users</h1>
+          </div>
+        ) : (
+          <>
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Users </h1>
+              <Button
+                variant="warning"
+                onClick={() => setShowNewUserModal(true)}
+              >
+                New
+              </Button>
+            </div>
+            <Table striped bordered hover variant="dark">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>About</th>
+                  <th>Socials</th>
+                  <th>Festivals</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user._id}>
+                    <td>{user.username}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.aboutMe}</td>
+                    <td>{user.socials}</td>
+                    <td>{user.topFestivals}</td>
+                    <td className="d-flex justify-content-around">
+                      <Button
+                        variant="warning"
+                        size="sm"
+                        onClick={() => handleShowUpdateUserModal(user)}
+                      >
+                        Update
+                      </Button>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleDeleteUser(user._id)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="22"
+                          fill="currentColor"
+                          className="bi bi-trash"
+                          viewBox="0 0 16 17"
+                        >
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                        </svg>
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </>
+        )}
         {/* New User Modal */}
         <Modal
           show={showNewUserModal}
@@ -663,7 +698,7 @@ const Admin = () => {
                 <Form.Control
                   type="text"
                   placeholder="Enter username"
-                  value={updateUser.username}
+                  value={updateUser.username || ''}
                   onChange={(e) =>
                     setUpdateUser({ ...updateUser, username: e.target.value })
                   }
@@ -674,7 +709,7 @@ const Admin = () => {
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
-                  value={updateUser.email}
+                  value={updateUser.email || ''}
                   onChange={(e) =>
                     setUpdateUser({ ...updateUser, email: e.target.value })
                   }
@@ -685,7 +720,7 @@ const Admin = () => {
                 <Form.Control
                   type="password"
                   placeholder="Enter password"
-                  value={updateUser.password}
+                  value={updateUser.password || ''}
                   onChange={(e) =>
                     setUpdateUser({ ...updateUser, password: e.target.value })
                   }
@@ -697,7 +732,7 @@ const Admin = () => {
                   as="textarea"
                   rows={3}
                   placeholder="Enter about me"
-                  value={updateUser.aboutMe}
+                  value={updateUser.aboutMe || ''}
                   onChange={(e) =>
                     setUpdateUser({ ...updateUser, aboutMe: e.target.value })
                   }
@@ -708,7 +743,7 @@ const Admin = () => {
                 <Form.Control
                   type="text"
                   placeholder="Enter socials"
-                  value={updateUser.socials}
+                  value={updateUser.socials || []}
                   onChange={(e) =>
                     setUpdateUser({ ...updateUser, socials: e.target.value })
                   }
@@ -719,7 +754,7 @@ const Admin = () => {
                 <Form.Control
                   type="text"
                   placeholder="Enter top festivals"
-                  value={updateUser.topFestivals}
+                  value={updateUser.topFestivals || []}
                   onChange={(e) =>
                     setUpdateUser({
                       ...updateUser,
