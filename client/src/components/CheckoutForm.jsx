@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -82,18 +82,6 @@ function CheckoutForm({ onClose }) {
     setTaxesAmount(taxes);
     setShippingCost(shipping);
     setTotalAmount(total);
-
-    setFormData({
-      name: '',
-      email: '',
-      streetAddress: '',
-      city: '',
-      province: '',
-      postalCode: '',
-      cardNumber: '',
-      expirationDate: '',
-      cvv: '',
-    });
 
     setShowOrderConfirmation(true);
   };

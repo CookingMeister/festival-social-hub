@@ -1,10 +1,8 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Modal, Button } from 'react-bootstrap';
 
-function OrderConfirmation({ show, onHide, orderConfirmationNumber, subtotal, taxes, shipping, total, formData }) {
-  // Retrieve cart items from local storage
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const OrderConfirmationModal = ({ show, onHide, orderConfirmationNumber, cartItems, subtotal, taxes, shipping, total, formData }) => {
+  const formattedCardNumber = formData.cardNumber.replace(/\d{4}(?=\d{4})/g, 'XXXX ');
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -31,7 +29,7 @@ function OrderConfirmation({ show, onHide, orderConfirmationNumber, subtotal, ta
         <p>City: {formData.city}</p>
         <p>Province: {formData.province}</p>
         <p>Postal Code: {formData.postalCode}</p>
-        <p>Card Number: {formData.cardNumber}</p>
+        <p>Card Number: {formattedCardNumber}</p>
         <p>Expiration Date: {formData.expirationDate}</p>
         <p>CVV: {formData.cvv}</p>
       </Modal.Body>
@@ -42,6 +40,7 @@ function OrderConfirmation({ show, onHide, orderConfirmationNumber, subtotal, ta
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
-export default OrderConfirmation;
+export default OrderConfirmationModal;
+
