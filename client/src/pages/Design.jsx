@@ -17,7 +17,7 @@ function Design() {
           />
         </Row>
 
-      <h1 className="text-center" style={{ color: '#ed217c', textShadow: '1px 1px 3px black' }}>Coming Soon...</h1>
+      <h1 className="text-center m-1" style={{ color: '#ed217c', textShadow: '1px 1px 3px black' }}>Coming Soon...</h1>
 
     </div>
   );
