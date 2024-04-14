@@ -1,9 +1,11 @@
+//import dependancies
 import Dropdown from 'react-bootstrap/Dropdown';
 import productDetails from '../utils/productDetails.json';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import CartModal2 from '../components/CartModal2';
 
+// component for art market buttons with props 
 function ArtMarketButtons({
     selectedStyle,
     handleStyleSelect,
@@ -24,9 +26,11 @@ function ArtMarketButtons({
                         textShadow: '1px 1px 3px #000000',
                     }}
                 >
+                    {/** sets button text to style selection */}
                     {selectedStyle ? selectedStyle : 'Style'}
                 </Dropdown.Toggle>
 
+                    {/** maps through style options to sort products by style */}
                 <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                     {productDetails.styles.map((style, index) => (
                         <Dropdown.Item
@@ -49,9 +53,11 @@ function ArtMarketButtons({
                         textShadow: '1px 1px 3px #000000',
                     }}
                 >
+                    {/** sets button text to bestSeller selection */}
                     {selectedBestSeller ? selectedBestSeller : 'Best Seller'}
                 </Dropdown.Toggle>
 
+                    {/** maps through style options to sort products by best seller */}
                 <Dropdown.Menu style={{ backgroundColor: '#5F6695' }}>
                     {productDetails.BestSellers.map((bestSeller, index) => (
                         <Dropdown.Item
@@ -64,6 +70,7 @@ function ArtMarketButtons({
                     ))}
                 </Dropdown.Menu>
             </Dropdown>
+            {/** resets style & bestseller btn */}
             <Button
                 style={{
                     backgroundColor: '#5F6695',
@@ -77,12 +84,14 @@ function ArtMarketButtons({
                 Reset
             </Button>
             <div>
+                {/** imports cart modal*/}
                 <CartModal2 />
             </div>
         </div>
     )
 }
 
+// proptype validation
 ArtMarketButtons.propTypes = {
     selectedStyle: PropTypes.string,
     selectedBestSeller: PropTypes.string, 
@@ -91,4 +100,5 @@ ArtMarketButtons.propTypes = {
     handleReset: PropTypes.func.isRequired
 };
 
+//export component
 export default ArtMarketButtons;

@@ -1,3 +1,4 @@
+// banner above footer
 const FlowerBottom = () => {
   return (
     <>
@@ -15,4 +16,5 @@ const FlowerBottom = () => {
   );
 };
 
+// exports
 export default FlowerBottom;

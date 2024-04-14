@@ -1,3 +1,4 @@
+//imports dependancies
 import Carousel from 'react-bootstrap/Carousel';
 import MermaidCrown from '../components/MermaidCrown';
 import JeanJacket from '../components/JeanJacket';
@@ -19,6 +20,7 @@ function CarouselImage() {
       }}
     >
       <Carousel.Item interval={4000}>
+        {/** imports mermaid crown component */}
         <MermaidCrown text="Mermaid Crown" />
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
@@ -30,6 +32,7 @@ function CarouselImage() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={4000}>
+        {/** imports jean jacket component */}
         <JeanJacket text="Jean Jacket" />
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
@@ -41,6 +44,7 @@ function CarouselImage() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={4000}>
+        {/** imports flower crown component */}
         <FlowerCrown text="Flower Crown" />
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
@@ -55,4 +59,5 @@ function CarouselImage() {
   );
 }
 
+// exports component
 export default CarouselImage;
