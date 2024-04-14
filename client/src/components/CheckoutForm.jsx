@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
@@ -55,7 +56,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formEmail">
-          <Form.Label className='mt-2'>Email address</Form.Label>
+          <Form.Label className="mt-2">Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -67,7 +68,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formAddress">
-          <Form.Label className='mt-2'>Address</Form.Label>
+          <Form.Label className="mt-2">Address</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -80,7 +81,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCardNumber">
-          <Form.Label className='mt-2'>Card Number</Form.Label>
+          <Form.Label className="mt-2">Card Number</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter card number"
@@ -92,7 +93,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formExpirationDate">
-          <Form.Label className='mt-2'>Expiration Date</Form.Label>
+          <Form.Label className="mt-2">Expiration Date</Form.Label>
           <Form.Control
             type="text"
             placeholder="MM/YY"
@@ -104,7 +105,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formCVV">
-          <Form.Label className='mt-2'>CVV</Form.Label>
+          <Form.Label className="mt-2">CVV</Form.Label>
           <Form.Control
             type="text"
             placeholder="CVV"
@@ -115,12 +116,21 @@ function CheckoutForm({ onClose }) {
           />
         </Form.Group>
 
-        <Button variant="dark" type="submit" className='mt-3' style={{backgroundColor: '#ED217C'}}>
+        <Button
+          variant="dark"
+          type="submit"
+          className="mt-3"
+          style={{ backgroundColor: '#ED217C' }}
+        >
           Submit
         </Button>
       </Form>
     </Container>
   );
 }
+
+CheckoutForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default CheckoutForm;
