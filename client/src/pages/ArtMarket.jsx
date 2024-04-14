@@ -74,7 +74,7 @@ function ArtMarket() {
     return true;
   });
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="py-3" style={{ minHeight: '100vh', margin: '0 auto' }}>

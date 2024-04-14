@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 function CartModal2() {
   const [show, setShow] = useState(false);
   const [total, setTotal] = useState(0);
-
   const [existingCartItems, setExistingCartItems] = useState(
-    JSON.parse(localStorage.getItem('cartItems'))
+    localStorage.getItem('cartItems') === null
+      ? []
+      : JSON.parse(localStorage.getItem('cartItems'))
   );
 
   const handleClose = () => setShow(false);
@@ -19,8 +20,9 @@ function CartModal2() {
   };
 
   const handleClearCart = () => {
-    setExistingCartItems(localStorage.removeItem('cartItems'));
-  }
+    setExistingCartItems([]);
+    localStorage.removeItem('cartItems');
+  };
 
   useEffect(() => {
     if (existingCartItems) {
@@ -31,6 +33,15 @@ function CartModal2() {
       setTotal(totalPrice);
     }
   }, [existingCartItems, total]);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+    console.log('existingCartItems effect changed:', existingCartItems);
+  }, [existingCartItems]);
+
+  useEffect(() => {
+    setExistingCartItems(JSON.parse(localStorage.getItem('cartItems')));
+  }, []);
 
   return (
     <>
@@ -84,11 +95,21 @@ function CartModal2() {
             existingCartItems.map((existingCartItem, index) => (
               <div key={index}>
                 <div className="d-flex justify-content-between align-items-center">
-                  <h5 className="m-3">
-                    <strong>{existingCartItem.name}</strong>
+                  <h5
+                    className="m-3"
+                    style={{ color: 'antiquewhite', fontWeight: '600' }}
+                  >
+                    {existingCartItem.name}
                   </h5>
-                  <label htmlFor="buttonDel">
-                    {' '}
+                  <button
+                    className="btn btn-link text-danger border-danger"
+                    onClick={(e) => {
+                      const updatedCartItems = existingCartItems.filter(
+                        (item, i) => i !== index
+                      );
+                      setExistingCartItems(updatedCartItems);
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
@@ -99,29 +120,24 @@ function CartModal2() {
                     >
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
                       <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                    </svg>{' '}
-                    <input
-                      type="checkbox"
-                      id="buttonDel"
-                      style={{ display: 'none' }}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          const updatedCartItems = existingCartItems.filter(
-                            (item, i) => i !== index
-                          );
-                          localStorage.setItem(
-                            'cartItems',
-                            JSON.stringify(updatedCartItems)
-                          );
-                          setExistingCartItems(updatedCartItems);
-                        }
-                      }}
-                    />
-                  </label>
+                    </svg>
+                  </button>
                 </div>
                 <div className="d-flex justify-content-between pt-1 px-4">
                   <p>
-                    <strong> Size: {existingCartItem.size}</strong>
+                    <strong>
+                      {' '}
+                      Size:{' '}
+                      <span
+                        style={{
+                          color: 'antiquewhite',
+                          fontWeight: '500',
+                          marginLeft: '2px',
+                        }}
+                      >
+                        {existingCartItem.size}
+                      </span>
+                    </strong>
                   </p>
                   <p>
                     <strong>
@@ -155,24 +171,23 @@ function CartModal2() {
         >
           <Link to="/checkout">
             <Button
-              className='m-1'
+            variant="light"
+              className="m-1"
               style={{
-                backgroundColor: '#5F6695',
-                outline: '#5F6695',
-                color: '#FFFB0A',
-                textShadow: '1px 1px 3px black',
+                fontWeight: 'bold',
               }}
             >
               Checkout
             </Button>
           </Link>
           <Button
-            className='m-1 btn-warning'
+            className="m-1"
             onClick={handleClearCart}
             style={{
-              textShadow: '1px 1px 4px black',
-              outline: 'black',
-              color: 'black'
+              fontWeight: 'bold',
+              color: 'black',
+              border: 'none',
+              backgroundColor: '#1B998B',
             }}
           >
             Clear Cart
