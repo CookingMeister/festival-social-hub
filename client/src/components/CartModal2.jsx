@@ -36,12 +36,7 @@ function CartModal2() {
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
-    console.log('existingCartItems effect changed:', existingCartItems);
   }, [existingCartItems]);
-
-  useEffect(() => {
-    setExistingCartItems(JSON.parse(localStorage.getItem('cartItems')));
-  }, []);
 
   return (
     <>
@@ -102,7 +97,8 @@ function CartModal2() {
                     {existingCartItem.name}
                   </h5>
                   <button
-                    className="btn btn-link text-danger border-danger"
+                    className="btn btn-link"
+                    style={{ color: '#1B998B', borderColor: '#1B998B' }}
                     onClick={(e) => {
                       const updatedCartItems = existingCartItems.filter(
                         (item, i) => i !== index
@@ -158,7 +154,7 @@ function CartModal2() {
               </div>
             ))
           ) : (
-            <p>Your cart is empty.</p>
+            <p className="text-center mt-2">Your cart is empty.</p>
           )}
         </Modal.Body>
         <Modal.Footer
@@ -171,27 +167,33 @@ function CartModal2() {
         >
           <Link to="/checkout">
             <Button
-            variant="light"
+              variant="light"
               className="m-1"
               style={{
                 fontWeight: 'bold',
+                borderColor: '#ed217c',
+                borderWidth: '2px',
               }}
             >
               Checkout
             </Button>
           </Link>
-          <Button
-            className="m-1"
-            onClick={handleClearCart}
-            style={{
-              fontWeight: 'bold',
-              color: 'black',
-              border: 'none',
-              backgroundColor: '#1B998B',
-            }}
-          >
-            Clear Cart
-          </Button>
+          {existingCartItems.length > 0 && (
+            <Button
+              className="m-1"
+              onClick={handleClearCart}
+              style={{
+                fontWeight: 'bold',
+                color: 'black',
+                borderColor: 'antiquewhite',
+                borderWidth: '1px',
+                backgroundColor: '#1B998B',
+              }}
+            >
+              Clear Cart
+            </Button>
+          )}
+
           <h5 style={{ color: 'antiquewhite' }}>
             Total: {' $ '}
             {total}
