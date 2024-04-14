@@ -31,6 +31,7 @@ const OrderConfirmationModal = ({ show, onHide, orderConfirmationNumber, cartIte
         <p>Card Number: {formattedCardNumber}</p>
         <p>Expiration Date: {formData.expirationDate}</p>
         <p>CVV: {formData.cvv}</p>
+        <p>Special Instructions: {formData.specialInstructions}</p> 
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>
@@ -42,4 +43,3 @@ const OrderConfirmationModal = ({ show, onHide, orderConfirmationNumber, cartIte
 };
 
 export default OrderConfirmationModal;
-
