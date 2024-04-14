@@ -110,16 +110,25 @@ router.get('/users/all', authMiddleware, async (req, res) => {
 
 export const updateUserProfile = async (req, res) => {
   try {
-    const { name, socials, aboutMe, topFestivals } = req.body;
+    const { name, username, password, socials, aboutMe, topFestivals } =
+      req.body;
     const userId = req.userId;
     console.log('userId:', userId);
 
+    const updateFields = { name, socials, aboutMe, topFestivals };
+
+    if (username) {
+      updateFields.username = username;
+    }
+
+    if (password) {
+      updateFields.password = await hashPassword(password);
+    }
+
     // Find the user by ID and update the profile fields
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { name, socials, aboutMe, topFestivals },
-      { new: true }
-    );
+    const user = await User.findByIdAndUpdate(userId, updateFields, {
+      new: true,
+    });
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
@@ -148,6 +157,21 @@ const createUserProfile = async (req, res) => {
 };
 
 router.post('/users/profile', authMiddleware, createUserProfile);
+
+router.delete('/users/profile/:id', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.params.id;
+    console.log('userId:', userId);
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    console.log('Deleted User:', user);
+    res.status(200).json(user);
+   } catch (error) {
+   res.status(500).json({ error: error.message });
+   }
+});
 
 // GET products
 router.get('/products', authMiddleware, async (req, res) => {

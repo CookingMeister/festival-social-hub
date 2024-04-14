@@ -16,11 +16,13 @@ function CartModal2() {
   };
 
   useEffect(() => {
-    const totalPrice = existingCartItems.reduce(
-      (acc, item) => acc + parseFloat(item.price),
-      0
-    );
-    setTotal(totalPrice);
+    if (existingCartItems) {
+      const totalPrice = existingCartItems.reduce(
+        (acc, item) => acc + parseFloat(item.price),
+        0
+      );
+      setTotal(totalPrice);
+    }
   }, [existingCartItems, total]);
 
   return (
@@ -79,24 +81,24 @@ function CartModal2() {
                     <strong>{existingCartItem.name}</strong>
                   </h5>
                   <label className="btn btn-danger" htmlFor="buttonDel">
-                Remove
-                  <input
-                    type="checkbox"
-                    id="buttonDel"
-                    style={{ display: 'none' }}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        const updatedCartItems = existingCartItems.filter(
-                          (item, i) => i !== index
-                        );
-                        localStorage.setItem(
-                          'cartItems',
-                          JSON.stringify(updatedCartItems)
-                        );
-                        setExistingCartItems(updatedCartItems);
-                      }
-                    }}
-                  />
+                    Remove
+                    <input
+                      type="checkbox"
+                      id="buttonDel"
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          const updatedCartItems = existingCartItems.filter(
+                            (item, i) => i !== index
+                          );
+                          localStorage.setItem(
+                            'cartItems',
+                            JSON.stringify(updatedCartItems)
+                          );
+                          setExistingCartItems(updatedCartItems);
+                        }
+                      }}
+                    />
                   </label>
                 </div>
                 <div className="d-flex justify-content-between pt-1 px-4">
