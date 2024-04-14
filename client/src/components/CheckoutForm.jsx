@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -144,7 +145,7 @@ function CheckoutForm({ onClose }) {
         </Form.Group>
 
         <Form.Group controlId="formEmail">
-          <Form.Label className='mt-2'>Email address</Form.Label>
+          <Form.Label className="mt-2">Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -241,7 +242,13 @@ function CheckoutForm({ onClose }) {
   />
 </Form.Group>
 
-        <Button variant="dark" type="submit" className="mt-3" style={{ backgroundColor: '#ED217C' }} onClick={handleSubmit}>
+        <Button 
+            variant="dark"
+            type="submit"
+            className="mt-3"
+            style={{ backgroundColor: '#ED217C' }}
+            onClick={handleSubmit}
+        >
           Submit
         </Button>
         <Button variant="secondary" className="mt-3 ml-3" onClick={handleClearForm}>
@@ -263,5 +270,9 @@ function CheckoutForm({ onClose }) {
     </Container>
   );
 }
+
+CheckoutForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default CheckoutForm;
