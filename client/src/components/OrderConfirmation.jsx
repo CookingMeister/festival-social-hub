@@ -2,7 +2,10 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-function OrderConfirmation({ show, onHide, orderConfirmationNumber, cartItems, subtotal, taxes, shipping, total, formData }) {
+function OrderConfirmation({ show, onHide, orderConfirmationNumber, subtotal, taxes, shipping, total, formData }) {
+  // Retrieve cart items from local storage
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
