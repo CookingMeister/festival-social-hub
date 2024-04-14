@@ -146,10 +146,10 @@ const Admin = () => {
       console.error('Error creating product:', error);
     }
   };
-
+// Delete Product
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`/api/products/${productId}`, {
+      await axios.delete(`/api/admin/products/${productId}`, {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
