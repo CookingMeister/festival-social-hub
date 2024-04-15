@@ -124,7 +124,7 @@ function ItemCard({
                 id="dropdown-basic"
                 style={{
                   backgroundColor: '#5F6695',
-                  outline: '#5F6695',
+                  border: 'none',
                   color: '#FFFB0A',
                   textShadow: '1px 1px 3px #000000',
                 }}
@@ -153,6 +153,7 @@ function ItemCard({
               style={{
                 backgroundColor: '#5F6695',
                 color: '#fffB0A',
+                border: 'none',
                 textShadow: '1px 1px 3px #000000',
               }}
               onClick={handleAddToCart}

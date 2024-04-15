@@ -288,7 +288,10 @@ const Admin = () => {
                 <td className="d-flex justify-content-around">
                   <Button
                     variant="dark"
-                    style={{backgroundColor: '#1B998B', borderColor: '#FAEBD7'}}
+                    style={{
+                      backgroundColor: '#1B998B',
+                      borderColor: '#FAEBD7',
+                    }}
                     className="me-2"
                     size="sm"
                     onClick={() => update(product)}
@@ -597,7 +600,8 @@ const Admin = () => {
                     <td>{user.topFestivals}</td>
                     <td className="d-flex justify-content-around">
                       <Button
-                        variant="warning"
+                        style={{ backgroundColor: '#1B998B', border: 'none' }}
+                        variant="light"
                         size="sm"
                         onClick={() => handleShowUpdateUserModal(user)}
                       >

@@ -53,7 +53,7 @@ function CartModal() {
         onClick={handleShow}
         style={{
           backgroundColor: '#5F6695',
-          outline: '#5F6695',
+          border: 'none',
           color: '#FFFB0A',
           textShadow: '1px 1px 3px #000000',
         }}
