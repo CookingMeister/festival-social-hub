@@ -1,5 +1,6 @@
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';// Import PropTypes for type-checking
+import { jsPDF } from "jspdf";
 
 // Defines OrderConfirmationModal component
 const OrderConfirmationModal = ({
@@ -14,7 +15,47 @@ const OrderConfirmationModal = ({
   formData,
 }) => {
 
-// JSX return statement
+  // creates pdf order confirmation using jspdf library
+  const handlePdf = () => {
+    const doc = new jsPDF();
+  
+    doc.addImage('watermarkcfw.png', 'PNG', 65, 5, 80, 80)
+  
+    let yPos = 100;
+    doc.setFontSize(18);
+
+    doc.text(`Order Confirmation Number: ${orderConfirmationNumber}`, 20, yPos);
+    yPos += 10;
+    doc.text("Items:", 20, yPos);
+    yPos += 5;
+    cartItems.forEach((item) => {
+      yPos += 10;
+      doc.text(`${item.name}: $${item.price}`, 25, yPos);
+    });
+    yPos += 15;
+    doc.text(`Subtotal: $${subtotal}`, 20, yPos);
+    yPos += 10;
+    doc.text(`Taxes: $${taxes}`, 20, yPos);
+    yPos += 10;
+    doc.text(`Shipping: $${shipping}`, 20, yPos);
+    yPos += 15;
+    doc.text(`Total: $${total}`, 20, yPos);
+  
+    yPos += 15;
+    doc.text(`Email: ${formData.email}`, 20, yPos);
+    yPos += 10;
+    doc.text(`Ship to:`, 20, yPos);
+    yPos += 10;
+    doc.text(formData.name, 25, yPos);
+    yPos += 15;
+    doc.text(formData.streetAddress, 25, yPos);
+    yPos += 15;
+    doc.text(`${formData.city}, ${formData.province} ${formData.postalCode}`, 25, yPos);
+    
+    doc.save(`OrderNumber${orderConfirmationNumber}.pdf`);
+  }
+
+  // JSX return statement
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton style={{ backgroundColor: 'antiquewhite' }}>
@@ -80,13 +121,13 @@ const OrderConfirmationModal = ({
             <span className="mx-2">{formData.postalCode}</span>
           </li>
         </ul>
-     
+
         {formData.specialInstructions && (
           <>
             <h5 className="py-3">Special Instructions:</h5>
             <p className='mx-5'>{formData.specialInstructions}</p>
           </>
-          )}
+        )}
       </Modal.Body>
       <Modal.Footer
         style={{
@@ -98,7 +139,7 @@ const OrderConfirmationModal = ({
         <Button
           variant="dark"
           style={{ backgroundColor: '#ED217C' }}
-          onClick={onHide}
+          onClick={handlePdf}
         >
           Print Details
         </Button>
