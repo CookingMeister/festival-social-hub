@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+/*COMING SOON*/
+/*import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -11,4 +12,4 @@ const aiOutfitSchema = new Schema({
 
 const AIOutfit = mongoose.model('AIOutfit', aiOutfitSchema);
 
-export default AIOutfit;
+export default AIOutfit;*/

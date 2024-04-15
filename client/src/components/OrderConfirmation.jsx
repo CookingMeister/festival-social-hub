@@ -1,6 +1,7 @@
 import { Modal, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';// Import PropTypes for type-checking
 
+// Defines OrderConfirmationModal component
 const OrderConfirmationModal = ({
   show,
   onHide,
@@ -12,7 +13,8 @@ const OrderConfirmationModal = ({
   total,
   formData,
 }) => {
-  
+
+  // Style for span elements
   const spanStyle = {
     fontWeight: 500,
     fontStyle: 'italic',
@@ -20,6 +22,7 @@ const OrderConfirmationModal = ({
     textAlign: 'center',
   };
 
+// JSX return statement
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton style={{ backgroundColor: 'antiquewhite' }}>
@@ -105,29 +108,30 @@ const OrderConfirmationModal = ({
   );
 };
 
+// PropTypes validation
 OrderConfirmationModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  orderConfirmationNumber: PropTypes.number.isRequired,
-  cartItems: PropTypes.arrayOf(
+  show: PropTypes.bool.isRequired,// Show modal prop
+  onHide: PropTypes.func.isRequired,// Hide modal prop
+  orderConfirmationNumber: PropTypes.number.isRequired,// Order confirmation number prop
+  cartItems: PropTypes.arrayOf(// Cart items prop
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
     })
   ).isRequired,
-  subtotal: PropTypes.number.isRequired,
-  taxes: PropTypes.number.isRequired,
-  shipping: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  formData: PropTypes.shape({
+  subtotal: PropTypes.number.isRequired,// Subtotal prop
+  taxes: PropTypes.number.isRequired,// Taxes prop
+  shipping: PropTypes.number.isRequired,// Shipping cost prop
+  total: PropTypes.number.isRequired,// Total amount prop
+  formData: PropTypes.shape({// Form data prop
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     streetAddress: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     province: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
-    specialInstructions: PropTypes.string,
+    specialInstructions: PropTypes.string,// Special instructions (optional)
   }).isRequired,
 };
-
+// Export the OrderConfirmationModal component
 export default OrderConfirmationModal;

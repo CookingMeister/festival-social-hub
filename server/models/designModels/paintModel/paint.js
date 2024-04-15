@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+/*COMING SOON*/
+/*import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -12,4 +13,4 @@ const paintJSAISchema = new Schema({
 
 const PaintJSAI = mongoose.model('PaintJSAI', paintJSAISchema);
 
-export default PaintJSAI;
+export default PaintJSAI;*/
