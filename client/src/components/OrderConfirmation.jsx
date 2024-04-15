@@ -79,10 +79,11 @@ const OrderConfirmationModal = ({
         </ul>
 
         {formData.specialInstructions && (
-          <p>
-            Special Instructions: <span>{formData.specialInstructions}</span>
-          </p>
-        )}
+          <>
+            <h5 className="py-3">Special Instructions:</h5>
+            <p className='mx-5'>{formData.specialInstructions}</p>
+          </>
+          )}
       </Modal.Body>
       <Modal.Footer
         style={{
