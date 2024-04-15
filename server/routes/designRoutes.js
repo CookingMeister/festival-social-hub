@@ -1,5 +1,4 @@
-/*COMING SOON*/
-/*import express from 'express';
+import express from 'express';
 import authMiddleware from '../utils/auth.js';
 import { getAiOutfits, createAiOutfit } from '../controllers/designControllers/designController.js';
 import { getPaintings, createPainting } from '../controllers/designControllers/paintController.js';
@@ -17,4 +16,3 @@ router.get('/paintings', authMiddleware, getPaintings);
 
 // Create painting
 router.post('/paintings', authMiddleware, createPainting);
-*/

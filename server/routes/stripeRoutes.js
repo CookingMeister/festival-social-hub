@@ -1,4 +1,4 @@
-/*import express from 'express';
+import express from 'express';
 import Stripe from 'stripe';
 
 const router = express.Router();
@@ -29,4 +29,4 @@ router.post('/webhook', async (req, res) => {
   }
 });
 
-export default router;*/
+export default router;
