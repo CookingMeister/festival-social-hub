@@ -6,6 +6,7 @@ import './styles/Main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    {/** imports browser router and app  */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

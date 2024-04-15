@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+//props propped down from parent component 'Art Market'
 function ItemCard({
   item,
   isInStock,
@@ -13,6 +14,7 @@ function ItemCard({
 }) {
   const [selectedSize, setSelectedSize] = useState(null);
 
+  // saves item to local storage
   const handleAddToCart = () => {
     if (selectedSize) {
       const cartItem = {
@@ -25,8 +27,7 @@ function ItemCard({
         JSON.parse(localStorage.getItem('cartItems')) || [];
       const updatedCartItems = [...existingCartItems, cartItem];
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-      // console.log('Item:', cartItem);
-      // console.log(JSON.parse(localStorage.getItem('cartItems')));
+
       handleShowItemAdded();
     } else {
       handleSizeRequired();
@@ -37,6 +38,7 @@ function ItemCard({
     setSelectedSize(size);
   };
 
+  // adds box shadow styling for each card
   const handleStyle = (event) => {
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => {
@@ -46,6 +48,7 @@ function ItemCard({
       '0 0 10px 5px rgba(255, 255, 255, 0.5)';
   };
 
+  // displays item info retrieved from db 
   return (
     <div>
       <Card
@@ -173,6 +176,7 @@ function ItemCard({
   );
 }
 
+//proptype validation
 ItemCard.propTypes = {
   item: PropTypes.shape({
     img: PropTypes.string,

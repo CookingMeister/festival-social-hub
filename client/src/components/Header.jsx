@@ -6,6 +6,7 @@ import LogoutButton from './LogoutButton';
 import PropTypes from 'prop-types';
 
 function Header({ isLoggedIn, setIsLoggedIn }) {
+  //checks is a user is logged in
   useEffect(() => {
     const checkLoginStatus = () => {
       const token = localStorage.getItem('token');
@@ -40,6 +41,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
             >
               Home
             </Nav.Link>
+            (/** nav links when no user is logged in */)
             {!isLoggedIn && (
               <>
                 <Nav.Link
@@ -58,6 +60,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
                 </Nav.Link>
               </>
             )}
+            {/** nav links after user is logged in */}
             {isLoggedIn && (
               <>
                 <Nav.Link
@@ -115,6 +118,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
   );
 }
 
+//proptype validation
 Header.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   setIsLoggedIn: PropTypes.func.isRequired,

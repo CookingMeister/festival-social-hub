@@ -1,3 +1,4 @@
+// imports dependancies
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -34,6 +35,7 @@ const App = () => {
   const [message, setMessage] = useState('');
   const location = useLocation(); // Use useLocation hook here
 
+  // msg to display regarding order submission
   useEffect(() => {
     const query = new URLSearchParams(location.search);
 
@@ -50,8 +52,11 @@ const App = () => {
 
   return (
       <>
+      {/** import header component */}
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        {/** import banner */}
         <FlowerTop />
+        {/** routes for each page */}
         <Routes>
           <Route
             path="/register"
@@ -101,6 +106,7 @@ const App = () => {
           )}
           <Route path="*" element={<Error />} />
         </Routes>
+        {/** imports banner & footer */}
         <FlowerBottom />
         <Footer />
       </>

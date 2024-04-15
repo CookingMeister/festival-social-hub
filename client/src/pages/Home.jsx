@@ -17,6 +17,7 @@ function Home() {
           xl={3}
           className="d-flex justify-content-center align-items-center"
         >
+          {/** business logo */}
           <Image
             src="/logo.png"
             style={{ backgroundImage: 'contain', width: '80%' }}
@@ -24,12 +25,15 @@ function Home() {
           />
         </Col>
         <Col xs={8} sm={8} md={7} lg={5} xl={4}>
+          {/** links to art market on click */}
           <Link to="/artmarket">
+            {/** imports carousel img component */}
             <CarouselImage />
           </Link>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4">
+        {/** imports google search component */}
         <GoogleSearch />
       </Row>
     </div>

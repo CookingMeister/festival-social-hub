@@ -25,6 +25,7 @@ function Profile({ welcome, user }) {
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
+  //to change profile pic
   function handleProfilePicChange(e) {
     const file = e.target.files[0];
     if (file) {
@@ -35,10 +36,12 @@ function Profile({ welcome, user }) {
     setShowSaveButton(true);
   }
 
+  //defaults profile pic to biz logo
   const handleError = () => {
     setFile('./logo.png'); // Fallback to default image if error occurs
   };
 
+  //saves profile pic to session storage
   useEffect(() => {
     const savedImageUrl = sessionStorage.getItem('profilePic');
     if (savedImageUrl) {
@@ -61,8 +64,10 @@ function Profile({ welcome, user }) {
     }));
   };
 
+  //saves profile pic
   const saveImage = () => setShowSaveButton(false);
 
+  // updates profile info
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -87,6 +92,7 @@ function Profile({ welcome, user }) {
     setShowDeleteConfirm(true); // Show the confirmation modal
   };
 
+  // deletes user profile
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete('/api/users/profile', {
