@@ -20,7 +20,7 @@ function GoogleSearch() {
   return (
     <>
       <Row className="mt-5">
-        <h4 style={{ textAlign: 'center', color: '#ED217C' }}>
+        <h4 style={{ textAlign: 'center', color: '#ED217C', textShadow: '1px 1px 3px #000000' }}>
           Festival Search
         </h4>
       </Row>
@@ -30,21 +30,21 @@ function GoogleSearch() {
           <Link
             to="https://www.cosmopolitan.com/uk/worklife/campus/a36647/festival-survival-tips-hacks/"
             className="mx-2"
-            style={{ textDecoration: 'none', color: '#fffb0a' }}
+            style={{ textDecoration: 'none', color: '#fffb0a', textShadow: '1px 1px 3px #000000' }}
           >
             Tips & Tricks
           </Link>
           <Link
             to="https://luminaid.com/blogs/news/10-tips-to-make-the-most-of-music-festivals"
             className="mx-2"
-            style={{ textDecoration: 'none', color: '#fffb0a' }}
+            style={{ textDecoration: 'none', color: '#1B998B', textShadow: '1px 1px 3px #000000' }}
           >
             Event News
           </Link>
           <Link
             to="https://www.loopearplugs.com/blogs/blog/how-to-survive-your-first-festival-our-music-festival-guide-for-beginners"
             className="mx-2"
-            style={{ textDecoration: 'none', color: '#fffb0a' }}
+            style={{ textDecoration: 'none', color: '#fffb0a', textShadow: '1px 1px 3px #000000' }}
           >
             Must Haves
           </Link>

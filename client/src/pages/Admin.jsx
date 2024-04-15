@@ -290,10 +290,10 @@ const Admin = () => {
                 <td>{product.availability ? 'in stock' : 'out of stock'}</td>
                 <td className="d-flex justify-content-around">
                   <Button
-                    variant="dark"
+                    variant="light"
                     style={{
                       backgroundColor: '#1B998B',
-                      borderColor: '#FAEBD7',
+                      border: 'none',
                     }}
                     className="me-2"
                     size="sm"
@@ -316,6 +316,11 @@ const Admin = () => {
                     Update
                   </Button>
                   <Button
+                    style={{
+                      color: 'red',
+                      backgroundColor: '#333333',
+                      border: ' 1px solid red',
+                    }}
                     variant="danger"
                     size="sm"
                     onClick={() => deleteProduct(product._id)}
@@ -625,8 +630,11 @@ const Admin = () => {
                         Update
                       </Button>
                       <Button
-                      className='border-danger'
-                      style={{ color: 'red', backgroundColor: '#333333', border: ' 1px solid red' }}
+                        style={{
+                          color: 'red',
+                          backgroundColor: '#333333',
+                          border: ' 1px solid red',
+                        }}
                         variant="danger"
                         size="sm"
                         onClick={() => handleDeleteUser(user._id)}
