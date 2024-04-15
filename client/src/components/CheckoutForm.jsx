@@ -77,6 +77,7 @@ function CheckoutForm() {
       [name]: formattedValue,
     });
 
+    //clears error message once user starts typing in each field
     switch(name) {
       case 'name':
         setNameError('');
@@ -96,7 +97,7 @@ function CheckoutForm() {
       case 'postalCode':
         setPostalError('');
         break;
-        
+
       default:
         break;
     }
@@ -106,6 +107,7 @@ function CheckoutForm() {
     e.preventDefault();
     console.log(formData);
 
+    // conditional to check if individual field is empty & sets error message
     if (
       formData.name.trim() === '' ||
       formData.email.trim() === '' ||
