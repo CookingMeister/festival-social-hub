@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import OrderConfirmation from './OrderConfirmation'; // Import the OrderConfirmation component
 
 function CheckoutForm() {
+  // State variables initialization
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,7 +16,7 @@ function CheckoutForm() {
     cardNumber: '',
     expirationDate: '',
     cvv: '',
-    specialInstructions: '', // New field for special instructions
+    specialInstructions: '', // Optional field for special instructions
   });
 
   const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
@@ -32,7 +33,7 @@ function CheckoutForm() {
       setCartItems(JSON.parse(storedCartItems));
     }
   }, []);
-
+  // handleChange function to update form data state
   const handleChange = (e) => {
     const { name, value } = e.target;
     let formattedValue = value;
@@ -64,7 +65,7 @@ function CheckoutForm() {
         return;
       }
     }
-
+    // Update formData state with new value
     setFormData({
       ...formData,
       [name]: formattedValue,
@@ -103,7 +104,7 @@ function CheckoutForm() {
       specialInstructions: '', // Clear special instructions on form clear
     });
   };
-
+// Calculate subtotal, taxes, shipping, and total amounts
   const calculateSubtotal = (items) => {
     return items.reduce((acc, item) => acc + item.price, 0);
   };
@@ -120,6 +121,7 @@ function CheckoutForm() {
     return Math.floor(100000 + Math.random() * 900000);
   };
 
+  // JSX return statement
   return (
     <Container style={{ width: '50%', color: 'antiquewhite' }}>
       <h1 className="mb-5">Checkout</h1>
