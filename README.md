@@ -1,6 +1,6 @@
 # music-festival-hub
 
-A MERN stack app for a musical festival hub
+![alt text](client/public/logo.png)
 
 # www.customfestivalwear.ca
 Custom Festivalwear is the ultimate destination for connecting with fellow festival enthusiasts and unleashing your personal creativity! 
@@ -9,7 +9,7 @@ Custom Festivalwear is the ultimate destination for connecting with fellow festi
 
 # Description
 
-customfestivalwear.ca is the ultimate destination for connecting with fellow festival enthusiasts and unleashing your personal creativity! Our colorful platform offers a unique U-Design feature and a vibrant social networking experience where users can share festival tips, favorite artists, fashion inspirations and catch all the latest festival news and updates worldwide! 
+customfestivalwear.ca is the ultimate destination for connecting with fellow festival enthusiasts and unleashing your personal creativity! Our colorful platform will soon offer a unique U-Design feature and a vibrant social networking experience where users can share festival tips, favorite artists, fashion inspirations and catch all the latest festival news and updates worldwide! 
 
 # Table of Contents
 
@@ -18,6 +18,7 @@ customfestivalwear.ca is the ultimate destination for connecting with fellow fes
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Built-With](#built-with)
+- [Tasks & Roles](#task-roles)
 - [Collaboration](#collaboration)
 - [Deployment](#deployment)
 - [License](#license)
@@ -101,15 +102,17 @@ THEN I am brought to the Order Confirmation Modal  that displays my cart items p
 
 # Built-With
 
--MongoDB
-
--Mongoose
-
--dotenv
-
--express.js
+![alt text](client/public/builtwith.png)
 
 -[Stripe](https://docs.stripe.com/payments?payments=popular) (Future Development)
+
+# Tasks & Roles
+
+Shawn Meister:🎨🔧 Lead Developer, Backend Development, Database Design, Debugging & Testing, Frontend Design & Styling
+
+Samantha Allen:🎨🔧 Frontend Development, Database Design, Debugging & Testing, Frontend Design & Styling
+
+Sam Greenwood:🎨🔧 Project Concept, Presentation & Design, Frontend Development, Assets, Frontend Design & Styling & Testing
 
 **Assets**
 
@@ -117,8 +120,6 @@ Color Pallette from Coolors
 ![alt text](client/public/coolors.png)
 
 Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear) 
-
-Artwork: 
 
 # Collaboration
 
@@ -135,6 +136,10 @@ W3Schools, MDN_docs, stackOverflow.com,
 GitHub Repository Link [Click Here!](https://github.com/CookingMeister/music-festival-hub.git)
 
 For Google Drive Link: [Click Here!]( https://)
+
+Canva Link to presentation: [Click Here!](https://www.canva.com/design/DAGCJ5D603k/A4Iv53Xum715XocP2SlybQ/edit?utm_content=DAGCJ5D603k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+![alt text](client/public/qr.png)
 
 # License
 
