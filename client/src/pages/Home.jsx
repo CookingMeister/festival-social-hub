@@ -6,7 +6,7 @@ import GoogleSearch from '../components/GoogleSearch';
 
 function Home() {
   return (
-    <div style={{ minHeight: '100vh' }}>  
+    <div style={{ minHeight: '100vh', marginTop: '-2rem' }}>  
       <Row className="d-flex justify-content-around align-items-center">
         <Col
           xs={6}
