@@ -85,7 +85,7 @@ function ArtMarketButtons({
             </Button>
             <div>
                 {/** imports cart modal*/}
-                <CartModal2 />
+                <CartModal />
             </div>
         </div>
     )
