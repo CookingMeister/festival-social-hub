@@ -34,7 +34,7 @@ function CheckoutForm() {
   const [postalError, setPostalError] = useState('');
 
   const validateEmail = () => {
-    // Regular expression for email validation
+    // Regular expression for email validation & sets error message
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setEmailError('Please enter a valid email address');
