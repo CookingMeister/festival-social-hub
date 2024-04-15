@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import productDetails from '../utils/productDetails.json';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import CartModal2 from '../components/CartModal2';
+import CartModal from '../components/CartModal';
 
 // component for art market buttons with props 
 function ArtMarketButtons({
