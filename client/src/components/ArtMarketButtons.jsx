@@ -21,7 +21,7 @@ function ArtMarketButtons({
                     id="dropdown-basic"
                     style={{
                         backgroundColor: '#5F6695',
-                        outline: '#5F6695',
+                        border: 'none',
                         color: '#FFFB0A',
                         textShadow: '1px 1px 3px #000000',
                     }}
@@ -48,7 +48,7 @@ function ArtMarketButtons({
                     id="dropdown-basic"
                     style={{
                         backgroundColor: '#5F6695',
-                        outline: '#5F6695',
+                        border: 'none',
                         color: '#FFFB0A',
                         textShadow: '1px 1px 3px #000000',
                     }}
@@ -74,7 +74,7 @@ function ArtMarketButtons({
             <Button
                 style={{
                     backgroundColor: '#5F6695',
-                    outline: '#5F6695',
+                    border: 'none',
                     color: '#FFFB0A',
                     textShadow: '1px 1px 3px #000000',
                 }}
