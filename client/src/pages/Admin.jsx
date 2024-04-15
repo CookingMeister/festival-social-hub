@@ -50,6 +50,7 @@ const Admin = () => {
     topFestivals: [],
   });
 
+  // gets products from db
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -68,6 +69,7 @@ const Admin = () => {
     fetchProducts();
   }, [products]);
 
+  //gets all users from db
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -96,11 +98,13 @@ const Admin = () => {
     handleShowModal(product);
   };
 
+  // shows updated user modal
   const handleShowUpdateUserModal = (user) => {
     setUpdateUser(user);
     setShowUpdateUserModal(true);
   };
 
+  // updates 1 product 
   const updateProduct = async (productId, product) => {
     try {
       console.log('Updating product with:', product);
@@ -121,6 +125,7 @@ const Admin = () => {
     }
   };
 
+  // creates new product
   const createProduct = async () => {
     try {
       console.log('Product  being created:', newProduct);
@@ -219,6 +224,7 @@ const Admin = () => {
     }
   };
 
+  //deletes 1 user
   const deleteUser = async (userId) => {
     console.log('Deleting user with id:', userId);
     try {
@@ -241,6 +247,7 @@ const Admin = () => {
     deleteUser(userId);
   };
 
+  // displays all product and user info
   return (
     <div>
       <Container className="text-white">

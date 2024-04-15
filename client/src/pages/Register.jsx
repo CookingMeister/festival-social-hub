@@ -23,6 +23,7 @@ const Register = ({ setIsLoggedIn }) => {
     }
   };
 
+  // pw validation for min length
   const validatePassword = () => {
     if (password.length < 6) {
       setPasswordError('Password must be at least 6 characters long');
@@ -32,6 +33,7 @@ const Register = ({ setIsLoggedIn }) => {
     }
   };
 
+  //creates new user
   const handleRegister = async (e) => {
     e.preventDefault();
     if (emailError || passwordError) {

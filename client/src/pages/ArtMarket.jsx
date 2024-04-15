@@ -14,6 +14,7 @@ function ArtMarket() {
   const [showSizeRequired, setShowSizeRequired] = useState(false);
   const [products, setProducts] = useState([]);
 
+  // toasts for when size is not selected & when item added to cart
   const handleShowItemAdded = () => {
     setShowItemAdded(true);
   };
@@ -22,6 +23,7 @@ function ArtMarket() {
     setShowSizeRequired(true);
   };
 
+  // gets all products from db
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -43,6 +45,7 @@ function ArtMarket() {
     fetchItems();
   }, []);
 
+  //checks availability of item
   const isItemInStock = (item) => {
     const foundProduct = products.find(
       (product) => product.name === item.name && product.availability === true
@@ -50,6 +53,7 @@ function ArtMarket() {
     return foundProduct ? true : false;
   };
 
+  //changes text on art market btns after user selection
   const handleStyleSelect = (style) => {
     setSelectedStyle(style);
   };
@@ -58,11 +62,13 @@ function ArtMarket() {
     setSelectedBestSeller(bestSeller);
   };
 
+  //resets art market btn selections
   const handleReset = () => {
     setSelectedStyle(null);
     setSelectedBestSeller(null);
   };
 
+  //displays specific product card after user selection
   const filteredItems = products.filter((product) => {
     if (selectedStyle && selectedBestSeller) {
       return product.category.style === selectedStyle && product.name === selectedBestSeller;
@@ -73,8 +79,6 @@ function ArtMarket() {
     }
     return true;
   });
-
-  // console.log(products);
 
   return (
     <div className="py-3" style={{ minHeight: '100vh', margin: '0 auto' }}>
@@ -93,6 +97,7 @@ function ArtMarket() {
           />
         </Row>
         <Row>
+          {/** imports art market btns component, passes down props */}
           <ArtMarketButtons
             selectedStyle={selectedStyle}
             handleStyleSelect={handleStyleSelect}
@@ -102,8 +107,10 @@ function ArtMarket() {
           />
         </Row>
         <Row className="d-flex justify-content-center p-4" style={{ marginLeft: '1px' }}>
+          {/** maps through every product */}
           {filteredItems.map((item, index) => (
             <Col xl={3} lg={4} sm={6} xs={12} key={index} className="mt-4">
+              {/** imports item card component */}
               <ItemCard
                 item={item}
                 isInStock={isItemInStock(item)}
@@ -114,6 +121,7 @@ function ArtMarket() {
           ))}
         </Row>
       </Row>
+      {/** toasts for size & add to cart */}
       <Toast
         onClose={() => setShowItemAdded(false)}
         show={showItemAdded}

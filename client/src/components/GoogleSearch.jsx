@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function GoogleSearch() {
+  //source for google search bar api
   useEffect(() => {
     const script = document.createElement('script');
 
@@ -25,6 +26,7 @@ function GoogleSearch() {
       </Row>
       <Row>
         <div className="d-flex justify-content-center mt-3">
+          {/** links to external URLs for music festival info */}
           <Link
             to="https://www.cosmopolitan.com/uk/worklife/campus/a36647/festival-survival-tips-hacks/"
             className="mx-2"
@@ -48,6 +50,7 @@ function GoogleSearch() {
           </Link>
         </div>
       </Row>
+      {/** displays google search bar */}
       <Row style={{ width: '75%', marginTop: '2%' }}>
         <div className="gcse-search"></div>
       </Row>
