@@ -3,7 +3,6 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import CarouselImage from '../components/CarouselImage';
 import GoogleSearch from '../components/GoogleSearch';
-import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -25,11 +24,8 @@ function Home() {
           />
         </Col>
         <Col xs={8} sm={8} md={7} lg={5} xl={4}>
-          {/** links to art market on click */}
-          <Link to="/artmarket">
             {/** imports carousel img component */}
             <CarouselImage />
-          </Link>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4">

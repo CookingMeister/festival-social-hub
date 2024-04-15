@@ -5,40 +5,28 @@ import {
   comparePassword,
   authMiddleware,
 } from '../../utils/auth.js';
-import User from '../../models/profileModels/userModel/user.js';
-import Product from '../../models/mainModels/productModel/product.js';
+import { deleteUser, deleteProduct, updateProduct, createProduct } from '../../controllers/adminController.js';
+import { updateUserProfile, createUserProfile } from '../../controllers/userController.js';
 
 const router = express.Router();
 
+
 // Admin Delete User Route
-router.delete('/users/profile/:userId', authMiddleware, async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const user = await User.findByIdAndDelete(userId);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    console.log('Deleted User:', user);
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+router.delete('/users/profile/:userId', authMiddleware, deleteUser);
+
+// Admin Create User Profile
+router.post('/users/profile', authMiddleware, createUserProfile);
+
+// Admin Update user profile
+router.put('/users/profile', authMiddleware, updateUserProfile);
+
+// Admin Create Products Route
+router.post('/products', authMiddleware, createProduct);
+
+// Admin Update Products Route
+router.put('/products/:id', authMiddleware, updateProduct);
 
 // Admin Delete Products by ID Route
-router.delete('/products/:id', authMiddleware, async (req, res) => {
-    console.log("admin delete product called");
-    try {
-      const id = req.params.id;
-      const product = await Product.findByIdAndDelete(id);
-      if (!product) {
-        return res.status(404).json({ error: 'Product not found' });
-      }
-      console.log('Deleted Product:', product);
-      res.status(200).json(product);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
+router.delete('/products/:id', authMiddleware, deleteProduct);
 
 export default router;

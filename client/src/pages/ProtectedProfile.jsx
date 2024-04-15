@@ -3,7 +3,7 @@ import axios from 'axios';
 import Profile from './Profile';
 
 const ProtectedPage = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
 
   // gets user info
@@ -16,8 +16,7 @@ const ProtectedPage = () => {
             Authorization: token,
           },
         });
-        console.log('Data:', response.data);
-        setUser(response.data);
+        response.data? setUser(response.data) : setUser('');
       } catch (error) {
         console.error('Failed to fetch user profile', error);
       } finally {
