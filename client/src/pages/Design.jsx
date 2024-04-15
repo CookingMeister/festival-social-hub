@@ -1,6 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
+//design page work in progress
 function Design() {
   return (
     <div style={{ minHeight: '100vh', position:'relative' }}>

@@ -1,3 +1,4 @@
+//imports dependancies
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -50,8 +51,11 @@ const App = () => {
 
   return (
       <>
+      {/** imports header */}
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        {/** imports banner */}
         <FlowerTop />
+        {/** sets endpoints for users who are not logged in */}
         <Routes>
           <Route
             path="/register"
@@ -62,6 +66,7 @@ const App = () => {
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route path="/" element={<Home />} />
+          {/** sets endpoints for users who are logged in */}
           <Route
             path="/design"
             element={
@@ -101,7 +106,9 @@ const App = () => {
           )}
           <Route path="*" element={<Error />} />
         </Routes>
+        {/** imports banner */}
         <FlowerBottom />
+        {/** imports footer */}
         <Footer />
       </>
   );

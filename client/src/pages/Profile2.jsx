@@ -1,3 +1,4 @@
+//imports dependancies
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
@@ -25,6 +26,7 @@ function Profile({ welcome, user }) {
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
+  // to add/change profile pic
   function handleProfilePicChange(e) {
     const file = e.target.files[0];
     if (file) {
@@ -35,6 +37,7 @@ function Profile({ welcome, user }) {
     setShowSaveButton(true);
   }
 
+  //defaults profile pic to logo
   const handleError = () => {
     setFile('./logo.png'); // Fallback to default image if error occurs
   };
@@ -63,6 +66,7 @@ function Profile({ welcome, user }) {
 
   const saveImage = () => setShowSaveButton(false);
 
+  // to save / update profile details
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -87,6 +91,7 @@ function Profile({ welcome, user }) {
     setShowDeleteConfirm(true); // Show the confirmation modal
   };
 
+  // deletes profile
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete('/api/users/profile', {
@@ -104,6 +109,7 @@ function Profile({ welcome, user }) {
     }
   };
 
+  //shows loading if page has not loaded yet
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -320,6 +326,7 @@ function Profile({ welcome, user }) {
   );
 }
 
+//prop type validation
 Profile.propTypes = {
   welcome: PropTypes.string,
   user: PropTypes.object,

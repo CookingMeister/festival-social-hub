@@ -1,3 +1,4 @@
+// imports dependancies
 import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,6 +15,7 @@ function ArtMarket() {
   const [showSizeRequired, setShowSizeRequired] = useState(false);
   const [products, setProducts] = useState([]);
 
+  // fx to show toasts
   const handleShowItemAdded = () => {
     setShowItemAdded(true);
   };
@@ -22,6 +24,7 @@ function ArtMarket() {
     setShowSizeRequired(true);
   };
 
+  // gets products from db
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -43,6 +46,7 @@ function ArtMarket() {
     fetchItems();
   }, []);
 
+  // checks item availability
   const isItemInStock = (item) => {
     const foundProduct = products.find(
       (product) => product.name === item.name && product.availability === true
@@ -50,6 +54,7 @@ function ArtMarket() {
     return foundProduct ? true : false;
   };
 
+  // sets texts on art market buttons
   const handleStyleSelect = (style) => {
     setSelectedStyle(style);
   };
@@ -58,11 +63,13 @@ function ArtMarket() {
     setSelectedBestSeller(bestSeller);
   };
 
+  //resets art market button selections
   const handleReset = () => {
     setSelectedStyle(null);
     setSelectedBestSeller(null);
   };
 
+  //displays responding product card depending on user selection
   const filteredItems = products.filter((product) => {
     if (selectedStyle && selectedBestSeller) {
       return product.category.style === selectedStyle && product.name === selectedBestSeller;
@@ -74,7 +81,6 @@ function ArtMarket() {
     return true;
   });
 
-  // console.log(products);
 
   return (
     <div className="py-3" style={{ minHeight: '100vh', margin: '0 auto' }}>
@@ -93,6 +99,7 @@ function ArtMarket() {
           />
         </Row>
         <Row>
+          {/** sends props to component */}
           <ArtMarketButtons
             selectedStyle={selectedStyle}
             handleStyleSelect={handleStyleSelect}
@@ -102,8 +109,10 @@ function ArtMarket() {
           />
         </Row>
         <Row className="d-flex justify-content-center p-4" style={{ marginLeft: '1px' }}>
+          {/** maps through all products in db and displays */}
           {filteredItems.map((item, index) => (
             <Col xl={3} lg={4} sm={6} xs={12} key={index} className="mt-4">
+              {/** sends product info from db to component */}
               <ItemCard
                 item={item}
                 isInStock={isItemInStock(item)}
@@ -114,6 +123,7 @@ function ArtMarket() {
           ))}
         </Row>
       </Row>
+      {/** toast for when item is added */}
       <Toast
         onClose={() => setShowItemAdded(false)}
         show={showItemAdded}
@@ -130,6 +140,7 @@ function ArtMarket() {
       >
         <Toast.Body>Added to Cart!</Toast.Body>
       </Toast>
+      {/** toast for when size is not selected */}
       <Toast
         onClose={() => setShowSizeRequired(false)}
         show={showSizeRequired}

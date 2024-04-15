@@ -1,3 +1,4 @@
+//imports dependancies
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -5,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+// component wih props passed down from artmarket page
 function ItemCard({
   item,
   isInStock,
@@ -13,6 +15,7 @@ function ItemCard({
 }) {
   const [selectedSize, setSelectedSize] = useState(null);
 
+  //fx to add product to local storage if add to cart btn is clicked
   const handleAddToCart = () => {
     if (selectedSize) {
       const cartItem = {
@@ -25,18 +28,19 @@ function ItemCard({
         JSON.parse(localStorage.getItem('cartItems')) || [];
       const updatedCartItems = [...existingCartItems, cartItem];
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-      // console.log('Item:', cartItem);
-      // console.log(JSON.parse(localStorage.getItem('cartItems')));
+      // shows toast that item has been added
       handleShowItemAdded();
     } else {
+      // shows toast to select a size
       handleSizeRequired();
     }
   };
-
+  //fx to set text on size btn once selected
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
   };
 
+  // adds styling for each item card
   const handleStyle = (event) => {
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => {
@@ -53,6 +57,7 @@ function ItemCard({
         className="m-2 card"
         onFocus={handleStyle}
       >
+        {/** gets product details from db */}
         <Card.Img
           variant="top"
           src={item.imageUrl}
@@ -110,6 +115,7 @@ function ItemCard({
               paddingTop: '4%',
             }}
           >
+            {/** sets item availability after checking db */}
             {isInStock ? <p>In Stock</p> : <p>Out of Stock</p>}
           </ListGroup.Item>
         </ListGroup>
@@ -173,6 +179,7 @@ function ItemCard({
   );
 }
 
+//proptype validation
 ItemCard.propTypes = {
   item: PropTypes.shape({
     img: PropTypes.string,
@@ -189,4 +196,5 @@ ItemCard.propTypes = {
   handleSizeRequired: PropTypes.func.isRequired,
 };
 
+//exports
 export default ItemCard;

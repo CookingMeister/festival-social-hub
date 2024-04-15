@@ -1,3 +1,4 @@
+// imports dependancies
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -102,6 +103,7 @@ const Login = ({ setIsLoggedIn }) => {
   );
 };
 
+//proptype validation
 Login.propTypes = {
   setIsLoggedIn: PropTypes.func.isRequired,
 };

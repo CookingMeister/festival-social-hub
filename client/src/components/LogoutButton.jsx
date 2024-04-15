@@ -1,3 +1,4 @@
+// imports dependancies
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -44,6 +45,7 @@ const LogoutButton = ({ setIsLoggedIn }) => {
   );
 };
 
+//proptype validation
 LogoutButton.propTypes = {
   setIsLoggedIn: PropTypes.func.isRequired,
 };

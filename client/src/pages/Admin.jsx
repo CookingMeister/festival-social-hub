@@ -1,3 +1,4 @@
+//imports dependancies
 import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -50,6 +51,7 @@ const Admin = () => {
     topFestivals: [],
   });
 
+  // gets products from db
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -68,6 +70,7 @@ const Admin = () => {
     fetchProducts();
   }, [products]);
 
+  // gets users from db
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -87,6 +90,7 @@ const Admin = () => {
     fetchUsers();
   }, [updateUser]);
 
+  // fx to show modal
   const handleShowModal = (product) => {
     setEditProduct(product);
     setShowModal(true);
@@ -101,6 +105,7 @@ const Admin = () => {
     setShowUpdateUserModal(true);
   };
 
+  //updates products
   const updateProduct = async (productId, product) => {
     try {
       console.log('Updating product with:', product);
@@ -121,6 +126,7 @@ const Admin = () => {
     }
   };
 
+  // creates new product
   const createProduct = async () => {
     try {
       console.log('Product  being created:', newProduct);
@@ -219,6 +225,7 @@ const Admin = () => {
     }
   };
 
+  // deletes single user
   const deleteUser = async (userId) => {
     console.log('Deleting user with id:', userId);
     try {

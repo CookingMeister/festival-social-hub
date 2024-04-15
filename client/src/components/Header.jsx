@@ -1,3 +1,4 @@
+// imports ependancies
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
@@ -7,6 +8,7 @@ import PropTypes from 'prop-types';
 
 function Header({ isLoggedIn, setIsLoggedIn }) {
   useEffect(() => {
+    // fx to check log in status through token
     const checkLoginStatus = () => {
       const token = localStorage.getItem('token');
       setIsLoggedIn(!!token);
@@ -31,6 +33,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          {/** links to each page if user is not logged in */}
           <Nav className="text-end">
             <Nav.Link
               as={Link}
@@ -58,6 +61,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
                 </Nav.Link>
               </>
             )}
+            {/** links to each page once user is logged in */}
             {isLoggedIn && (
               <>
                 <Nav.Link
@@ -115,9 +119,11 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
   );
 }
 
+//proptype validation
 Header.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   setIsLoggedIn: PropTypes.func.isRequired,
 };
 
+//export header
 export default Header;

@@ -1,3 +1,4 @@
+//imports dependancies
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
@@ -17,6 +18,7 @@ function Home() {
           xl={3}
           className="d-flex justify-content-center align-items-center"
         >
+          {/** company logo */}
           <Image
             src="/logo.png"
             style={{ backgroundImage: 'contain', width: '80%' }}
@@ -25,11 +27,13 @@ function Home() {
         </Col>
         <Col xs={8} sm={8} md={7} lg={5} xl={4}>
           <Link to="/artmarket">
+            {/** imports carousel  component */}
             <CarouselImage />
           </Link>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4">
+        {/** imports google search component */}
         <GoogleSearch />
       </Row>
     </div>

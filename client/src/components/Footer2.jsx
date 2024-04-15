@@ -1,6 +1,8 @@
+// imports dependancies
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
+//styling for footer
 function Footer() {
   return (
     <div className="footer mt-5">
@@ -30,4 +32,5 @@ function Footer() {
   );
 }
 
+//exports footer
 export default Footer;

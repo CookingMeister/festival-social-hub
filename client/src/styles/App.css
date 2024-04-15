@@ -1,9 +1,11 @@
+/* sets min vh*/
 #root {
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden;
 }
 
+/* styling for navbar*/ 
 .navBar {
     display: flex;
     justify-content: space-between;
@@ -11,6 +13,7 @@
     background-color: #ED217C;
 }
 
+/* bg color for hover */
 .dropdown-item:hover {
     background-color: #ED217C;
 }
