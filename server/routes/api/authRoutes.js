@@ -7,7 +7,8 @@ import {
 } from '../../utils/auth.js';
 import User from '../../models/profileModels/userModel/user.js';
 import Product from '../../models/mainModels/productModel/product.js';
-import { registerUser } from '../../controllers/userController.js';
+import { registerUser, loginUser, updateUserProfile, createUserProfile, logoutUser } from '../../controllers/userController.js';
+import { updateProduct, createProduct } from '../../controllers/adminController.js';
 
 const router = express.Router();
 
@@ -15,37 +16,10 @@ const router = express.Router();
 router.post('/register', registerUser);
 
 // User login route
-router.post('/login', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid username' });
-    }
-    const isPasswordValid = await comparePassword(password, user.password);
-
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid password' });
-    }
-    // Generate a token for the user
-    const token = generateToken(user._id);
-    res.json({ token });
-  } catch (error) {
-    res.status(500).json({ error: 'Login failed' });
-  }
-});
+router.post('/login', loginUser);
 
 // User logout route
-router.post('/logout', (req, res) => {
-  try {
-    // Clear the token from the client-side local storage
-    // No server-side logout logic is required since using JWT
-    res.status(200).json({ message: 'Logout successful' });
-  } catch (error) {
-    res.status(500).json({ error: 'Logout failed' });
-  }
-});
+router.post('/logout', logoutUser);
 
 // Get user by ID
 router.get('/users', authMiddleware, async (req, res) => {
@@ -76,56 +50,13 @@ router.get('/users/all', authMiddleware, async (req, res) => {
   }
 });
 
-export const updateUserProfile = async (req, res) => {
-  try {
-    const { name, username, password, socials, aboutMe, topFestivals } =
-      req.body;
-    const userId = req.userId;
-    console.log('userId:', userId);
-
-    const updateFields = { name, socials, aboutMe, topFestivals };
-
-    if (username) {
-      updateFields.username = username;
-    }
-
-    if (password) {
-      updateFields.password = await hashPassword(password);
-    }
-
-    // Find the user by ID and update the profile fields
-    const user = await User.findByIdAndUpdate(userId, updateFields, {
-      new: true,
-    });
-
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    console.log('Updated User:', user);
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
 // Update user profile
 router.put('/users/profile', authMiddleware, updateUserProfile);
 
-const createUserProfile = async (req, res) => {
-  try {
-    const { password, ...userData } = req.body;
-    // Hash the password
-    const hashedPassword = await hashPassword(password);
-    const newUser = new User({ ...userData, password: hashedPassword });
-    const savedUser = await newUser.save();
-    console.log('New User:', savedUser);
-    res.status(201).json(savedUser);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
+// Create User Profile
 router.post('/users/profile', authMiddleware, createUserProfile);
 
+// Delete User Profile
 router.delete('/users/profile/:id', authMiddleware, async (req, res) => {
   try {
     const userId = req.params.id;
@@ -156,46 +87,10 @@ router.get('/products', authMiddleware, async (req, res) => {
 });
 
 //  Update products
-router.put('/products/:id', authMiddleware, async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { name, description, price, category, availability, imageUrl } =
-      req.body;
-    const product = await Product.findByIdAndUpdate(
-      id,
-      { name, description, price, category, availability, imageUrl },
-      { new: true }
-    );
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
-    }
-    console.log('Updated Product:', product);
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+router.put('/products/:id', authMiddleware, updateProduct);
 
 // POST products
-router.post('/products', authMiddleware, async (req, res) => {
-  try {
-    const { name, description, price, category, availability, imageUrl } =
-      req.body;
-    const product = new Product({
-      name,
-      description,
-      price,
-      category,
-      availability,
-      imageUrl,
-    });
-    const savedProduct = await product.save();
-    console.log('New Product:', savedProduct);
-    res.status(201).json(savedProduct);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+router.post('/products', authMiddleware, createProduct);
 
 // DELETE products
 router.delete('/products/:id', authMiddleware, async (req, res) => {
@@ -211,6 +106,7 @@ router.delete('/products/:id', authMiddleware, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // DELETE user profile
 router.delete('/users/profile', authMiddleware, async (req, res) => {
   try {

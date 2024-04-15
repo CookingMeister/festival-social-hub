@@ -1,5 +1,6 @@
 //imports dependancies
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from'react-router-dom';
 import MermaidCrown from '../components/MermaidCrown';
 import JeanJacket from '../components/JeanJacket';
 import FlowerCrown from '../components/FlowerCrown';
@@ -21,7 +22,9 @@ function CarouselImage() {
     >
       <Carousel.Item interval={4000}>
         {/** imports mermaid crown component */}
+        <Link to="/artmarket">
         <MermaidCrown text="Mermaid Crown" />
+        </Link>
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
         >
@@ -33,7 +36,9 @@ function CarouselImage() {
       </Carousel.Item>
       <Carousel.Item interval={4000}>
         {/** imports jean jacket component */}
+        <Link to="/artmarket">
         <JeanJacket text="Jean Jacket" />
+        </Link>
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
         >
@@ -45,7 +50,9 @@ function CarouselImage() {
       </Carousel.Item>
       <Carousel.Item interval={4000}>
         {/** imports flower crown component */}
+        <Link to="/artmarket">
         <FlowerCrown text="Flower Crown" />
+        </Link>
         <Carousel.Caption
           style={{ textShadow: '1px 1px 3px #000000', paddingBottom: '11%' }}
         >

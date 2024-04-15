@@ -60,7 +60,7 @@ const Admin = () => {
             Authorization: token,
           },
         });
-        setProducts(response.data);
+        response ? setProducts(response.data) : setProducts([]);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -79,8 +79,7 @@ const Admin = () => {
             Authorization: token,
           },
         });
-
-        setUsers(response.data);
+        response ? setUsers(response.data) : setUsers([]);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -104,12 +103,12 @@ const Admin = () => {
     setShowUpdateUserModal(true);
   };
 
-  // updates 1 product 
+  // updates 1 product
   const updateProduct = async (productId, product) => {
     try {
       console.log('Updating product with:', product);
       const token = localStorage.getItem('token');
-      await axios.put(`/api/products/${productId}`, product, {
+      await axios.put(`/api/admin/products/${productId}`, product, {
         headers: {
           Authorization: token,
         },
@@ -130,7 +129,7 @@ const Admin = () => {
     try {
       console.log('Product  being created:', newProduct);
       const token = localStorage.getItem('token');
-      await axios.post('/api/products', newProduct, {
+      await axios.post('/api/admin/products', newProduct, {
         headers: {
           Authorization: token,
         },
@@ -151,7 +150,7 @@ const Admin = () => {
       console.error('Error creating product:', error);
     }
   };
-// Delete Product
+  // Delete Product
   const deleteProduct = async (productId) => {
     try {
       await axios.delete(`/api/admin/products/${productId}`, {
@@ -169,12 +168,12 @@ const Admin = () => {
   const createUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('/api/users/profile', newUser, {
+      await axios.post('/api/admin/users/profile', newUser, {
         headers: {
           Authorization: token,
         },
       });
-      // Optionally, fetch users again to refresh the list or just update the state
+      // Update the users state
       setUsers([...users, newUser]);
       setShowNewUserModal(false); // Close the modal
       // Reset the newUser state
@@ -195,7 +194,7 @@ const Admin = () => {
   const updateUserProfile = async (userId, updateUser) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`/api/users/profile`, updateUser, {
+      await axios.put(`/api/admin/users/profile`, updateUser, {
         headers: {
           Authorization: token,
         },
@@ -228,20 +227,17 @@ const Admin = () => {
   const deleteUser = async (userId) => {
     console.log('Deleting user with id:', userId);
     try {
-      await axios.delete(`/api/admin/users/profile/${userId}`, 
-      {
+      await axios.delete(`/api/admin/users/profile/${userId}`, {
         headers: {
           Authorization: localStorage.getItem('token'),
         },
-      }
-    );
+      });
       // Remove the deleted user from the users state
       setUsers(users.filter((user) => user._id !== userId));
     } catch (error) {
       console.error('Error deleting user:', error);
     }
   };
-  
 
   const handleDeleteUser = (userId) => {
     deleteUser(userId);
@@ -291,7 +287,8 @@ const Admin = () => {
                 <td>{product.availability ? 'in stock' : 'out of stock'}</td>
                 <td className="d-flex justify-content-around">
                   <Button
-                    variant="warning"
+                    variant="dark"
+                    style={{backgroundColor: '#1B998B', borderColor: '#FAEBD7'}}
                     className="me-2"
                     size="sm"
                     onClick={() => update(product)}

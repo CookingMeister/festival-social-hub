@@ -51,7 +51,7 @@ const Login = ({ setIsLoggedIn }) => {
       setIsLoggedIn(true); // Update the login state in the parent component
       // Redirect to profile page
       navigate('/profile');
-    } catch (error) {      
+    } catch (error) {
       if (error.response && error.response.data.error === 'Invalid username') {
         setUsernameError('Invalid username');
       }
@@ -64,8 +64,12 @@ const Login = ({ setIsLoggedIn }) => {
 
   return (
     <div className="d-flex justify-content-center vh-100">
-      <Form onSubmit={handleLogin} className="w-25" style={{color: 'antiquewhite'}}>
-        <h1 className='my-5'>Login</h1>
+      <Form
+        onSubmit={handleLogin}
+        className="w-25"
+        style={{ color: 'antiquewhite' }}
+      >
+        <h1 className="my-5">Login</h1>
         <Form.Group controlId="formUsername" className="mt-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -94,7 +98,12 @@ const Login = ({ setIsLoggedIn }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Button variant="warning" type="submit" className="mt-3">
+        <Button
+          style={{ backgroundColor: '#1B998B', borderColor: '#FAEBD7' }}
+          variant="dark"
+          type="submit"
+          className="mt-3"
+        >
           Login
         </Button>
       </Form>
