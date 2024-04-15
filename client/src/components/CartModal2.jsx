@@ -1,10 +1,13 @@
+//imports dependancies
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
 function CartModal2() {
+  // to show cart modal
   const [show, setShow] = useState(false);
+  // for cart price total
   const [total, setTotal] = useState(0);
   const [existingCartItems, setExistingCartItems] = useState(
     localStorage.getItem('cartItems') === null
@@ -12,18 +15,22 @@ function CartModal2() {
       : JSON.parse(localStorage.getItem('cartItems'))
   );
 
+  // fx to close cart modal
   const handleClose = () => setShow(false);
 
+  // fx to get cart items from local storage
   const handleShow = () => {
     setExistingCartItems(JSON.parse(localStorage.getItem('cartItems')));
     setShow(true);
   };
 
+  // fx to clear entire cart
   const handleClearCart = () => {
     setExistingCartItems([]);
     localStorage.removeItem('cartItems');
   };
 
+  // adds total cart price 
   useEffect(() => {
     if (existingCartItems) {
       const totalPrice = existingCartItems.reduce(
@@ -40,6 +47,7 @@ function CartModal2() {
 
   return (
     <>
+    {/** btn to open cart modal */}
       <Button
         variant="primary"
         onClick={handleShow}
@@ -87,6 +95,7 @@ function CartModal2() {
             textShadow: '1px 1px 3px black',
           }}
         >
+          {/** maps through cart items in local storage to display */}
           {existingCartItems && existingCartItems.length > 0 ? (
             existingCartItems.map((existingCartItem, index) => (
               <div key={index}>
@@ -171,6 +180,7 @@ function CartModal2() {
           }}
           className="d-flex justify-content-between px-5"
         >
+          {/** goes to checkout page */}
           <Link to="/checkout">
             <Button
               variant="light"
@@ -184,6 +194,7 @@ function CartModal2() {
               Checkout
             </Button>
           </Link>
+          {/** clear cart button */}
           {existingCartItems.length > 0 && (
             <Button
               className="m-1"
@@ -214,4 +225,5 @@ function CartModal2() {
   );
 }
 
+//exports component
 export default CartModal2;

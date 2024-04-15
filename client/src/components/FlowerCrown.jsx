@@ -1,3 +1,4 @@
+// component for carousel
 function FlowerCrown() {
 
     return (
