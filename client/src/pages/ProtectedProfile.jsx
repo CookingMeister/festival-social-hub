@@ -6,6 +6,7 @@ const ProtectedPage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // gets user info
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -31,6 +32,7 @@ const ProtectedPage = () => {
     return <div>Loading...</div>;
   }
 
+  //displays user info
   return (
     <div>
       <Profile welcome={user?.username}

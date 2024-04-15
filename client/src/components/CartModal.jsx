@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
-function CartModal2() {
+function CartModal() {
   // to show cart modal
   const [show, setShow] = useState(false);
   // for cart price total
@@ -226,4 +226,4 @@ function CartModal2() {
 }
 
 //exports component
-export default CartModal2;
+export default CartModal;

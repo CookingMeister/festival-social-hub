@@ -1,9 +1,10 @@
+/* sets basic styling for root id*/
 #root {
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden;
 }
-
+/* sets nav bar styling*/
 .navBar {
     display: flex;
     justify-content: space-between;
@@ -11,6 +12,7 @@
     background-color: #ED217C;
 }
 
+/* sets dropdown bg color styling*/
 .dropdown-item:hover {
     background-color: #ED217C;
 }

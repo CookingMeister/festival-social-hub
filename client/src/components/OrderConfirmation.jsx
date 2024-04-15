@@ -14,88 +14,94 @@ const OrderConfirmationModal = ({
   formData,
 }) => {
 
-  // Style for span elements
-  const spanStyle = {
-    fontWeight: 500,
-    fontStyle: 'italic',
-    padding: '2rem 2rem ',
-    textAlign: 'center',
-  };
-
 // JSX return statement
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton style={{ backgroundColor: 'antiquewhite' }}>
         <Modal.Title
-          style={{ color: '#ED217C', textShadow: '1px 1px 2px black' }}
+          style={{
+            marginLeft: '7.5rem',
+            color: '#ED217C',
+            textShadow: '1px 1px 2px black',
+          }}
         >
           Order Confirmation
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body
-        style={{ fontWeight: 'bold', backgroundColor: 'antiquewhite' }}
-      >
+      <Modal.Body style={{ backgroundColor: 'antiquewhite' }}>
         <p className="text-center">Your order has been confirmed.</p>
         <p className="text-center">
           Order Confirmation Number:{' '}
-          <span style={spanStyle}>{orderConfirmationNumber}</span>
+          <span>
+            <b>{orderConfirmationNumber}</b>
+          </span>
         </p>
         <hr />
-        <h5 className="text-center p-2">Order Details:</h5>
-        <ul className="list-unstyled p-3">
+        <h5 className="text-center">Order Details:</h5>
+        <h5 className="mt-3 mb-3">Items:</h5>
+        <ul className="mx-5 list-unstyled">
           {cartItems.map((item, index) => (
             <li key={index}>
-              <span style={{ padding: '0 1rem', fontWeight: 'normal' }}>
-                {item.name}
-              </span>{' '}
-              -{' '}
-              <span style={{ padding: '0 1rem', fontWeight: 'normal' }}>
-                ${item.price}
-              </span>
+              {item.name}
+              {':'}
+              <span style={{ padding: '0 1rem' }}>${item.price}</span>
             </li>
           ))}
         </ul>
-        <p>
-          Subtotal: <span style={spanStyle}>${subtotal}</span>
-        </p>
-        <p>
-          Taxes: <span style={spanStyle}>${taxes}</span>
-        </p>
-        <p>
-          Shipping: <span style={spanStyle}>${shipping}</span>
-        </p>
-        <p>
-          Total: <span style={spanStyle}>${total}</span>
-        </p>
+        <ul className="mx-5 list-unstyled">
+          <li>
+            Subtotal: <span style={{ padding: '0 1rem' }}>${subtotal}</span>
+          </li>
+          <li>
+            Taxes: <span style={{ padding: '0 1rem' }}>${taxes}</span>
+          </li>
+          <li>
+            Shipping: <span style={{ padding: '0 1rem' }}>${shipping}</span>
+          </li>
+          <li className="mt-2">
+            <b>Total:</b> <span style={{ padding: '0 1rem' }}>${total}</span>
+          </li>
+        </ul>
+
         <hr />
         <h5 className="text-center p-3">Checkout Form Details:</h5>
-        <p>
-          Name: <span style={spanStyle}>{formData.name}</span>
-        </p>
-        <p>
-          Email: <span style={spanStyle}>{formData.email}</span>
-        </p>
-        <p>
-          Street Address:{' '}
-          <span style={spanStyle}>{formData.streetAddress}</span>
-        </p>
-        <p>
-          City: <span style={spanStyle}>{formData.city}</span>
-        </p>
-        <p>
-          Province: <span style={spanStyle}>{formData.province}</span>
-        </p>
-        <p>
-          Postal Code: <span style={spanStyle}>{formData.postalCode}</span>
-        </p>
+        <h5 className="py-2">Email:</h5>
+        <ul className="mx-5 list-unstyled">
+          <li>{formData.email}</li>
+        </ul>
+
+        <h5 className="py-3">Address:</h5>
+        <ul className="mx-5 list-unstyled">
+          <li>{formData.name}</li>
+          <li>{formData.streetAddress}</li>
+          <li>{formData.city}</li>
+          <li>
+            {formData.province}
+            <span className="mx-2">{formData.postalCode}</span>
+          </li>
+        </ul>
+     
         {formData.specialInstructions && (
-          <p>
-            Special Instructions:{' '}
-            <span style={spanStyle}>{formData.specialInstructions}</span>
-          </p>
-        )}
+          <>
+            <h5 className="py-3">Special Instructions:</h5>
+            <p className='mx-5'>{formData.specialInstructions}</p>
+          </>
+          )}
       </Modal.Body>
-      <Modal.Footer style={{ backgroundColor: 'antiquewhite' }}>
+      <Modal.Footer
+        style={{
+          backgroundColor: 'antiquewhite',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Button
+          variant="dark"
+          style={{ backgroundColor: '#ED217C' }}
+          onClick={onHide}
+        >
+          Print Details
+        </Button>
         <Button
           variant="dark"
           style={{ backgroundColor: '#1B998B' }}

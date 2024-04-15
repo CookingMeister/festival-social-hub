@@ -1,5 +1,6 @@
 import Container from 'react-bootstrap/esm/Container';
 
+//error page if URL is incorrect
 function Error() {
   return (
     <Container
