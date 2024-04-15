@@ -33,6 +33,17 @@ function CheckoutForm() {
   const [provinceError, setProvinceError] = useState('');
   const [postalError, setPostalError] = useState('');
 
+  const validateEmail = () => {
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setEmailError('Please enter a valid email address');
+      return;
+    } else {
+      setEmailError('');
+    }
+  };
+
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
@@ -200,6 +211,7 @@ function CheckoutForm() {
             value={formData.email}
             onChange={handleChange}
             isInvalid={!!emailError}
+            onBlur={validateEmail}
             required
           />
            <Form.Control.Feedback type="invalid">
