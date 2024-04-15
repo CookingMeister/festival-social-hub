@@ -26,6 +26,12 @@ function CheckoutForm() {
   const [taxesAmount, setTaxesAmount] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [streetError, setStreetError] = useState('');
+  const [cityError, setCityError] = useState('');
+  const [provinceError, setProvinceError] = useState('');
+  const [postalError, setPostalError] = useState('');
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
@@ -70,11 +76,54 @@ function CheckoutForm() {
       ...formData,
       [name]: formattedValue,
     });
+
+    //clears error message once user starts typing in each field
+    switch(name) {
+      case 'name':
+        setNameError('');
+        break;
+      case 'email':
+        setEmailError('');
+        break;
+      case 'streetAddress':
+        setStreetError('');
+        break;
+      case 'city':
+        setCityError('');
+        break;
+      case 'province':
+        setProvinceError('');
+        break;
+      case 'postalCode':
+        setPostalError('');
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+
+    // conditional to check if individual field is empty & sets error message
+    if (
+      formData.name.trim() === '' ||
+      formData.email.trim() === '' ||
+      formData.streetAddress.trim() === '' ||
+      formData.city.trim() === '' ||
+      formData.province.trim() === '' ||
+      formData.postalCode.trim() === ''
+    ) {
+      setNameError(formData.name.trim() === '' ? 'Name is required' : '');
+      setEmailError(formData.email.trim() === '' ? 'Email is required' : '');
+      setStreetError(formData.streetAddress.trim() === '' ? 'Street Address is required' : '');
+      setCityError(formData.city.trim() === '' ? 'City/Town is required' : '');
+      setProvinceError(formData.province.trim() === '' ? 'Province is required' : '');
+      setPostalError(formData.postalCode.trim() === '' ? 'Postal Code is required' : '');
+      return;
+    }
 
     const subtotal = calculateSubtotal(cartItems);
     const taxes = calculateTaxes(subtotal);
@@ -134,8 +183,12 @@ function CheckoutForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            isInvalid={!!nameError}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {nameError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formEmail">
@@ -146,8 +199,12 @@ function CheckoutForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            isInvalid={!!emailError}
             required
           />
+           <Form.Control.Feedback type="invalid">
+            {emailError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formAddress">
@@ -158,8 +215,12 @@ function CheckoutForm() {
             name="streetAddress"
             value={formData.streetAddress}
             onChange={handleChange}
+            isInvalid={!!streetError}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {streetError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formCity">
@@ -170,8 +231,12 @@ function CheckoutForm() {
             name="city"
             value={formData.city}
             onChange={handleChange}
+            isInvalid={!!cityError}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {cityError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formProvince">
@@ -182,8 +247,12 @@ function CheckoutForm() {
             name="province"
             value={formData.province}
             onChange={handleChange}
+            isInvalid={!!provinceError}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {provinceError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formPostalCode">
@@ -196,8 +265,12 @@ function CheckoutForm() {
             onChange={handleChange}
             pattern="[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d"
             title="Please enter a valid Canadian postal code (e.g., X0X 0X0)"
+            isInvalid={postalError}
             required
           />
+          <Form.Control.Feedback type="invalid">
+            {postalError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formCardNumber">
