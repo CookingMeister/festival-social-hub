@@ -90,7 +90,8 @@ function CartModal2() {
         <Modal.Body
           style={{
             backgroundColor: '#333333',
-            color: '#ed217c',
+            color: '#1B998B',
+            fontStyle: 'italic',
             textShadow: '1px 1px 3px black',
           }}
         >
@@ -101,7 +102,11 @@ function CartModal2() {
                 <div className="d-flex justify-content-between align-items-center">
                   <h5
                     className="m-3"
-                    style={{ color: 'antiquewhite', fontWeight: '600' }}
+                    style={{
+                      color: 'antiquewhite',
+                      fontWeight: '600',
+                      fontStyle: 'normal',
+                    }}
                   >
                     {existingCartItem.name}
                   </h5>
@@ -144,14 +149,15 @@ function CartModal2() {
                       </span>
                     </strong>
                   </p>
-                  <p>
+                  <p style={{ color: 'antiquewhite' }}>
                     <strong>
                       Price:
                       <span
                         style={{
-                          color: 'antiquewhite',
+                          fontStyle: 'normal',
                           fontWeight: 'normal',
-                          textShadow: '1px 1px 3px black',
+                          textShadow: '1px 1px 2px black',
+                          marginLeft: '2px',
                         }}
                       >
                         {' $ '}
@@ -205,9 +211,13 @@ function CartModal2() {
             </Button>
           )}
 
-          <h5 style={{ color: 'antiquewhite' }}>
-            Total: {' $ '}
-            {total}
+          <h5 style={{color: 'antiquewhite'}}>
+            Total: 
+            <span style={{ fontStyle: 'normal', marginLeft: '2px' }}>
+              {' $ '}
+              {total}
+            </span>
+
           </h5>
         </Modal.Footer>
       </Modal>
