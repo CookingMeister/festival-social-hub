@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import ProtectedPage from './pages/ProtectedProfile';
 import Design from './pages/Design';
 import CheckoutForm from './components/CheckoutForm';
-import Footer from './components/Footer2';
+import Footer from './components/Footer';
 import Error from './pages/Error';
 import FlowerTop from './components/FlowerTop';
 import FlowerBottom from './components/FlowerBottom';
