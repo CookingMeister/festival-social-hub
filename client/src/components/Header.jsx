@@ -41,7 +41,7 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
             >
               Home
             </Nav.Link>
-            (/** nav links when no user is logged in */)
+            {/** nav links when no user is logged in */}
             {!isLoggedIn && (
               <>
                 <Nav.Link
