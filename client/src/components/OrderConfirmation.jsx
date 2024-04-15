@@ -12,127 +12,87 @@ const OrderConfirmationModal = ({
   total,
   formData,
 }) => {
-  const formattedCardNumber = formData.cardNumber.replace(
-    /\d{4}(?=\d{4})/g,
-    'XXXX '
-  );
-
-  console.log(cartItems);
+  
+  const spanStyle = {
+    fontWeight: 500,
+    fontStyle: 'italic',
+    padding: '2rem 2rem ',
+    textAlign: 'center',
+  };
 
   return (
     <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
-        <Modal.Title>Order Confirmation</Modal.Title>
+      <Modal.Header closeButton style={{ backgroundColor: 'antiquewhite' }}>
+        <Modal.Title
+          style={{ color: '#ED217C', textShadow: '1px 1px 2px black' }}
+        >
+          Order Confirmation
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body style={{ fontWeight: 'bold' }}>
+      <Modal.Body
+        style={{ fontWeight: 'bold', backgroundColor: 'antiquewhite' }}
+      >
         <p className="text-center">Your order has been confirmed.</p>
         <p className="text-center">
           Order Confirmation Number:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {orderConfirmationNumber}
-          </span>
+          <span style={spanStyle}>{orderConfirmationNumber}</span>
         </p>
         <hr />
-        <h5 className="text-center">Order Details:</h5>
-        <ul>
+        <h5 className="text-center p-2">Order Details:</h5>
+        <ul className="list-unstyled p-3">
           {cartItems.map((item, index) => (
             <li key={index}>
-              <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
+              <span style={{ padding: '0 1rem', fontWeight: 'normal' }}>
                 {item.name}
               </span>{' '}
               -{' '}
-              <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
+              <span style={{ padding: '0 1rem', fontWeight: 'normal' }}>
                 ${item.price}
               </span>
             </li>
           ))}
         </ul>
         <p>
-          Subtotal:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            ${subtotal}
-          </span>
+          Subtotal: <span style={spanStyle}>${subtotal}</span>
         </p>
         <p>
-          Taxes:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>${taxes}</span>
+          Taxes: <span style={spanStyle}>${taxes}</span>
         </p>
         <p>
-          Shipping:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            ${shipping}
-          </span>
+          Shipping: <span style={spanStyle}>${shipping}</span>
         </p>
         <p>
-          Total:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>${total}</span>
+          Total: <span style={spanStyle}>${total}</span>
         </p>
         <hr />
-        <h5 className="text-center p-2">Checkout Form Details:</h5>
+        <h5 className="text-center p-3">Checkout Form Details:</h5>
         <p>
-          Name:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.name}
-          </span>
+          Name: <span style={spanStyle}>{formData.name}</span>
         </p>
         <p>
-          Email:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.email}
-          </span>
+          Email: <span style={spanStyle}>{formData.email}</span>
         </p>
         <p>
           Street Address:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.streetAddress}
-          </span>
+          <span style={spanStyle}>{formData.streetAddress}</span>
         </p>
         <p>
-          City:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.city}
-          </span>
+          City: <span style={spanStyle}>{formData.city}</span>
         </p>
         <p>
-          Province:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.province}
-          </span>
+          Province: <span style={spanStyle}>{formData.province}</span>
         </p>
         <p>
-          Postal Code:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.postalCode}
-          </span>
-        </p>
-        <p>
-          Card Number:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formattedCardNumber}
-          </span>
-        </p>
-        <p>
-          Expiration Date:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.expirationDate}
-          </span>
-        </p>
-        <p>
-          CVV:{' '}
-          <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-            {formData.cvv}
-          </span>
+          Postal Code: <span style={spanStyle}>{formData.postalCode}</span>
         </p>
         {formData.specialInstructions && (
           <p>
             Special Instructions:{' '}
-            <span className='p-3' style={{ fontWeight: 500, fontStyle: 'italic' }}>
-              {formData.specialInstructions}
-            </span>
+            <span style={spanStyle}>{formData.specialInstructions}</span>
           </p>
         )}
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer style={{ backgroundColor: 'antiquewhite' }}>
         <Button
           variant="dark"
           style={{ backgroundColor: '#1B998B' }}
@@ -151,7 +111,6 @@ OrderConfirmationModal.propTypes = {
   orderConfirmationNumber: PropTypes.number.isRequired,
   cartItems: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
       name: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
     })
@@ -167,9 +126,6 @@ OrderConfirmationModal.propTypes = {
     city: PropTypes.string.isRequired,
     province: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
-    cardNumber: PropTypes.string.isRequired,
-    expirationDate: PropTypes.string.isRequired,
-    cvv: PropTypes.string.isRequired,
     specialInstructions: PropTypes.string,
   }).isRequired,
 };

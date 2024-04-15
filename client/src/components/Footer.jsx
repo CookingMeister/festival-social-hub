@@ -4,11 +4,25 @@ import Navbar from 'react-bootstrap/Navbar';
 function Footer() {
   return (
     <div className="footer mt-5">
-      <Navbar expand="lg" static="bottom" className="navBar">
-        <Container style={{ display: 'flex', justifyContent: 'center' }}>
-          <Navbar.Brand style={{ color: '#FFFB0A', textShadow: '1px 1px 3px #000000', }}>
+      <Navbar expand="lg" static="bottom" className="navBar pt-2">
+        <Container
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <Navbar.Brand
+            style={{
+              color: '#FFFB0A',
+              textShadow: '1px 1px 3px #000000',
+              paddingTop: '2%',
+            }}
+          >
             {' '}
-            Made by Sam, Sam and Shawn{' '}
+            Made with <span style={{ fontSize: '85%' }}>❤️</span> by Triple S
+            Productions{' '}
+            <p className="text-center">&copy; {new Date().getFullYear()}</p>
           </Navbar.Brand>
         </Container>
       </Navbar>
