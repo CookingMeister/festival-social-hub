@@ -179,7 +179,7 @@ If you have an questions about this app, please contact CookingMeister at [Linke
 
 - GitHub Repo [Click Here!](https://github.com/CookingMeister/music-festival-hub.git)
 
-- Google Drive Demo Video: [Click Here!]( https://)
+- Google Drive Demo Video: [Click Here!]( https://drive.google.com/file/d/1b22IHA0AH2H1T2S_Mn8nppVCWT9VF67V/view)
 
 - Canva presentation: [Click Here!](https://www.canva.com/design/DAGCJ5D603k/A4Iv53Xum715XocP2SlybQ/edit?utm_content=DAGCJ5D603k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
