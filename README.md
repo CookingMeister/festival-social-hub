@@ -2,7 +2,7 @@
 
 [![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
-![alt text](client/public/logo.png)
+![alt text](client/public/logosm.png)
 
 ## www.customfestivalwear.ca
 
@@ -171,9 +171,9 @@ Sam Greenwood:🎨🔧 Project Concept, Presentation & Design, Frontend Developm
 Color Pallette from Coolors
 ![alt text](client/public/coolors.png)
 
-Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear)
+Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear) (Future Development)
 
-Artwork: 
+Artwork & Presentation: [Canva](https://www.canva.com/)
 
 ## Credits
 
