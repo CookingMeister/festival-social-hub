@@ -39,7 +39,6 @@ const Register = ({ setIsLoggedIn }) => {
     if (emailError || passwordError) {
       return;
     }
-    console.log('Registration data:', username, email, password);
     try {
       const response = await axios.post(
         '/api/register',
