@@ -161,9 +161,9 @@ THEN I am brought to the Order Confirmation Modal  that displays my cart items p
 Color Pallette from Coolors
 ![alt text](client/public/coolors.png)
 
-Socials for Site: [Facebook](https://https://www.facebook.com/customfestivalwear)
+Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear) (Future Development)
 
-Artwork:
+Artwork & Presentation: [Canva](https://www.canva.com/)
 
 ## Credits
 
