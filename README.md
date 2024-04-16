@@ -22,7 +22,6 @@ customfestivalwear.ca is the ultimate destination for connecting with fellow fes
 - [Acceptance Criteria](#acceptance-criteria)
 - [Built-With](#built-with)
 - [Credits](#credits)
-- [Collaboration](#collaboration)
 - [Deployment](#deployment)
 - [License](#license)
 
@@ -174,15 +173,14 @@ Color Pallette from Coolors
 
 Socials for Site: [Facebook ](https://https://www.facebook.com/customfestivalwear)
 
-## Collaboration
+Artwork: 
 
-Bootcamp Spot Module 18-21
+## Credits
 
-Team: Samantha Allen, Shawn Meister and Sam Greenwood (Triple S Productions)
-
-Trello
-
-W3Schools, MDN_docs, stackOverflow.com.
+This app was created by <a href='https://github.com/CookingMeister'>CookingMeister</a>,
+<a href='https://github.com/SamGreenwood84'>SamGreenwood84</a> and <a href='https://github.com/samamiraa'>Samamiraa</a> on criteria from the University of New Brunswick's <a href='https://www.unb.ca/cel/career/index.html'>edX Coding Bootcamp program</a>.
+Program materials, <a href='https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started'>MDN Web Docs</a>, <a href='https://www.w3schools.com/'>W3Schools</a>, <a href='https://stackoverflow.com/'>stackOverflow.com</a> and <a href='https://reactrouter.com/en/main'>React Router</a> documentation were referenced for this app.
+Tasks were organized using <a href='https://trello.com'>Trello.</a>
 
 ## Questions
 
