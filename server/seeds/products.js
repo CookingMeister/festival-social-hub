@@ -169,7 +169,7 @@ async function seedProducts() {
   }
   
   // Connect to MongoDB
-  mongoose.connect('mongodb://localhost:27017/musicfestivalhub' || process.env.MONGODB_URI)
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/musicfestivalhub')
   .then(() => {
     console.log('Connected to MongoDB');
     // Call the function to seed products

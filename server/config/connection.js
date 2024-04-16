@@ -7,7 +7,7 @@ dotenv.config();
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      'mongodb://127.0.0.1:27017/musicfestivalhub' || process.env.MONGODB_URI
+      process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/musicfestivalhub' 
     );
     console.log('Connected to MongoDB');
   } catch (error) {
