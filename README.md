@@ -12,16 +12,15 @@ customfestivalwear.ca is the ultimate destination for connecting with fellow fes
 
 ## Table of Contents
 
-- [Live Demo](#live-demo-video)
+- [Description](#description)
 - [Getting Started](#getting-started)
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Built-With](#built-with)
 - [Credits](#credits)
-- [Deployment](#deployment)
+- [Questions](#questions)
+- [Links](#links)
 - [License](#license)
-
-## Live Demo Video
 
 ## Getting Started
 
@@ -42,13 +41,13 @@ customfestivalwear.ca is the ultimate destination for connecting with fellow fes
 
 - To set up the project, follow these steps:
 
-  1. Clone the repository
+1. Clone the repository
 
-  2. Install dependencies
+2. Install dependencies
 
-- Navigate to the project directory and run: `npm install`
+    - Navigate to the project directory and run: `npm install`
 
-  3. Set up environment variables
+3. Set up environment variables
 
     - Create a .env file in the root of your project directory. Add the necessary environment variables as specified in the .env.Example file provided in the project.
     
@@ -59,8 +58,6 @@ PORT=3000
 MONGODB_URI=mongodb://localhost:27017/yourdatabasename
 JWT_SECRET=your_secret_here
 ```
-
-
 
 4. Start the MongoDB server and seed the database
 
@@ -174,15 +171,17 @@ Tasks were organized using [Trello](https://trello.com).
 
 ## Questions
 
-If you have an questions about this app, please contact me at [LinkedIn](https://www.linkedin.com/in/shawn-meister-bb646b29a/). More of my work can be viewed at [Github](https://github.com/CookingMeister).
+If you have an questions about this app, please contact CookingMeister at [LinkedIn](https://www.linkedin.com/in/shawn-meister-bb646b29a/), SamGreenwood84 at [LinkedIn](https://www.linkedin.com/in/) or Samamiraa at [LinkedIn](https://www.linkedin.com/in/). More of our work can be viewed by clicking on our names above in the [Credits](#credits) section.
 
-## Deployment
+## Links
 
-GitHub Repository Link [Click Here!](https://github.com/CookingMeister/music-festival-hub.git)
+- Deployed App on render.com: [Click Here!](https://render.com/)
 
-Google Drive Link: [Click Here!]( https://)
+- GitHub Repo [Click Here!](https://github.com/CookingMeister/music-festival-hub.git)
 
-Canva Link to presentation: [Click Here!](https://www.canva.com/design/DAGCJ5D603k/A4Iv53Xum715XocP2SlybQ/edit?utm_content=DAGCJ5D603k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Google Drive Demo Video: [Click Here!]( https://)
+
+- Canva presentation: [Click Here!](https://www.canva.com/design/DAGCJ5D603k/A4Iv53Xum715XocP2SlybQ/edit?utm_content=DAGCJ5D603k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 <img src="client/public/qr.png" alt="QR Code" width="200" height="200">
 
