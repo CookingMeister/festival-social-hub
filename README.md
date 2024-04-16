@@ -177,10 +177,10 @@ Artwork:
 
 ## Credits
 
-This app was created by <a href='https://github.com/CookingMeister'>CookingMeister</a>,
-<a href='https://github.com/SamGreenwood84'>SamGreenwood84</a> and <a href='https://github.com/samamiraa'>Samamiraa</a> on criteria from the University of New Brunswick's <a href='https://www.unb.ca/cel/career/index.html'>edX Coding Bootcamp program</a>.
-Program materials, <a href='https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started'>MDN Web Docs</a>, <a href='https://www.w3schools.com/'>W3Schools</a>, <a href='https://stackoverflow.com/'>stackOverflow.com</a> and <a href='https://reactrouter.com/en/main'>React Router</a> documentation were referenced for this app.
-Tasks were organized using <a href='https://trello.com'>Trello.</a>
+This app was created by [CookingMeister](https://github.com/CookingMeister),
+[SamGreenwood84](https://github.com/SamGreenwood84) and [Samamiraa](https://github.com/samamiraa) on criteria from the University of New Brunswick's [edX Coding Bootcamp program](https://www.unb.ca/cel/career/index.html).
+Program materials,[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started), [W3Schools](https://www.w3schools.com/), [stackOverflow.com](https://stackoverflow.com/) and [React Router](https://reactrouter.com/en/main) documentation were referenced for this app.
+Tasks were organized using [Trello](https://trello.com).
 
 ## Questions
 
