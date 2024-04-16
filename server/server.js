@@ -33,6 +33,12 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 // Connect to MongoDB
 connectDB();
 
+// Start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 // Catch-all route to serve index.html for client-side routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/', 'index.html')); // (uncomment on build, comment out for dev)
@@ -41,9 +47,3 @@ app.get('*', (req, res) => {
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../client/', 'index.html'));  // (comment out on build, uncomment for dev)
 // });
-
-// Start the server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
