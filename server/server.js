@@ -13,7 +13,7 @@ const app = express();
 
 // Enable CORS options
 const corsOptions = {
-  origin: 'https://render.com/',
+  origin: 'https://music-festival-hub.onrender.com/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
