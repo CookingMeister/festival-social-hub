@@ -64,7 +64,7 @@ function ItemCard({
             margin: '0 auto',
             objectFit: 'cover',
             overflow: 'hidden',
-            height: '300px',
+            height: '280px',
             marginTop: '2%',
           }}
         />
