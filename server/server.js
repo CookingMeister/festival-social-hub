@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 
-// Serve static files from the dist folder (uncomment on build)
+// Serve static files from the dist folder (uncomment on build, comment out for dev)
 const __dirname = path.resolve();
 // app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -26,13 +26,14 @@ const __dirname = path.resolve();
 connectDB();
 
 // Catch-all route to serve index.html for client-side routing
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'dist', 'index.html')); // (uncomment on build)
-// });
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/', 'index.html'));
-});
 
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'dist', 'index.html')); // (uncomment on build, comment out for dev)
+// });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/', 'index.html'));  // (comment out on build, uncomment for dev)
+});
 
 // Start the server
 const port = process.env.PORT || 3000;

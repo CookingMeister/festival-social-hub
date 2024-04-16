@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 import Product from '../models/mainModels/productModel/product.js';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 async function seedProducts() {
     try {
@@ -165,7 +169,7 @@ async function seedProducts() {
   }
   
   // Connect to MongoDB
-  mongoose.connect('mongodb://localhost:27017/musicfestivalhub')
+  mongoose.connect('mongodb://localhost:27017/musicfestivalhub' || process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     // Call the function to seed products
