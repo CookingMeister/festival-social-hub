@@ -6,7 +6,7 @@ import ItemCard from '../components/ItemCard';
 import axios from 'axios';
 import ArtMarketButtons from '../components/ArtMarketButtons';
 import Toast from 'react-bootstrap/Toast';
-import { ToastContainer } from 'react-bootstrap';
+import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function ArtMarket() {
   const [selectedStyle, setSelectedStyle] = useState(null);

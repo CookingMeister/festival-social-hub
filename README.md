@@ -175,7 +175,7 @@ If you have an questions about this app, please contact CookingMeister at [Linke
 
 ## Links
 
-- Deployed App on render.com: [Click Here!](https://render.com/)
+- Deployed App on render.com: [Click Here!](https://music-festival-hub.onrender.com/)
 
 - GitHub Repo [Click Here!](https://github.com/CookingMeister/music-festival-hub.git)
 
